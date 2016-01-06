@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="de">
+
+  <head>
+    <title>Middleware für die Verwendung in Express-Anwendungen schreiben</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/dropit.css">
+    <link rel="stylesheet" href="/css/prism.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+    <link rel="stylesheet" href="/css/de.css">        
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script data-cfasync="false" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script data-cfasync="false" src="/js/app.js"></script>
+    <script data-cfasync="false" src="/js/retina.js"></script>
+    <script data-cfasync="false" src="/js/dropit.js"></script>
+    <script data-cfasync="false" src="/js/prism.js"></script>
+</head>
+
+
+  
+  <body class="non-en-doc">
+  
+
+    <section class="page content">
+
+      <header>
+  <div id="mobile-menu">
+      <div id="nav-button" class="fa fa-bars fa-2x button"></div>
+  </div>
+  <section id="logo"><a href="/" class="express">Express</a>
+  </section>
+  <div id="navbar">
+      <ul id="navmenu">
+          <li><a href="/de/" id="home-menu">Home</a></li>
+          <li>
+              <ul id="getting-started-menu" class="menu">
+                  <li><a href="/de/starter/installing.html">Einführung</a>
+                      <ul>
+                          <li>
+                            <a href="/de/starter/installing.html">
+                              Installation
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/de/starter/hello-world.html">
+                              Hello World
+                            </a>
+                          </li>
+                          <li>
+                          <a href="/de/starter/generator.html">
+                            Express Generator
+                          </a>
+                          </li>
+                          <li>
+                            <a href="/de/starter/basic-routing.html">
+                              Basisrouting
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/de/starter/static-files.html">
+                              Statische Dateien
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/de/starter/faq.html">
+                              Häufig gestellte Fragen</a>
+</li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="guide-menu" class="menu">
+                  <li><a href="/de/guide/routing.html" class="active">Leitfaden</a>
+                      <ul>
+                          <li><a href="/de/guide/routing.html">Routing</a>
+                          </li>
+                          <li><a href="/de/guide/writing-middleware.html">Middleware schreiben</a>
+                          </li>
+                          <li><a href="/de/guide/using-middleware.html">Middleware verwenden</a>
+                          </li>
+                          <li><a href="/de/guide/using-template-engines.html">Template-Engines verwenden</a>
+                          </li>
+                          <li><a href="/de/guide/error-handling.html">Fehlerbehandlung</a>
+                          </li>
+                          <li><a href="/de/guide/debugging.html">Debugging</a>
+                          </li>
+                          <li><a href="/de/guide/behind-proxies.html">Express hinter Proxys</a>
+                          </li>
+                          <li><a href="/de/guide/migrating-4.html">Wechsel zu Express 4</a>
+                          </li>
+                          <li><a href="/de/guide/migrating-5.html">Wechsel zu Express 5</a>
+                          </li>
+                          <li><a href="/de/guide/database-integration.html">Datenbankintegration</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="application-menu" class="menu">
+                  <li><a href="/de/4x/api.html">API-Referenz</a>
+                      <ul>
+                          <li><a href="/de/4x/api.html">4.x</a>
+                          </li>
+                          <li><a href="/de/3x/api.html">3.x (veraltet)</a>
+                          </li>
+                          <li><a href="/de/2x/">2.x (veraltet)</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="advanced-topics-menu" class="menu">
+                  <li><a href="/de/advanced/developing-template-engines.html">Themen für Fortgeschrittene</a>
+                      <ul>
+                          <li><a href="/de/advanced/developing-template-engines.html">Template-Engines</a>
+                          </li>
+                          <li><a href="/de/advanced/pm.html">Process Manager verwenden</a>
+                          </li>
+                          <li><a href="/de/advanced/security-updates.html">Sicherheitsupdates</a>
+                          </li>
+                          <li><a href="/de/advanced/best-practice-security.html">Sicherheitsspezifische Best Practices</a>
+                          </li>
+                          <li><a href="/de/advanced/best-practice-performance.html">Leistungsspezifische Best Practices</a>
+                          </li>
+
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="resources-menu" class="menu">
+                  <li><a href="/de/resources/glossary.html">Ressourcen</a>
+                      <ul>
+                          <li><a href="/de/resources/glossary.html">Glossar</a>
+                          </li>
+                          <li><a href="/de/resources/middleware.html">Middleware</a>
+                          </li>
+                          <li><a href="/de/resources/community.html">Community</a>
+                          </li>
+                          <li><a href="/de/resources/books-blogs.html">Handbücher und Blogs</a>
+                          </li>
+                          <li><a href="/de/resources/applications.html">Anwendungen</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+  </div><a href="http://strongloop.com/node-js/training/" title="Node- und Express-Schulungen von StrongLoop" id="strongloop-header">Express- und Node.js-Schulungen von StrongLoop</a>
+</header>
+
+
+      <div id="overlay"></div>
+
+      
+        <div id="i18n-notice-box" class="doc-box doc-warn">
+          <p>Dieses Dokument kann im Vergleich zur englischen Dokumentation veraltet sein. Aktuelle Updates finden Sie in der <a href="/">englischen Dokumentation</a>.
+</p>
+<p>This document might be outdated relative to the documentation in English. For the latest updates, please refer to the <a href="/">documentation in English</a>.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+
+        </div>
+      
+
+      <h1 id="middleware-fr-die-verwendung-in-express-anwendungen-schreiben">Middleware für die Verwendung in Express-Anwendungen schreiben</h1>
+
+<h2>Überblick</h2>
+
+<p><em>Middlewarefunktionen</em> sind Funktionen, die Zugriff auf das <a href="/de/4x/api.html#req">Anforderungsobjekt</a> (<code class="highlighter-rouge">req</code>), das <a href="/de/4x/api.html#res">Antwortobjekt</a> (<code class="highlighter-rouge">res</code>) und die nächste Middlewarefunktion im Anforderung/Antwort-Zyklus der Anwendung haben. Die nächste Middlewarefunktion wird im Allgemeinen durch die Variable <code class="highlighter-rouge">next</code> bezeichnet.</p>
+
+<p>Über Middlewarefunktionen lassen sich die folgenden Tasks ausführen:</p>
+
+<ul>
+  <li>Ausführen von Code</li>
+  <li>Vornehmen von Änderungen an der Anforderung und an Antwortobjekten</li>
+  <li>Beenden des Anforderung/Antwort-Zyklus</li>
+  <li>Aufrufen der nächsten Middleware im Stack</li>
+</ul>
+
+<p>Wenn über die aktuelle Middlewarefunktion der Anforderung/Antwort-Zyklus nicht beendet werden kann, muss <code class="highlighter-rouge">next()</code> aufgerufen werden, um die Steuerung an die nächste Middlewarefunktion zu übergeben. Andernfalls geht die Anforderung in den Status “Blockiert” über.</p>
+
+<p>Das folgende Beispiel zeigt die Elemente eines Middlewarefunktionsaufrufs:</p>
+
+<table style="padding: 0; border: 0; width: 960px; margin-bottom: 10px;">
+<tr><td style="margin: 0; padding: 0px; border: 0; width: 410px;">
+<img src="/images/express-mw.png" style="margin: 0px; padding: 0px; width: 410px; height: 308px;" />
+</td>
+<td style="margin: 0; padding: 0 0 0 5px; border: 0; width: 550px;">
+<div class="callout" id="callout1">HTTP-Methode, für die die Middlewarefunktion angewendet wird.</div>
+
+<div class="callout" id="callout2">Pfad (Weiterleitung), für den die Middlewarefunktion angewendet wird.</div>
+
+<div class="callout" id="callout3">Die Middlewarefunktion.</div>
+
+<div class="callout" id="callout4">Callback-Argument zur Middlewarefunktion, die nach der geltenden Konvention als "next" bezeichnet wird.</div>
+
+<div class="callout" id="callout5">HTTP-<a href="../4x/api.html#res">Antwort</a>argument zur Middlewarefunktion, die nach der geltenden Konvention als "res" bezeichnet wird.</div>
+
+<div class="callout" id="callout6">HTTP-<a href="../4x/api.html#req">Anforderungs</a>argument zur Middlewarefunktion, die nach der geltenden Konvention als "req" bezeichnet wird.</div>
+</td></tr>
+</table>
+
+<p>Dies ist ein Beispiel einer einfachen Express-Anwendung namens “Hello World”, für die Sie zwei Middlewarefunktionen definieren:</p>
+
+<pre><code class="language-javascript" translate="no">
+var express = require('express');
+var app = express();
+
+app.get('/', function (req, res) {
+  res.send('Hello World!');
+});
+
+app.listen(3000);
+</code></pre>
+
+<h2>Entwicklung</h2>
+
+<p>Dies ist ein einfaches Beispiel einer Middlewarefunktion namens “myLogger”. Diese Funktion gibt lediglich “LOGGED” aus, wenn eine Anforderung zur Anwendung über diese Funktion läuft. Die Middlewarefunktion ist der Variablen <code class="highlighter-rouge">myLogger</code> zugeordnet.</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+var myLogger = function (req, res, next) {
+  console.log('LOGGED');
+  next();
+};
+</code>
+</pre>
+
+<div class="doc-box doc-notice">
+  <p>Beachten Sie den Aufruf oben zu <code class="highlighter-rouge">next()</code>. Durch den Aufruf dieser Funktion wird die nächste Middlewarefunktion in der Anwendung aufgerufen. Die Funktion <code class="highlighter-rouge">next()</code> ist nicht Teil der Node.js- oder Express-API, sondern das dritte Argument, das an die Middlewarefunktion übergeben wird. Die Funktion <code class="highlighter-rouge">next()</code> kann jeden beliebigen Namen haben, per Konvention erhält sie jedoch immer den Namen “next”. Um Unklarheiten zu vermeiden, sollten Sie immer diese Konvention verwenden.</p>
+</div>
+
+<p>Zum Laden der Middlewarefunktion rufen Sie <code class="highlighter-rouge">app.use()</code> auf und geben die Middlewarefunktion an. Beispiel: Durch den folgenden Code wird die Middlewarefunktion <code class="highlighter-rouge">myLogger</code> vor der Weiterleitung zum Stammverzeichnispfad (/) geladen.</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+var express = require('express');
+var app = express();
+
+var myLogger = function (req, res, next) {
+  console.log('LOGGED');
+  next();
+};
+
+app.use(myLogger);
+
+app.get('/', function (req, res) {
+  res.send('Hello World!');
+});
+
+app.listen(3000);
+</code>
+</pre>
+
+<p>Sobald die Anwendung eine Anforderung erhält, gibt sie die Nachricht “LOGGED” an das Terminal aus.</p>
+
+<p>Die Reihenfolge beim Laden der Middleware ist wichtig: Middlewarefunktionen, die zuerst geladen werden, werden auch zuerst ausgeführt.</p>
+
+<p>Wenn <code class="highlighter-rouge">myLogger</code> nach der Weiterleitung zum Stammverzeichnispfad geladen wird, erreicht die Weiterleitung die Middlewarefunktion nicht. Die Anwendung gibt “LOGGED” nicht aus, weil der Routenhandler für den Stammverzeichnispfad den Anforderung/Antwort-Zyklus beendet.</p>
+
+<p>Die Middlewarefunktion <code class="highlighter-rouge">myLogger</code> gibt einfach eine Nachricht aus und übergibt dann die Anforderung zur nächsten Middlewarefunktion im Stack durch Aufruf der Funktion <code class="highlighter-rouge">next()</code>.</p>
+
+<p>Im nächsten Beispiel wird die Eigenschaft <code class="highlighter-rouge">requestTime</code> zum Anforderungsobjekt hinzugefügt. Diese Middlewarefunktion erhält den Namen “requestTime”.</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+var requestTime = function (req, res, next) {
+  req.requestTime = Date.now();
+  next();
+};
+</code>
+</pre>
+
+<p>Die Anwendung verwendet nun die Middlewarefunktion <code class="highlighter-rouge">requestTime</code>. Außerdem verwendet die Callback-Funktion der Weiterleitung zum Stammverzeichnispfad die Eigenschaft, die die Middlewarefunktion zu <code class="highlighter-rouge">req</code> (dem Anforderungsobjekt) hinzufügt.</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+var express = require('express');
+var app = express();
+
+var requestTime = function (req, res, next) {
+  req.requestTime = Date.now();
+  next();
+};
+
+app.use(requestTime);
+
+app.get('/', function (req, res) {
+  var responseText = 'Hello World!<br />';
+  responseText += '<small>Requested at: ' + req.requestTime + '</small>';
+  res.send(responseText);
+});
+
+app.listen(3000);
+</code>
+</pre>
+
+<p>Wenn Sie eine Anforderung zum Stammverzeichnis der Anwendung einleiten, zeigt die Anwendung nun die Zeitmarke Ihrer Anforderung im Browser an.</p>
+
+<p>Da Sie Zugriff auf das Anforderungsobjekt, das Antwortobjekt, die nächste Middlewarefunktion im Stack und die gesamte Node.js-API haben, sind die Möglichkeiten, die Sie mit Middlewarefunktionen haben, nahezu unendlich.</p>
+
+<p>Weitere Informationen zur Verwendung von Middleware in Express siehe <a href="/de/guide/using-middleware.html"> Express-Middleware verwenden</a>.</p>
+
+
+    </section>
+
+    <!-- NLS_CHARSET=UTF-8 -->
+<noscript>
+    <iframe src="//www.googletagmanager.com/ns.html?id=GTM-5XL76H" height="0" width="0" style="display: none; visibility: hidden;"></iframe>
+</noscript>
+<script>
+(function(w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({
+        'gtm.start': new Date().getTime(),
+        event: 'gtm.js'
+    });
+    var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != 'dataLayer' ? '&l=' + l : '';
+    j.async = true;
+    j.src =
+        '//www.googletagmanager.com/gtm.js?id=' + i + dl;
+    f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-5XL76H');
+</script>
+<a id="top" href="#"><img src="/images/arrow.png"></a>
+
+<footer>
+    <div id="footer-content">
+        <div id="github">
+            <iframe src="http://ghbtns.com/github-btn.html?user=strongloop&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+        </div>
+        <div id="sponsor">Das <a href="https://github.com/strongloop/express/">Express-Projekt</a> wird von <a href="http://strongloop.com/">StrongLoop</a> gesponsort. </div>
+        <div id="fork"><a href="https://github.com/strongloop/expressjs.com">Verzweigung der Website auf GitHub</a>. </div>
+        <div>Copyright &copy; StrongLoop, Inc. und andere Mitwirkende an expressjs.com.</div>
+    </div>
+</footer>
+
+
+  </body>
+
+</html>

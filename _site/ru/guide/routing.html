@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+  <head>
+    <title>Маршрутизация в Express</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/dropit.css">
+    <link rel="stylesheet" href="/css/prism.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+    <link rel="stylesheet" href="/css/ru.css">        
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script data-cfasync="false" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script data-cfasync="false" src="/js/app.js"></script>
+    <script data-cfasync="false" src="/js/retina.js"></script>
+    <script data-cfasync="false" src="/js/dropit.js"></script>
+    <script data-cfasync="false" src="/js/prism.js"></script>
+</head>
+
+
+  
+  <body class="non-en-doc">
+  
+
+    <section class="page content">
+
+      <header>
+  <div id="mobile-menu">
+      <div id="nav-button" class="fa fa-bars fa-2x button"></div>
+  </div>
+  <section id="logo"><a href="/" class="express">Express</a>
+  </section>
+  <div id="navbar">
+      <ul id="navmenu">
+          <li><a href="/ru/" id="home-menu">Начальная страница</a></li>
+          <li>
+              <ul id="getting-started-menu" class="menu">
+                  <li><a href="/ru/starter/installing.html">Начало работы</a>
+                      <ul>
+                          <li>
+                            <a href="/ru/starter/installing.html">
+                              Установка
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/ru/starter/hello-world.html">
+                              Hello world
+                            </a>
+                          </li>
+                          <li>
+                          <a href="/ru/starter/generator.html">
+                            Генератор приложений Express
+                          </a>
+                          </li>
+                          <li>
+                            <a href="/ru/starter/basic-routing.html">
+                              Основы маршрутизации
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/ru/starter/static-files.html">
+                              Статические файлы
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/ru/starter/faq.html">
+                              FAQ
+                            </a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="guide-menu" class="menu">
+                  <li><a href="/ru/guide/routing.html" class="active">Руководство</a>
+                      <ul>
+                          <li><a href="/ru/guide/routing.html">Маршрутизация</a>
+                          </li>
+                          <li><a href="/ru/guide/writing-middleware.html">Написание кода промежуточных обработчиков</a>
+                          </li>
+                          <li><a href="/ru/guide/using-middleware.html">Использование промежуточных обработчиков</a>
+                          </li>
+                          <li><a href="/ru/guide/using-template-engines.html">Использование шаблонизаторов</a>
+                          </li>
+                          <li><a href="/ru/guide/error-handling.html">Обработка ошибок</a>
+                          </li>
+                          <li><a href="/ru/guide/debugging.html">Отладка</a>
+                          </li>
+                          <li><a href="/ru/guide/behind-proxies.html">Express за прокси</a>
+                          </li>
+                          <li><a href="/ru/guide/migrating-4.html">Переход к Express 4</a>
+                          </li>
+                          <li><a href="/ru/guide/migrating-5.html">Переход к Express 5</a>
+                          </li>
+                          <li><a href="/ru/guide/database-integration.html">Интеграция с базами данных</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="application-menu" class="menu">
+                  <li><a href="/ru/4x/api.html">Справочник по API</a>
+                      <ul>
+                          <li><a href="/ru/4x/api.html">4.x</a>
+                          </li>
+                          <li><a href="/ru/3x/api.html">3.x (устарел)</a>
+                          </li>
+                          <li><a href="/ru/2x/">2.x (устарел)</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="advanced-topics-menu" class="menu">
+                  <li><a href="/ru/advanced/developing-template-engines.html">Расширенные возможности</a>
+                      <ul>
+                          <li><a href="/ru/advanced/developing-template-engines.html">Шаблонизаторы</a>
+                          </li>
+                          <li><a href="/ru/advanced/pm.html">Работа с диспетчерами процессов</a>
+                          </li>
+                          <li><a href="/ru/advanced/security-updates.html">Обновления системы безопасности</a>
+                          </li>
+                          <li><a href="/ru/advanced/best-practice-security.html">Лучшие практические методы в области защиты</a>
+                          </li>
+                          <li><a href="/ru/advanced/best-practice-performance.html">Лучшие практические методы улучшения производительности</a>
+                          </li>
+
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="resources-menu" class="menu">
+                  <li><a href="/ru/resources/glossary.html">Ресурсы</a>
+                      <ul>
+                          <li><a href="/ru/resources/glossary.html">Глоссарий</a>
+                          </li>
+                          <li><a href="/ru/resources/middleware.html">Промежуточный обработчик</a>
+                          </li>
+                          <li><a href="/ru/resources/community.html">Сообщество</a>
+                          </li>
+                          <li><a href="/ru/resources/books-blogs.html">Книги и блоги</a>
+                          </li>
+                          <li><a href="/ru/resources/applications.html">Приложения</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+  </div><a href="http://strongloop.com/node-js/training/" title="Обучение по Node и Express от StrongLoop" id="strongloop-header">Обучение по Express и Node.js от StrongLoop</a>
+</header>
+
+
+      <div id="overlay"></div>
+
+      
+        <div id="i18n-notice-box" class="doc-box doc-warn">
+          <p>Этот документ может быть устаревшим по отношению к документации на английском языке. Последние обновления содержатся в <a href="/">документации на английском языке</a>.
+</p>
+<p>This document might be outdated relative to the documentation in English. For the latest updates, please refer to the <a href="/">documentation in English</a>.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+
+        </div>
+      
+
+      <h1 id="section">Маршрутизация</h1>
+
+<p><em>Маршрутизация</em> определяет, как приложение отвечает на клиентский запрос к конкретному адресу (URI).
+Вводную информацию о маршрутизации можно найти в разделе <a href="/ru/starter/basic-routing.html">Основы маршрутизации</a>.</p>
+
+<p>Приведенный ниже код служит примером одного из самых простых маршрутов.</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+var express = require('express');
+var app = express();
+
+// respond with "hello world" when a GET request is made to the homepage
+app.get('/', function(req, res) {
+  res.send('hello world');
+});
+</code>
+</pre>
+
+<h2 id="route-methods">Методы Route</h2>
+
+<p>Метод route является производным от одного из методов HTTP и присоединяется к экземпляру класса <code class="highlighter-rouge">express</code>.</p>
+
+<p>Приведенный ниже код служит примером маршрутов, определенных для методов запросов GET и POST к корневому каталогу приложения.</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+// GET method route
+app.get('/', function (req, res) {
+  res.send('GET request to the homepage');
+});
+
+// POST method route
+app.post('/', function (req, res) {
+  res.send('POST request to the homepage');
+});
+</code>
+</pre>
+
+<p>Express поддерживает перечисленные далее методы маршрутизации, соответствующие методам HTTP: <code class="highlighter-rouge">get</code>, <code class="highlighter-rouge">post</code>, <code class="highlighter-rouge">put</code>, <code class="highlighter-rouge">head</code>, <code class="highlighter-rouge">delete</code>, <code class="highlighter-rouge">options</code>, <code class="highlighter-rouge">trace</code>, <code class="highlighter-rouge">copy</code>, <code class="highlighter-rouge">lock</code>, <code class="highlighter-rouge">mkcol</code>, <code class="highlighter-rouge">move</code>, <code class="highlighter-rouge">purge</code>, <code class="highlighter-rouge">propfind</code>, <code class="highlighter-rouge">proppatch</code>, <code class="highlighter-rouge">unlock</code>, <code class="highlighter-rouge">report</code>, <code class="highlighter-rouge">mkactivity</code>, <code class="highlighter-rouge">checkout</code>, <code class="highlighter-rouge">merge</code>, <code class="highlighter-rouge">m-search</code>, <code class="highlighter-rouge">notify</code>, <code class="highlighter-rouge">subscribe</code>, <code class="highlighter-rouge">unsubscribe</code>, <code class="highlighter-rouge">patch</code>, <code class="highlighter-rouge">search</code> и <code class="highlighter-rouge">connect</code>.</p>
+
+<div class="doc-box doc-info">
+  <p>Для методов route, преобразуемых в недействительные имена переменных JavaScript, используйте нотацию в квадратных скобках. Например,
+<code class="highlighter-rouge">app['m-search']('/', function ...</code></p>
+</div>
+
+<p>Существует особый метод маршрутизации, <code class="highlighter-rouge">app.all()</code>, не являющийся производным от какого-либо метода HTTP. Этот метод используется для загрузки функций промежуточной обработки в пути для всех методов запросов.</p>
+
+<p>В приведенном ниже примере обработчик будет запущен для запросов, адресованных “/secret”, независимо от того, используется ли GET, POST, PUT, DELETE или какой-либо другой метод запроса HTTP, поддерживаемый в <a href="https://nodejs.org/api/http.html#http_http_methods">модуле http</a>.</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+app.all('/secret', function (req, res, next) {
+  console.log('Accessing the secret section ...');
+  next(); // pass control to the next handler
+});
+</code>
+</pre>
+
+<h2 id="route-paths">Пути маршрутов</h2>
+
+<p>Пути маршрутов, в сочетании с методом запроса, определяют конкретные адреса (конечные точки), в которых могут быть созданы запросы. Пути маршрутов могут представлять собой строки, шаблоны строк или регулярные выражения.</p>
+
+<div class="doc-box doc-info">
+  <p>В Express для сопоставления путей маршрутов используется <a href="https://www.npmjs.com/package/path-to-regexp">path-to-regexp</a>; в документации к path-to-regexp описаны все возможные варианты определения путей маршрутов. <a href="http://forbeslindesay.github.io/express-route-tester/">Express Route Tester</a> - удобный инструмент для тестирования простых маршрутов в Express, хотя и не поддерживает сопоставление шаблонов.</p>
+</div>
+
+<div class="doc-box doc-warn">
+  <p>Строки запросов не являются частью пути маршрута.</p>
+</div>
+
+<p>Ниже приводятся примеры путей маршрутов на основе строк.</p>
+
+<p>Данный путь маршрута сопоставляет запросы с корневым маршрутом, <code class="highlighter-rouge">/</code>.</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+app.get('/', function (req, res) {
+  res.send('root');
+});
+</code>
+</pre>
+
+<p>Данный путь маршрута сопоставляет запросы с <code class="highlighter-rouge">/about</code>.</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+app.get('/about', function (req, res) {
+  res.send('about');
+});
+</code>
+</pre>
+
+<p>Данный путь маршрута сопоставляет запросы с <code class="highlighter-rouge">/random.text</code>.</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+app.get('/random.text', function (req, res) {
+  res.send('random.text');
+});
+</code>
+</pre>
+
+<p>Ниже приводятся примеры путей маршрутов на основе шаблонов строк.</p>
+
+<p>Приведенный ниже путь маршрута сопоставляет <code class="highlighter-rouge">acd</code> и <code class="highlighter-rouge">abcd</code>.</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+app.get('/ab?cd', function(req, res) {
+  res.send('ab?cd');
+});
+</code>
+</pre>
+
+<p>Этот путь маршрута сопоставляет <code class="highlighter-rouge">abcd</code>, <code class="highlighter-rouge">abbcd</code>, <code class="highlighter-rouge">abbbcd</code> и т.д.</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+app.get('/ab+cd', function(req, res) {
+  res.send('ab+cd');
+});
+</code>
+</pre>
+
+<p>Этот путь маршрута сопоставляет <code class="highlighter-rouge">abcd</code>, <code class="highlighter-rouge">abxcd</code>, <code class="highlighter-rouge">abRABDOMcd</code>, <code class="highlighter-rouge">ab123cd</code> и т.д.</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+app.get('/ab*cd', function(req, res) {
+  res.send('ab*cd');
+});
+</code>
+</pre>
+
+<p>Данный путь маршрута сопоставляет <code class="highlighter-rouge">/abe</code> и <code class="highlighter-rouge">/abcde</code>.</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+app.get('/ab(cd)?e', function(req, res) {
+ res.send('ab(cd)?e');
+});
+</code>
+</pre>
+
+<div class="doc-box doc-info">
+  <p>Символы ?, +, * и () представляют собой подмножества соответствующих им регулярных выражений. Дефис (-) и точка (.) интерпретируются буквально в путях на основе строк.</p>
+</div>
+
+<p>Примеры путей маршрутов на основе регулярных выражений:</p>
+
+<p>Данный путь маршрута сопоставляет любой элемент с “a” в имени маршрута.</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+app.get(/a/, function(req, res) {
+  res.send('/a/');
+});
+</code>
+</pre>
+
+<p>Данный маршрут сопоставляет <code class="highlighter-rouge">butterfly</code> и <code class="highlighter-rouge">dragonfly</code>, но не <code class="highlighter-rouge">butterflyman</code>, <code class="highlighter-rouge">dragonfly man</code> и т.д.</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+app.get(/.*fly$/, function(req, res) {
+  res.send('/.*fly$/');
+});
+</code>
+</pre>
+
+<h2 id="route-handlers">Обработчики маршрутов</h2>
+
+<p>Для обработки запроса можно указать несколько функций обратного вызова, подобных <a href="/ru/guide/using-middleware.html">middleware</a>. Единственным исключением является то, что эти обратные вызовы могут инициировать <code class="highlighter-rouge">next('route')</code> для обхода остальных обратных вызовов маршрута. С помощью этого механизма можно включить в маршрут предварительные условия, а затем передать управление последующим маршрутам, если продолжать работу с текущим маршрутом не нужно.</p>
+
+<p>Обработчики маршрутов могут принимать форму функции, массива функций или их сочетания, как показано в примерах ниже.</p>
+
+<p>Одна функция обратного вызова может обрабатывать один маршрут.  Например:</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+app.get('/example/a', function (req, res) {
+  res.send('Hello from A!');
+});
+</code>
+</pre>
+
+<p>Один маршрут может обрабатываться несколькими функциями обратного вызова (обязательно укажите объект <code class="highlighter-rouge">next</code>). Например:</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+app.get('/example/b', function (req, res, next) {
+  console.log('the response will be sent by the next function ...');
+  next();
+}, function (req, res) {
+  res.send('Hello from B!');
+});
+</code>
+</pre>
+
+<p>Массив функций обратного вызова может обрабатывать один маршрут.  Например:</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+var cb0 = function (req, res, next) {
+  console.log('CB0');
+  next();
+}
+
+var cb1 = function (req, res, next) {
+  console.log('CB1');
+  next();
+}
+
+var cb2 = function (req, res) {
+  res.send('Hello from C!');
+}
+
+app.get('/example/c', [cb0, cb1, cb2]);
+</code>
+</pre>
+
+<p>Маршрут может обрабатываться сочетанием независимых функций и массивов функций.  Например:</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+var cb0 = function (req, res, next) {
+  console.log('CB0');
+  next();
+}
+
+var cb1 = function (req, res, next) {
+  console.log('CB1');
+  next();
+}
+
+app.get('/example/d', [cb0, cb1], function (req, res, next) {
+  console.log('the response will be sent by the next function ...');
+  next();
+}, function (req, res) {
+  res.send('Hello from D!');
+});
+</code>
+</pre>
+
+<h2 id="response-methods">Методы ответа</h2>
+
+<p>Методы в объекте ответа (<code class="highlighter-rouge">res</code>), перечисленные в таблице ниже, могут передавать ответ клиенту и завершать цикл “запрос-ответ”. Если ни один из этих методов не будет вызван из обработчика маршрута, клиентский запрос зависнет.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Метод</th>
+      <th>Описание</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="/ru/4x/api.html#res.download">res.download()</a></td>
+      <td>Приглашение загрузки файла.</td>
+    </tr>
+    <tr>
+      <td><a href="/ru/4x/api.html#res.end">res.end()</a></td>
+      <td>Завершение процесса ответа.</td>
+    </tr>
+    <tr>
+      <td><a href="/ru/4x/api.html#res.json">res.json()</a></td>
+      <td>Отправка ответа JSON.</td>
+    </tr>
+    <tr>
+      <td><a href="/ru/4x/api.html#res.jsonp">res.jsonp()</a></td>
+      <td>Отправка ответа JSON с поддержкой JSONP.</td>
+    </tr>
+    <tr>
+      <td><a href="/ru/4x/api.html#res.redirect">res.redirect()</a></td>
+      <td>Перенаправление ответа.</td>
+    </tr>
+    <tr>
+      <td><a href="/ru/4x/api.html#res.render">res.render()</a></td>
+      <td>Вывод шаблона представления.</td>
+    </tr>
+    <tr>
+      <td><a href="/ru/4x/api.html#res.send">res.send()</a></td>
+      <td>Отправка ответа различных типов.</td>
+    </tr>
+    <tr>
+      <td><a href="/ru/4x/api.html#res.sendFile">res.sendFile</a></td>
+      <td>Отправка файла в виде потока октетов.</td>
+    </tr>
+    <tr>
+      <td><a href="/ru/4x/api.html#res.sendStatus">res.sendStatus()</a></td>
+      <td>Установка кода состояния ответа и отправка представления в виде строки в качестве тела ответа.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="app-route">app.route()</h2>
+
+<p>Метод <code class="highlighter-rouge">app.route()</code> позволяет создавать обработчики маршрутов, образующие цепочки, для пути маршрута.
+Поскольку путь указан в одном расположении, удобно создавать модульные маршруты, чтобы минимизировать избыточность и количество опечаток. Дополнительная информация о маршрутах приводится в документации <a href="/ru/4x/api.html#router">Router()</a>.</p>
+
+<p>Ниже приведен пример объединенных в цепочку обработчиков маршрутов, определенных с помощью функции <code class="highlighter-rouge">app.route()</code>.</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+app.route('/book')
+  .get(function(req, res) {
+    res.send('Get a random book');
+  })
+  .post(function(req, res) {
+    res.send('Add a book');
+  })
+  .put(function(req, res) {
+    res.send('Update the book');
+  });
+</code>
+</pre>
+
+<h2 id="express-router">express.Router</h2>
+
+<p>С помощью класса <code class="highlighter-rouge">express.Router</code> можно создавать модульные, монтируемые обработчики маршрутов. Экземпляр <code class="highlighter-rouge">Router</code> представляет собой комплексную систему промежуточных обработчиков и маршрутизации; по этой причине его часто называют “мини-приложением”.</p>
+
+<p>В приведенном ниже примере создается маршрутизатор в виде модуля, в него загружается функция промежуточной обработки, определяется несколько маршрутов, и модуль маршрутизатора монтируется в путь в основном приложении.</p>
+
+<p>Создайте файл маршрутизатора с именем <code class="highlighter-rouge">birds.js</code> в каталоге приложения со следующим содержанием:</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+var express = require('express');
+var router = express.Router();
+
+// middleware that is specific to this router
+router.use(function timeLog(req, res, next) {
+  console.log('Time: ', Date.now());
+  next();
+});
+// define the home page route
+router.get('/', function(req, res) {
+  res.send('Birds home page');
+});
+// define the about route
+router.get('/about', function(req, res) {
+  res.send('About birds');
+});
+
+module.exports = router;
+</code>
+</pre>
+
+<p>Потом загрузите модуль маршрутизации в приложение:</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+var birds = require('./birds');
+...
+app.use('/birds', birds);
+</code>
+</pre>
+
+<p>Данное приложение теперь сможет обрабатывать запросы, адресованные ресурсам <code class="highlighter-rouge">/birds</code> и
+<code class="highlighter-rouge">/birds/about</code>, а также вызывать специальную функцию промежуточной обработки <code class="highlighter-rouge">timeLog</code> данного маршрута.</p>
+
+
+    </section>
+
+    <!-- NLS_CHARSET=UTF-8 -->
+<noscript>
+    <iframe src="//www.googletagmanager.com/ns.html?id=GTM-5XL76H" height="0" width="0" style="display: none; visibility: hidden;"></iframe>
+</noscript>
+<script>
+(function(w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({
+        'gtm.start': new Date().getTime(),
+        event: 'gtm.js'
+    });
+    var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != 'dataLayer' ? '&l=' + l : '';
+    j.async = true;
+    j.src =
+        '//www.googletagmanager.com/gtm.js?id=' + i + dl;
+    f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-5XL76H');
+</script>
+<a id="top" href="#"><img src="/images/arrow.png"></a>
+
+<footer>
+    <div id="footer-content">
+        <div id="github">
+            <iframe src="http://ghbtns.com/github-btn.html?user=strongloop&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+        </div>
+        <div id="sponsor">Спонсором <a href="https://github.com/strongloop/express/">проекта Express</a> выступает компания <a href="http://strongloop.com/">StrongLoop</a>. </div>
+        <div id="fork"><a href="https://github.com/strongloop/expressjs.com">Создайте клон веб-сайта на GitHub</a>.
+        </div>
+        <div>Copyright &copy; StrongLoop, Inc. и других участников expressjs.com.</div>
+    </div>
+</footer>
+
+
+  </body>
+
+</html>

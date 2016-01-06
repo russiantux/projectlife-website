@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="it">
+
+  <head>
+    <title>FAQ di Express</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/dropit.css">
+    <link rel="stylesheet" href="/css/prism.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+    <link rel="stylesheet" href="/css/it.css">        
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script data-cfasync="false" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script data-cfasync="false" src="/js/app.js"></script>
+    <script data-cfasync="false" src="/js/retina.js"></script>
+    <script data-cfasync="false" src="/js/dropit.js"></script>
+    <script data-cfasync="false" src="/js/prism.js"></script>
+</head>
+
+
+  
+  <body class="non-en-doc">
+  
+
+    <section class="page content">
+
+      ﻿<header>
+  <div id="mobile-menu">
+      <div id="nav-button" class="fa fa-bars fa-2x button"></div>
+  </div>
+  <section id="logo"><a href="/" class="express">Express</a>
+  </section>
+  <div id="navbar">
+      <ul id="navmenu">
+          <li><a href="/it/" id="home-menu">Home</a></li>
+          <li>
+              <ul id="getting-started-menu" class="menu">
+                  <li><a href="/it/starter/installing.html" class="active">Introduzione</a>
+                      <ul>
+                          <li>
+                            <a href="/it/starter/installing.html">
+                              Installazione</a>
+                          </li>
+                          <li>
+                            <a href="/it/starter/hello-world.html">
+                              Hello world
+                            </a>
+                          </li>
+                          <li>
+                          <a href="/it/starter/generator.html">
+                            Programma di creazione Express
+                          </a>
+                          </li>
+                          <li>
+                            <a href="/it/starter/basic-routing.html">
+                              Routing di base</a>
+                          </li>
+                          <li>
+                            <a href="/it/starter/static-files.html">
+                              File statici
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/it/starter/faq.html">
+                              FAQ</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="guide-menu" class="menu">
+                  <li><a href="/it/guide/routing.html">Guida</a>
+                      <ul>
+                          <li><a href="/it/guide/routing.html">Routing</a>
+                          </li>
+                          <li><a href="/it/guide/writing-middleware.html">Scrittura del middleware</a>
+                          </li>
+                          <li><a href="/it/guide/using-middleware.html">Utilizzo del middleware</a>
+                          </li>
+                          <li><a href="/it/guide/using-template-engines.html">Utilizzo dei motori di template</a>
+                          </li>
+                          <li><a href="/it/guide/error-handling.html">Gestione degli errori</a>
+                          </li>
+                          <li><a href="/it/guide/debugging.html">Debug</a>
+                          </li>
+                          <li><a href="/it/guide/behind-proxies.html">Express con i proxy</a>
+                          </li>
+                          <li><a href="/it/guide/migrating-4.html">Passaggio a Express 4</a>
+                          </li>
+                          <li><a href="/it/guide/migrating-5.html">Passaggio a Express 5</a>
+                          </li>
+                          <li><a href="/it/guide/database-integration.html">Integrazione database</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="application-menu" class="menu">
+                  <li><a href="/it/4x/api.html">Riferimento API</a>
+                      <ul>
+                          <li><a href="/it/4x/api.html">4.x</a>
+                          </li>
+                          <li><a href="/it/3x/api.html">3.x (deprecato)</a>
+                          </li>
+                          <li><a href="/it/2x/">2.x (deprecato)</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="advanced-topics-menu" class="menu">
+                  <li><a href="/it/advanced/developing-template-engines.html">Argomenti avanzati</a>
+                      <ul>
+                          <li><a href="/it/advanced/developing-template-engines.html">Motori di template</a>
+                          </li>
+                          <li><a href="/it/advanced/pm.html">Utilizzo dei process manager</a>
+                          </li>
+                          <li><a href="/it/advanced/security-updates.html">Aggiornamenti sulla sicurezza</a>
+                          </li>
+                          <li><a href="/it/advanced/best-practice-security.html">Best practice sulla sicurezza</a>
+                          </li>
+                          <li><a href="/it/advanced/best-practice-performance.html">Best practice sulle prestazioni</a>
+                          </li>
+
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="resources-menu" class="menu">
+                  <li><a href="/it/resources/glossary.html">Risorse</a>
+                      <ul>
+                          <li><a href="/it/resources/glossary.html">Glossario</a>
+                          </li>
+                          <li><a href="/it/resources/middleware.html">Middleware</a>
+                          </li>
+                          <li><a href="/it/resources/community.html">Community</a>
+                          </li>
+                          <li><a href="/it/resources/books-blogs.html">Manuali e blog</a>
+                          </li>
+                          <li><a href="/it/resources/applications.html">Applicazioni</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+  </div><a href="http://strongloop.com/node-js/training/" title="Formazione di Node ed Express da StrongLoop" id="strongloop-header">Formazione di Express e Node.js da StrongLoop</a>
+</header>
+
+
+      <div id="overlay"></div>
+
+      
+        <div id="i18n-notice-box" class="doc-box doc-warn">
+          <p>È possibile che questo documento non sia aggiornato poiché la documentazione è in inglese. Per gli ultimi aggiornamenti, fare riferimento alla <a href="/">documentazione in inglese</a>.
+</p>
+<p>This document might be outdated relative to the documentation in English. For the latest updates, please refer to the <a href="/">documentation in English</a>.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+
+        </div>
+      
+
+      <h1 id="faq">FAQ</h1>
+
+<h2 id="in-che-modo-devo-strutturare-lapplicazione">In che modo devo strutturare l’applicazione?</h2>
+
+<p>Non esiste una risposta definitiva a questa domanda. La risposta dipende
+dalla scalabilità dell’applicazione e dal team coinvolto. Per essere molto flessibile,
+Express non fornisce molte indicazioni in termini di struttura.</p>
+
+<p>Le route e altre logiche specifiche dell’applicazione possono essere presenti in molti file,
+in qualsiasi struttura di directory desiderata. Visualizzare i seguenti
+esempi:</p>
+
+<ul>
+  <li><a href="https://github.com/strongloop/express/blob/4.13.1/examples/route-separation/index.js#L32-47">Elenchi route</a></li>
+  <li><a href="https://github.com/strongloop/express/blob/4.13.1/examples/route-map/index.js#L52-L66">Definizione route</a></li>
+  <li><a href="https://github.com/strongloop/express/tree/master/examples/mvc">Controllori stile MVC</a></li>
+</ul>
+
+<p>Inoltre, ci sono delle estensioni di terze parti per Express, le quali semplificano alcuni di questi modelli:</p>
+
+<ul>
+  <li><a href="https://github.com/expressjs/express-resource">Routing pieno di risorse</a></li>
+</ul>
+
+<h2 id="in-che-modo--possibile-definire-i-modelli">In che modo è possibile definire i modelli?</h2>
+
+<p>Express non ha nessuna nozione di database. Questo concetto viene lasciato a moduli
+Node di terzi, consentendo di interfacciarsi
+con quasi qualsiasi database.</p>
+
+<p>Consultare <a href="http://loopback.io">LoopBack</a> per un framework basato su Express incentrato sui modelli.</p>
+
+<h2 id="in-che-modo--possibile-autenticare-gli-utenti">In che modo è possibile autenticare gli utenti?</h2>
+
+<p>L’autenticazione è un’altra area categorica in cui non si
+avventura Express.  È possibile utilizzare qualsiasi schema di autenticazione desiderato.
+Per uno schema nome utente / password semplice, consultare <a href="https://github.com/strongloop/express/tree/master/examples/auth">questo esempio</a>.</p>
+
+<h2 id="quale-motore-di-template-supporta-express">Quale motore di template supporta Express?</h2>
+
+<p>Express supporta qualsiasi motore di template conforme alla sigla <code class="highlighter-rouge">(path, locals, callback)</code>.
+Per normalizzare le interfacce del motore di template e la memorizzazione in cache, consultare il progetto
+<a href="https://github.com/visionmedia/consolidate.js">consolidate.js</a>
+per il supporto. I motori di template potrebbero ancora non supportare Express.</p>
+
+<h2 id="in-che-modo--possibile-gestire-le-risposte-404">In che modo è possibile gestire le risposte 404?</h2>
+
+<p>In Express, le risposte 404 non sono il risultato di un errore, pertanto
+il middleware di gestione degli errori non le individuerà. Questo accade perché
+una risposta 404 indica semplicemente l’assenza di ulteriori operazioni da effettuare;
+in altre parole, Express ha eseguito tutte le funzioni middleware e route
+e non ha riscontrato nessuna risposta da parte di quest’ultimi. L’unica cosa da fare è aggiungere
+una funzione middleware alla parte finale dello stack (sotto tutte le altre funzioni)
+per gestire una risposta 404:</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+app.use(function(req, res, next) {
+  res.status(404).send('Sorry cant find that!');
+});
+</code>
+</pre>
+
+<h2 id="in-che-modo--possibile-impostare-un-gestore-degli-errori">In che modo è possibile impostare un gestore degli errori?</h2>
+
+<p>È possibile definire il middleware di gestione degli errori nello stesso modo in cui si definisce qualsiasi altro middleware,
+ad eccezione delle funzioni di gestione degli errori che hanno quattro argomenti invece di tre; nello specifico la firma <code class="highlighter-rouge">(err, req, res, next)</code>:</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+app.use(function(err, req, res, next) {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});
+</code>
+</pre>
+
+<p>Per ulteriori informazioni, consultare <a href="/it/guide/error-handling.html">Gestione degli errori</a>.</p>
+
+<h2 id="in-che-modo--possibile-eseguire-il-rendering-dellhtml-normale">In che modo è possibile eseguire il rendering dell’HTML normale?</h2>
+
+<p>Non è necessario farlo! Non è necessario “eseguire il rendering” dell’HTML con la funzione <code class="highlighter-rouge">res.render()</code>.
+Se si dispone di un file specifico, utilizzare la funzione <code class="highlighter-rouge">res.sendFile()</code>.
+Se si stanno gestendo molti asset da una directory, utilizzare la funzione middleware
+<code class="highlighter-rouge">express.static()</code>.</p>
+
+
+    </section>
+
+    <!-- NLS_CHARSET=UTF-8 -->
+<noscript>
+    <iframe src="//www.googletagmanager.com/ns.html?id=GTM-5XL76H" height="0" width="0" style="display: none; visibility: hidden;"></iframe>
+</noscript>
+<script>
+(function(w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({
+        'gtm.start': new Date().getTime(),
+        event: 'gtm.js'
+    });
+    var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != 'dataLayer' ? '&l=' + l : '';
+    j.async = true;
+    j.src =
+        '//www.googletagmanager.com/gtm.js?id=' + i + dl;
+    f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-5XL76H');
+</script>
+<a id="top" href="#"><img src="/images/arrow.png"></a>
+
+<footer>
+    <div id="footer-content">
+        <div id="github">
+            <iframe src="http://ghbtns.com/github-btn.html?user=strongloop&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+        </div>
+        <div id="sponsor">Il <a href="https://github.com/strongloop/express/">progetto Express</a> è sponsorizzato da <a href="http://strongloop.com/">StrongLoop</a>. </div>
+        <div id="fork"><a href="https://github.com/strongloop/expressjs.com">Avviare il sito web su GitHub</a>.
+        </div>
+        <div>Copyright &copy; StrongLoop, Inc. e altri contributor di expressjs.com.</div>
+    </div>
+</footer>
+
+
+  </body>
+
+</html>

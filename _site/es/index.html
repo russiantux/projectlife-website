@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+
+  <head>
+    <title>Express - Infraestructura de aplicaciones web Node.js</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/dropit.css">
+    <link rel="stylesheet" href="/css/prism.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+    <link rel="stylesheet" href="/css/es.css">        
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script data-cfasync="false" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script data-cfasync="false" src="/js/app.js"></script>
+    <script data-cfasync="false" src="/js/retina.js"></script>
+    <script data-cfasync="false" src="/js/dropit.js"></script>
+    <script data-cfasync="false" src="/js/prism.js"></script>
+</head>
+
+
+  
+  <body class="non-en-doc">
+    <div id="i18n-notice-box" class="doc-box doc-warn">
+      <p>Este documento puede estar desfasado respecto a la documentación en inglés. Para ver las últimas actualizaciones, consulte la <a href="/">documentación en inglés</a>.
+</p>
+<p>This document might be outdated relative to the documentation in English. For the latest updates, please refer to the <a href="/">documentation in English</a>.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+
+    </div>
+  
+
+    <section id="home-content">
+    <header>
+  <div id="mobile-menu">
+      <div id="nav-button" class="fa fa-bars fa-2x button"></div>
+  </div>
+  <section id="logo"><a href="/" class="express">Express</a>
+  </section>
+  <div id="navbar">
+      <ul id="navmenu">
+          <li><a href="/es/" id="home-menu" class="active">Inicio</a></li>
+          <li>
+              <ul id="getting-started-menu" class="menu">
+                  <li><a href="/es/starter/installing.html">Cómo empezar</a>
+                      <ul>
+                          <li>
+                            <a href="/es/starter/installing.html">
+                              Instalación
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/es/starter/hello-world.html">
+                              Hello world
+                            </a>
+                          </li>
+                          <li>
+                          <a href="/es/starter/generator.html">
+                            Generador de Express
+                          </a>
+                          </li>
+                          <li>
+                            <a href="/es/starter/basic-routing.html">
+                              Direccionamiento básico
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/es/starter/static-files.html">
+                              Archivos estáticos
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/es/starter/faq.html">
+                              Preguntas más frecuentes
+                            </a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="guide-menu" class="menu">
+                  <li><a href="/es/guide/routing.html">Guía</a>
+                      <ul>
+                          <li><a href="/es/guide/routing.html">Direccionamiento</a>
+                          </li>
+                          <li><a href="/es/guide/writing-middleware.html">Escritura de middleware</a>
+                          </li>
+                          <li><a href="/es/guide/using-middleware.html">Utilización del middleware</a>
+                          </li>
+                          <li><a href="/es/guide/using-template-engines.html">Utilización de motores de plantilla</a>
+                          </li>
+                          <li><a href="/es/guide/error-handling.html">Manejo de errores</a>
+                          </li>
+                          <li><a href="/es/guide/debugging.html">Depuración</a>
+                          </li>
+                          <li><a href="/es/guide/behind-proxies.html">Express detrás de proxies</a>
+                          </li>
+                          <li><a href="/es/guide/migrating-4.html">Migración a Express 4</a>
+                          </li>
+                          <li><a href="/es/guide/migrating-5.html">Migración a Express 5</a>
+                          </li>
+                          <li><a href="/es/guide/database-integration.html">Integración de la base de datos</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="application-menu" class="menu">
+                  <li><a href="/es/4x/api.html">Referencia de API</a>
+                      <ul>
+                          <li><a href="/es/4x/api.html">4.x</a>
+                          </li>
+                          <li><a href="/es/3x/api.html">3.x (en desuso)</a>
+                          </li>
+                          <li><a href="/es/2x/">2.x (en desuso)</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="advanced-topics-menu" class="menu">
+                  <li><a href="/es/advanced/developing-template-engines.html">Temas avanzados</a>
+                      <ul>
+                          <li><a href="/es/advanced/developing-template-engines.html">Motores de plantilla</a>
+                          </li>
+                          <li><a href="/es/advanced/pm.html">Utilización de gestores de procesos</a>
+                          </li>
+                          <li><a href="/es/advanced/security-updates.html">Actualizaciones de seguridad</a>
+                          </li>
+                          <li><a href="/es/advanced/best-practice-security.html">Mejores prácticas de seguridad</a>
+                          </li>
+                          <li><a href="/es/advanced/best-practice-performance.html">Mejores prácticas de rendimiento</a>
+                          </li>
+
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="resources-menu" class="menu">
+                  <li><a href="/es/resources/glossary.html">Recursos</a>
+                      <ul>
+                          <li><a href="/es/resources/glossary.html">Glosario</a>
+                          </li>
+                          <li><a href="/es/resources/middleware.html">Middleware</a>
+                          </li>
+                          <li><a href="/es/resources/community.html">Comunidad</a>
+                          </li>
+                          <li><a href="/es/resources/books-blogs.html">Manuales y blogs</a>
+                          </li>
+                          <li><a href="/es/resources/applications.html">Aplicaciones</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+  </div><a href="http://strongloop.com/node-js/training/" title="Formación en Node y Express de StrongLoop" id="strongloop-header">Formación en Express y Node.js de StrongLoop</a>
+</header>
+
+    <div id="overlay"></div>
+
+    <section id="description">
+        <a href="/" class="express">Express</a>
+
+        <span class="description">Infraestructura web rápida, minimalista y flexible para <a href="http://nodejs.org">Node.js</a></span>
+    </section>
+
+    <div id="install-command">$ npm install express --save</div>
+</section>
+
+<!--<section id="doc-langs" markdown="1">
+  Documentos de Express disponibles en otros idiomas: [español](/es), [japonés](/ja), [ruso](/ru), [chino](/zh), [coreano](/ko), [portugués](/pt-br).
+</section>-->
+
+<section id="intro">
+
+  <div id="boxes" class="clearfix">
+      <div id="web-applications">
+          <h3>Aplicaciones web</h3> Express es una infraestructura de aplicaciones web Node.js mínima y flexible que proporciona un conjunto sólido de características para las aplicaciones web y móviles.
+      </div>
+
+      <div id="apis">
+          <h3>API</h3> Con miles de métodos de programa de utilidad HTTP y middleware a su disposición, la creación de una API sólida es rápida y sencilla.
+      </div>
+
+      <div id="performance">
+          <h3>Rendimiento</h3> Express proporciona una delgada capa de características de aplicación web básicas, que no ocultan las características de Node.js que tanto ama y conoce.
+      </div>
+
+      <div id="sponsorship">
+          <a href="http://loopback.io/"><h3>LoopBack</h3> Desarrolle aplicaciones basadas en modelos con una infraestructura basada en Express.<br />Encontrará más información en loopback.io.</a>
+      </div>
+  </div>
+
+</section>
+
+<!--
+<section id="announcements">
+  <ul>
+  <li>
+    <p><time datetime="2015-05-15 19:00">May 5, 2015</time> Ut enim ad minim veniam</p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    </p>
+  </li>
+
+  <li>
+    <p><time datetime="2015-05-15 19:00">May 5, 2015</time> Excepteur sint occaecat cupidatat non proident</p>
+    <p>
+      Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </p>
+  </li>
+
+</ul>
+</section>
+-->
+
+
+    <!-- NLS_CHARSET=UTF-8 -->
+<noscript>
+    <iframe src="//www.googletagmanager.com/ns.html?id=GTM-5XL76H" height="0" width="0" style="display: none; visibility: hidden;"></iframe>
+</noscript>
+<script>
+(function(w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({
+        'gtm.start': new Date().getTime(),
+        event: 'gtm.js'
+    });
+    var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != 'dataLayer' ? '&l=' + l : '';
+    j.async = true;
+    j.src =
+        '//www.googletagmanager.com/gtm.js?id=' + i + dl;
+    f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-5XL76H');
+</script>
+<a id="top" href="#"><img src="/images/arrow.png"></a>
+
+<footer>
+    <div id="footer-content">
+        <div id="github">
+            <iframe src="http://ghbtns.com/github-btn.html?user=strongloop&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+        </div>
+        <div id="sponsor">El <a href="https://github.com/strongloop/express/">proyecto Express</a> está patrocinado por <a href="http://strongloop.com/">StrongLoop</a>. </div>
+        <div id="fork"><a href="https://github.com/strongloop/expressjs.com">Bifurque el sitio web en GitHub</a>.
+        </div>
+        <div>Copyright &copy; StrongLoop, Inc. y otros colaboradores de expressjs.com.</div>
+    </div>
+</footer>
+
+
+  </body>
+
+</html>

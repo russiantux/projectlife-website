@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+  <head>
+    <title>Gerenciadores de processos para aplicativos do Express</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/dropit.css">
+    <link rel="stylesheet" href="/css/prism.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+    <link rel="stylesheet" href="/css/pt-br.css">        
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script data-cfasync="false" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script data-cfasync="false" src="/js/app.js"></script>
+    <script data-cfasync="false" src="/js/retina.js"></script>
+    <script data-cfasync="false" src="/js/dropit.js"></script>
+    <script data-cfasync="false" src="/js/prism.js"></script>
+</head>
+
+
+  
+  <body class="non-en-doc">
+  
+
+    <section class="page content">
+
+      <header>
+  <div id="mobile-menu">
+      <div id="nav-button" class="fa fa-bars fa-2x button"></div>
+  </div>
+  <section id="logo"><a href="/" class="express">Express</a>
+  </section>
+  <div id="navbar">
+      <ul id="navmenu">
+          <li><a href="/pt-br/" id="home-menu">Página Inicial</a></li>
+          <li>
+              <ul id="getting-started-menu" class="menu">
+                  <li><a href="/pt-br/starter/installing.html">Introdução</a>
+                      <ul>
+                          <li>
+                            <a href="/pt-br/starter/installing.html">
+                              Instalação
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/pt-br/starter/hello-world.html">
+                              Hello world
+                            </a>
+                          </li>
+                          <li>
+                          <a href="/pt-br/starter/generator.html">
+                            Gerador do Express
+                          </a>
+                          </li>
+                          <li>
+                            <a href="/pt-br/starter/basic-routing.html">
+                              Roteamento Básico
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/pt-br/starter/static-files.html">
+                              Arquivos Estáticos
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/pt-br/starter/faq.html">
+                              Perguntas mais frequentes
+                            </a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="guide-menu" class="menu">
+                  <li><a href="/pt-br/guide/routing.html">Guia</a>
+                      <ul>
+                          <li><a href="/pt-br/guide/routing.html">Roteamento</a>
+                          </li>
+                          <li><a href="/pt-br/guide/writing-middleware.html">Escrevendo o middleware</a>
+                          </li>
+                          <li><a href="/pt-br/guide/using-middleware.html">Usando o middleware</a>
+                          </li>
+                          <li><a href="/pt-br/guide/using-template-engines.html">Usando o mecanismo de modelo</a>
+                          </li>
+                          <li><a href="/pt-br/guide/error-handling.html">Manipulação de erros</a>
+                          </li>
+                          <li><a href="/pt-br/guide/debugging.html">Depuração</a>
+                          </li>
+                          <li><a href="/pt-br/guide/behind-proxies.html">Express atrás de proxies</a>
+                          </li>
+                          <li><a href="/pt-br/guide/migrating-4.html">Migrando para o Express 4</a>
+                          </li>
+                          <li><a href="/pt-br/guide/migrating-5.html">Migrando para o Express 5</a>
+                          </li>
+                          <li><a href="/pt-br/guide/database-integration.html">Integração de Banco de dados</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="application-menu" class="menu">
+                  <li><a href="/pt-br/4x/api.html">Referência da API</a>
+                      <ul>
+                          <li><a href="/pt-br/4x/api.html">4.x</a>
+                          </li>
+                          <li><a href="/pt-br/3x/api.html">3.x (descontinuada)</a>
+                          </li>
+                          <li><a href="/pt-br/2x/">2.x (descontinuada)</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="advanced-topics-menu" class="menu">
+                  <li><a href="/pt-br/advanced/developing-template-engines.html" class="active">Tópicos Avançados</a>
+                      <ul>
+                          <li><a href="/pt-br/advanced/developing-template-engines.html">Mecanismos de modelo</a>
+                          </li>
+                          <li><a href="/pt-br/advanced/pm.html">Usando gerenciadores de processos</a>
+                          </li>
+                          <li><a href="/pt-br/advanced/security-updates.html">Atualizações de segurança</a>
+                          </li>
+                          <li><a href="/pt-br/advanced/best-practice-security.html">Melhores práticas de segurança</a>
+                          </li>
+                          <li><a href="/pt-br/advanced/best-practice-performance.html">Melhores práticas de desempenho</a>
+                          </li>
+
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="resources-menu" class="menu">
+                  <li><a href="/pt-br/resources/glossary.html">Recursos</a>
+                      <ul>
+                          <li><a href="/pt-br/resources/glossary.html">Glossário</a>
+                          </li>
+                          <li><a href="/pt-br/resources/middleware.html">Middleware</a>
+                          </li>
+                          <li><a href="/pt-br/resources/community.html">Comunidade</a>
+                          </li>
+                          <li><a href="/pt-br/resources/books-blogs.html">Livros e blogs</a>
+                          </li>
+                          <li><a href="/pt-br/resources/applications.html">Aplicativos</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+  </div><a href="http://strongloop.com/node-js/training/" title="Treinamento de Node e Express do StrongLoop" id="strongloop-header">Treinamento de Express e Node.js do StrongLoop</a>
+</header>
+
+
+      <div id="overlay"></div>
+
+      
+        <div id="i18n-notice-box" class="doc-box doc-warn">
+          <p>Este documento pode estar desatualizado em relação à documentação em Inglês. Para obter as atualizações mais recentes, consulte a <a href="/">documentação em Inglês</a>.
+</p>
+<p>This document might be outdated relative to the documentation in English. For the latest updates, please refer to the <a href="/">documentation in English</a>.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+
+        </div>
+      
+
+      <h1 id="gerenciadores-de-processos-para-aplicativos-do-express">Gerenciadores de processos para aplicativos do Express</h1>
+
+<p>Ao executar aplicativos do Express para produção, é útil usar um <em>gerenciador de processos</em> para completar as
+seguintes tarefas:</p>
+
+<ul>
+  <li>Reiniciar o aplicativo automaticamente se cair.</li>
+  <li>
+    <p>Ganhe insights sobre o desempenho em tempo de execução e o consumo de recursos.</p>
+  </li>
+  <li>Modifique configurações dinamicamente para melhorar o desempenho.</li>
+  <li>Controle a clusterização.</li>
+</ul>
+
+<p>Um gerenciador de processos é de certa forma parecido com um
+servidor de aplicativos: ele é um “contêiner” para aplicativos que
+facilita a implementação, fornece alta disponibilidade, e permite o
+gerenciamento do aplicativo em tempo real.</p>
+
+<p>Os gerenciadores de processos mais populares para o Express e outros aplicativos Node.js são os seguintes:</p>
+
+<ul>
+  <li><a href="#sl">StrongLoop Process Manager</a></li>
+  <li><a href="#pm2">PM2</a></li>
+  <li><a href="#forever">Forever</a></li>
+</ul>
+
+<p>Usar qualquer uma dessas três ferramentas pode ser muito útil,
+entretanto o StrongLoop Process Manager é a única ferramenta que
+fornece uma solução abrangente de tempo de execução e implementação
+que é atende ao ciclo de vida completo de aplicativos do Node.js, com
+ferramentas para todas as etapas antes e depois da produção, em uma
+interface unificada.</p>
+
+<p>Aqui está uma breve visão de cada uma dessas ferramentas.
+Para obter uma comparação detalhada, consulte <a href="http://strong-pm.io/compare/">http://strong-pm.io/compare/</a>.</p>
+
+<h2 id="a-idslstrongloop-process-managera"><a id="sl">StrongLoop Process Manager</a></h2>
+
+<p>O StrongLoop Process Manager (StrongLoop PM) é um gerenciador
+de processos para aplicativos do Node.js. O StrongLoop PM possui
+balanceamento de carga, monitoramento, e implementação em múltiplos
+hosts integrada, e um console gráfico.
+É possível usar o StrongLoop PM para as seguintes tarefas:</p>
+
+<ul>
+  <li>Construir, empacotar, e implementar aplicativos do Node.js para um sistema local ou remoto.</li>
+  <li>Visualizar perfis de CPU e captura instantânea de heap para
+otimizar o desempenho e diagnosticar fugas de memória.</li>
+  <li>Manter processos e clusters ativos para sempre.</li>
+  <li>Visualizar métricas de desempenho no seu aplicativo.</li>
+  <li>Facilmente gerenciar implementações em múltiplos hosts com a integração com o Nginx.</li>
+  <li>Unificar vários StrongLoop PMs para um tempo de execução de microsserviços distribuído que é gerenciado a partir de um Arc.</li>
+</ul>
+
+<p>É possível trabalhar com o StrongLoop PM usando uma poderosa
+ferramenta de interface da linha de comandos chamada
+<code class="highlighter-rouge">slc</code>, ou uma ferramenta gráfica chamada Arc. A Arc
+é um software livre, com suporte profissional fornecido pelo StrongLoop.</p>
+
+<p>Para obter mais informações, consulte <a href="http://strong-pm.io/">http://strong-pm.io/</a>.</p>
+
+<p>Documentação completa:</p>
+
+<ul>
+  <li><a href="http://docs.strongloop.com/display/SLC">Aplicativos operacionais do Node (documentação do StrongLoop)</a></li>
+  <li><a href="http://docs.strongloop.com/display/SLC/Using+Process+Manager">Usando o StrongLoop Process Manager</a>.</li>
+</ul>
+
+<h3 id="instalao">Instalação</h3>
+<pre>
+<code class="language-sh" translate="no">
+$ [sudo] npm install -g strongloop
+</code>
+</pre>
+
+<h3 id="uso-bsico">Uso Básico</h3>
+<pre>
+<code class="language-sh" translate="no">
+$ cd my-app
+$ slc start
+</code>
+</pre>
+
+<p>Visualizar o status do Gerenciador de Processos e todos os aplicativos implementados:</p>
+
+<pre>
+<code class="language-sh" translate="no">
+$ slc ctl
+Service ID: 1
+Service Name: my-app
+Environment variables:
+  No environment variables defined
+Instances:
+    Version  Agent version  Cluster size
+     4.1.13      1.5.14           4
+Processes:
+        ID      PID   WID  Listening Ports  Tracking objects?  CPU profiling?
+    1.1.57692  57692   0
+    1.1.57693  57693   1     0.0.0.0:3001
+    1.1.57694  57694   2     0.0.0.0:3001
+    1.1.57695  57695   3     0.0.0.0:3001
+    1.1.57696  57696   4     0.0.0.0:3001
+</code>
+</pre>
+
+<p>Listar todos os aplicativos (serviços) sendo gerenciados:</p>
+
+<pre>
+<code class="language-sh" translate="no">
+$ slc ctl ls
+Id          Name         Scale
+ 1          my-app       1
+</code>
+</pre>
+
+<p>Parar um aplicativo:</p>
+
+<pre>
+<code class="language-sh" translate="no">
+$ slc ctl stop my-app
+</code>
+</pre>
+
+<p>Reiniciar um aplicativo:</p>
+
+<pre>
+<code class="language-sh" translate="no">
+$ slc ctl restart my-app
+</code>
+</pre>
+
+<p>É possível também fazer uma “reinicialização leve,” que dá aos
+processos de trabalho um período de tolerância para fechar conexões
+existentes, e em seguida reiniciar o aplicativo atual:</p>
+
+<pre>
+<code class="language-sh" translate="no">
+$ slc ctl soft-restart my-app
+</code>
+</pre>
+
+<p>Para remover um aplicativo do gerenciamento:</p>
+
+<pre>
+<code class="language-sh" translate="no">
+$ slc ctl remove my-app
+</code>
+</pre>
+
+<h2 id="a-idpm2pm2a"><a id="pm2">PM2</a></h2>
+
+<p>O PM2 é um gerenciador de processos de produção para aplicativos do Node.js,
+que possui um balanceador de carga integrado. O PM2 permite manter os
+aplicativos ativos para sempre e recarregá-los sem tempo de
+inatividade, e facilitará tarefas comuns de administração de
+sistemas. O PM2 também permite que você gerencie  o registro de logs,
+o monitoramento, e a clusterização do aplicativo.</p>
+
+<p>Para obter mais informações, consulte: <a href="https://github.com/Unitech/pm2">https://github.com/Unitech/pm2</a>.</p>
+
+<h3 id="instalao-1">Instalação</h3>
+
+<pre>
+<code class="language-sh" translate="no">
+$ [sudo] npm install pm2 -g
+</code>
+</pre>
+
+<h3 id="uso-bsico-1">Uso Básico</h3>
+
+<p>Ao iniciar um aplicativo usando o comando
+<code class="highlighter-rouge">pm2</code>, você deve especificar o caminho do aplicativo. No
+entanto, ao parar, reiniciar, ou excluir um aplicativo, é possível
+especificar apenas o nome ou o id do aplicativo.</p>
+
+<pre>
+<code class="language-sh" translate="no">
+$ pm2 start app.js
+[PM2] restartProcessId process id 0
+┌──────────┬────┬──────┬───────┬────────┬─────────┬────────┬─────────────┬──────────┐
+│ App name │ id │ mode │ pid   │ status │ restart │ uptime │ memory      │ watching │
+├──────────┼────┼──────┼───────┼────────┼─────────┼────────┼─────────────┼──────────┤
+│ my-app   │ 0  │ fork │ 64029 │ online │ 1       │ 0s     │ 17.816 MB   │ disabled │
+└──────────┴────┴──────┴───────┴────────┴─────────┴────────┴─────────────┴──────────┘
+ Use the `pm2 show &lt;id|name&gt;` command to get more details about an app.
+</code>
+</pre>
+
+<p>Ao iniciar um aplicativo usando o comando <code class="highlighter-rouge">pm2</code>, o aplicativo será imediatamente enviado para
+o segundo plano. É possível controlar os aplicativos em segundo plano a partir da linha de comandos usando vários comandos <code class="highlighter-rouge">pm2</code>.</p>
+
+<p>Após um aplicativo ser iniciado usando o comando <code class="highlighter-rouge">pm2</code>, ele é registrado na lista de
+processos do PM2 com um ID. É possível portanto gerenciar aplicativos com o mesmo nome a partir de diretórios diferentes no sistema, usando
+os seus IDs.</p>
+
+<p>Observe que se mais de um aplicativo com o mesmo nome estiver executando, os comandos do <code class="highlighter-rouge">pm2</code> afetam todos eles.
+Portanto use os IDs ao invés dos nomes para gerenciar aplicativos individualmente.</p>
+
+<p>Listar todos os processos em execução:</p>
+
+<pre>
+<code class="language-sh" translate="no">
+$ pm2 list
+</code>
+</pre>
+
+<p>Parar um aplicativo:</p>
+
+<pre>
+<code class="language-sh" translate="no">
+$ pm2 stop 0
+</code>
+</pre>
+
+<p>Reiniciar um aplicativo:</p>
+
+<pre>
+<code class="language-sh" translate="no">
+$ pm2 restart 0
+</code>
+</pre>
+
+<p>Para visualizar informações detalhadas sobre um aplicativo:</p>
+
+<pre>
+<code class="language-sh" translate="no">
+$ pm2 show 0
+</code>
+</pre>
+
+<p>Para remover um aplicativo do registro do PM2:</p>
+
+<pre>
+<code class="language-sh" translate="no">
+$ pm2 delete 0
+</code>
+</pre>
+
+<h2 id="a-idforeverforevera"><a id="forever">Forever</a></h2>
+
+<p>Forever é uma ferramenta simples de interface da linha de
+comandos para assegurar que um dado script executa continuamente
+(para sempre). A interface simples do Forever torna-o ideal para a
+execução de implementações menores dos aplicativos e scripts do
+Node.js.</p>
+
+<p>Para obter mais informações, consulte: <a href="https://github.com/foreverjs/forever">https://github.com/foreverjs/forever</a>.</p>
+
+<h3 id="instalao-2">Instalação</h3>
+
+<pre>
+<code class="language-sh" translate="no">
+$ [sudo] npm install forever -g
+</code>
+</pre>
+
+<h3 id="uso-bsico-2">Uso Básico</h3>
+
+<p>Para iniciar um script, use o comando <code class="highlighter-rouge">forever start</code> e especifique o caminho do script:</p>
+
+<pre>
+<code class="language-sh" translate="no">
+$ forever start script.js
+</code>
+</pre>
+
+<p>Este comando irá executar o script em modo daemon (no segundo plano).</p>
+
+<p>Para executar o script de forma que ele seja anexado ao terminal, omita <code class="highlighter-rouge">start</code>:</p>
+
+<pre>
+<code class="language-sh" translate="no">
+$ forever script.js
+</code>
+</pre>
+
+<p>É uma boa ideia registrar os logs da saída da ferramenta Forever e do script usando as opções de log <code class="highlighter-rouge">-l</code>,
+<code class="highlighter-rouge">-o</code>, e <code class="highlighter-rouge">-e</code>, como mostradas nesse exemplo:</p>
+
+<pre>
+<code class="language-sh" translate="no">
+$ forever start -l forever.log -o out.log -e err.log script.js
+</code>
+</pre>
+
+<p>Para visualizar a lista de scripts que foram iniciados pelo Forever:</p>
+
+<pre>
+<code class="language-sh" translate="no">
+$ forever list
+</code>
+</pre>
+
+<p>Para parar um script que foi iniciado pelo Forever use o
+comando <code class="highlighter-rouge">forever stop</code> e especifique o índice do
+processo (conforme listado pelo comando <code class="highlighter-rouge">forever
+list</code>).</p>
+
+<pre>
+<code class="language-sh" translate="no">
+$ forever stop 1
+</code>
+</pre>
+
+<p>Alternativamente, especifique o caminho do arquivo:</p>
+
+<pre>
+<code class="language-sh" translate="no">
+$ forever stop script.js
+</code>
+</pre>
+
+<p>Para parar todos os scripts que foram iniciados pelo Forever:</p>
+
+<pre>
+<code class="language-sh" translate="no">
+$ forever stopall
+</code>
+</pre>
+
+<p>O Forever possui muitas outras opções, e ele também fornece uma API programática.</p>
+
+
+
+    </section>
+
+    <!-- NLS_CHARSET=UTF-8 -->
+<noscript>
+    <iframe src="//www.googletagmanager.com/ns.html?id=GTM-5XL76H" height="0" width="0" style="display: none; visibility: hidden;"></iframe>
+</noscript>
+<script>
+(function(w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({
+        'gtm.start': new Date().getTime(),
+        event: 'gtm.js'
+    });
+    var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != 'dataLayer' ? '&l=' + l : '';
+    j.async = true;
+    j.src =
+        '//www.googletagmanager.com/gtm.js?id=' + i + dl;
+    f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-5XL76H');
+</script>
+<a id="top" href="#"><img src="/images/arrow.png"></a>
+
+<footer>
+    <div id="footer-content">
+        <div id="github">
+            <iframe src="http://ghbtns.com/github-btn.html?user=strongloop&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+        </div>
+        <div id="sponsor">O
+<a href="https://github.com/strongloop/express/">projeto Express</a>
+é patrocinado pelo <a href="http://strongloop.com/">StrongLoop</a>. </div>
+        <div id="fork">
+<a href="https://github.com/strongloop/expressjs.com">Crie um Fork dowebsite no GitHub</a>.
+        </div>
+        <div>Copyright &copy; StrongLoop, Inc., e outros
+contribuidores do expressjs.com.</div>
+    </div>
+</footer>
+
+
+  </body>
+
+</html>

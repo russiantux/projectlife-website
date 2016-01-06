@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+  <head>
+    <title>Express applications</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/dropit.css">
+    <link rel="stylesheet" href="/css/prism.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+    <link rel="stylesheet" href="/css/ko.css">        
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script data-cfasync="false" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script data-cfasync="false" src="/js/app.js"></script>
+    <script data-cfasync="false" src="/js/retina.js"></script>
+    <script data-cfasync="false" src="/js/dropit.js"></script>
+    <script data-cfasync="false" src="/js/prism.js"></script>
+</head>
+
+
+  
+  <body class="non-en-doc">
+  
+
+    <section class="page content">
+
+      <header>
+  <div id="mobile-menu">
+      <div id="nav-button" class="fa fa-bars fa-2x button"></div>
+  </div>
+  <section id="logo"><a href="/" class="express">Express</a>
+  </section>
+  <div id="navbar">
+      <ul id="navmenu">
+          <li><a href="/ko/" id="home-menu">홈</a></li>
+          <li>
+              <ul id="getting-started-menu" class="menu">
+                  <li><a href="/ko/starter/installing.html">시작하기</a>
+                      <ul>
+                          <li>
+                            <a href="/ko/starter/installing.html">
+                              설치
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/ko/starter/hello-world.html">
+                              Hello world
+                            </a>
+                          </li>
+                          <li>
+                          <a href="/ko/starter/generator.html">
+                            Express 생성기
+                          </a>
+                          </li>
+                          <li>
+                            <a href="/ko/starter/basic-routing.html">
+                              기본 라우팅
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/ko/starter/static-files.html">
+                              정적 파일
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/ko/starter/faq.html">
+                              자주 묻는 질문(FAQ)
+                            </a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="guide-menu" class="menu">
+                  <li><a href="/ko/guide/routing.html">안내서</a>
+                      <ul>
+                          <li><a href="/ko/guide/routing.html">라우팅</a>
+                          </li>
+                          <li><a href="/ko/guide/writing-middleware.html">미들웨어 작성</a>
+                          </li>
+                          <li><a href="/ko/guide/using-middleware.html">미들웨어 사용</a>
+                          </li>
+                          <li><a href="/ko/guide/using-template-engines.html">템플리트 엔진 사용</a>
+                          </li>
+                          <li><a href="/ko/guide/error-handling.html">오류 처리</a>
+                          </li>
+                          <li><a href="/ko/guide/debugging.html">디버깅</a>
+                          </li>
+                          <li><a href="/ko/guide/behind-proxies.html">프록시 환경에서 Express 사용</a>
+                          </li>
+                          <li><a href="/ko/guide/migrating-4.html">Express 4로의 이전</a>
+                          </li>
+                          <li><a href="/ko/guide/migrating-5.html">Express 5로의 이전</a>
+                          </li>
+                          <li><a href="/ko/guide/database-integration.html">데이터베이스 통합</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="application-menu" class="menu">
+                  <li><a href="/ko/4x/api.html">API 참조</a>
+                      <ul>
+                          <li><a href="/ko/4x/api.html">4.x</a>
+                          </li>
+                          <li><a href="/ko/3x/api.html">3.x(더 이상 사용되지 않음)</a>
+                          </li>
+                          <li><a href="/ko/2x/">2.x(더 이상 사용되지 않음)</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="advanced-topics-menu" class="menu">
+                  <li><a href="/ko/advanced/developing-template-engines.html">고급 주제</a>
+                      <ul>
+                          <li><a href="/ko/advanced/developing-template-engines.html">템플리트 엔진</a>
+                          </li>
+                          <li><a href="/ko/advanced/pm.html">프로세스 관리자 사용</a>
+                          </li>
+                          <li><a href="/ko/advanced/security-updates.html">보안 업데이트</a>
+                          </li>
+                          <li><a href="/ko/advanced/best-practice-security.html">보안 우수 사례</a>
+                          </li>
+                          <li><a href="/ko/advanced/best-practice-performance.html">성능 우수 사례</a>
+                          </li>
+
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="resources-menu" class="menu">
+                  <li><a href="/ko/resources/glossary.html" class="active">자원</a>
+                      <ul>
+                          <li><a href="/ko/resources/glossary.html">용어집</a>
+                          </li>
+                          <li><a href="/ko/resources/middleware.html">미들웨어</a>
+                          </li>
+                          <li><a href="/ko/resources/community.html">커뮤니티</a>
+                          </li>
+                          <li><a href="/ko/resources/books-blogs.html">서적 및 블로그</a>
+                          </li>
+                          <li><a href="/ko/resources/applications.html">애플리케이션</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+  </div><a href="http://strongloop.com/node-js/training/" title="StrongLoop의 Node 및 Express 교육" id="strongloop-header">StrongLoop의 Express 및 Node.js 교육</a>
+</header>
+
+
+      <div id="overlay"></div>
+
+      
+        <div id="i18n-notice-box" class="doc-box doc-warn">
+          <p>이 문서는 영문판 문서에 비해 더 오래된 버전일 수도 있습니다. 최신 업데이트를 확인하려면 <a href="/">영문판 문서</a>를 참조하십시오.
+</p>
+<p>This document might be outdated relative to the documentation in English. For the latest updates, please refer to the <a href="/">documentation in English</a>.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+
+        </div>
+      
+
+      <h1 id="applications">Applications</h1>
+
+<h2 id="myspace">MySpace</h2>
+
+<p>No introduction required! Everyone knows MySpace,
+and the upcoming https://new.myspace.com is powered by Express.</p>
+
+<p><a href="https://new.myspace.com/"><img src="/images/apps/screenshots/myspace.png" alt="" /></a></p>
+
+<p>Visit <a href="https://new.myspace.com/">MySpace</a></p>
+
+<h2 id="learnboost">LearnBoost</h2>
+
+<p>LearnBoost provides a free, easy to use online
+education suite including gradebook,
+lesson plans, attendance, reporting, and calendars
+among other tools.</p>
+
+<p><a href="https://www.learnboost.com/"><img src="/images/apps/screenshots/learnboost.png" alt="" /></a></p>
+
+<p>Visit <a href="https://www.learnboost.com/">LearnBoost</a></p>
+
+<h2 id="storify">Storify</h2>
+
+<p>Create stories using social media. Turn what people post
+on social media into compelling stories.  Collect the best photos, video,
+tweets and more to publish.</p>
+
+<p><a href="http://storify.com/"><img src="/images/apps/screenshots/storify.png" alt="" /></a></p>
+
+<p>Visit <a href="http://storify.com/">Storify</a></p>
+
+<h2 id="geeklist">Geekli.st</h2>
+
+<p>A place for geeks to share what they’ve done, who they did it with and
+connect with great companies and communities.</p>
+
+<p><a href="http://geekli.st"><img src="/images/apps/screenshots/geeklist.png" alt="" /></a></p>
+
+<p>Visit <a href="http://geekli.st">Geekli.st</a></p>
+
+<h2 id="klout">Klout</h2>
+
+<p>Klout is the Standard for Influence. Join Klout to discover your
+influence and compare with others you may know.</p>
+
+<p><a href="http://klout.com"><img src="/images/apps/screenshots/klout.png" alt="" /></a></p>
+
+<p>Visit <a href="http://klout.com">Klout</a></p>
+
+<h2 id="prismatic">Prismatic</h2>
+
+<p>Prismatic learns from how you interact on social networks so that we
+can show you the most interesting content and conversation from your friends.</p>
+
+<p><a href="http://getprismatic.com/"><img src="/images/apps/screenshots/prismatic.png" alt="" /></a></p>
+
+<p>Visit <a href="http://getprismatic.com/">Prismatic</a></p>
+
+<h2 id="studynotes">StudyNotes</h2>
+
+<p>At StudyNotes, we are building beautiful and simple
+learning tools to empower students to accelerate their
+learning – i.e. to learn more effectively, in a shorter
+time, and with better long-term recall.</p>
+
+<p><a href="http://www.apstudynotes.org/"><img src="/images/apps/screenshots/studynotes.png" alt="" /></a></p>
+
+<p>Visit <a href="http://www.apstudynotes.org/">StudyNotes</a></p>
+
+<h2 id="persona">Persona</h2>
+
+<p>Persona, or “BrowserID” is Mozilla’s answer
+to a better identification system for your browser,
+this promising tool is definitely worth checking out.</p>
+
+<p><a href="https://login.persona.org/"><img src="/images/apps/screenshots/browserid.png" alt="" /></a></p>
+
+<p>Visit <a href="https://login.persona.org/">Persona</a></p>
+
+<h2 id="countly">Countly</h2>
+
+<p>Extensive real-time mobile analytics as a service.</p>
+
+<p><a href="https://count.ly/"><img src="/images/apps/screenshots/countly.png" alt="" /></a></p>
+
+<p>Visit <a href="https://count.ly/">Countly</a></p>
+
+<h2 id="segmentio">Segment.io</h2>
+
+<p>No more littering your app with tons of different analytics providers.
+Instead, instrument your app once cleanly and then send your data to any analytics service you want.</p>
+
+<p><a href="http://segment.io/"><img src="/images/apps/screenshots/segment.png" alt="" /></a></p>
+
+<p>Visit <a href="http://segment.io/">Segment.io</a></p>
+
+<h2 id="yummly">Yummly</h2>
+
+<p>Yummly is the world’s largest and most powerful recipe search site.
+Bringing together recipes from all over the web - making your life easier.</p>
+
+<p><a href="http://yummly.com/"><img src="/images/apps/screenshots/yummly.png" alt="" /></a></p>
+
+<p>Visit <a href="http://yummly.com/">Yummly</a></p>
+
+<h2 id="koding">Koding</h2>
+
+<p>Real-time software development in the browser with integrated
+editor, collaboration, terminals and more.</p>
+
+<p><a href="http://koding.com/"><img src="/images/apps/screenshots/koding.png" alt="" /></a></p>
+
+<p>Visit <a href="http://koding.com/">Koding</a></p>
+
+<h2 id="apiaryio">Apiary.io</h2>
+
+<p>REST API documentation reimagined.</p>
+
+<p><a href="http://apiary.io/"><img src="/images/apps/screenshots/apiary.png" alt="" /></a></p>
+
+<p>Visit <a href="http://apiary.io/">Apiary</a></p>
+
+<h2 id="cozy">Cozy</h2>
+
+<p>Cozy is the personal cloud that allows you to put your web apps and your
+data on your hardware: calendars, contacts, feeds, notes. With Cozy, you can build and use your own Express app and use the data stored by the other applications.</p>
+
+<p><a href="http://cozy.io/"><img src="/images/apps/screenshots/cozy.png" alt="" /></a></p>
+
+<p>Visit <a href="http://cozy.io/">Cozy</a></p>
+
+<h2 id="flylatex">FlyLatex</h2>
+
+<p>Real-time Collaborative environment for LaTex.</p>
+
+<p><a href="http://github.com/alabid/flylatex"><img src="/images/apps/screenshots/flylatex.png" alt="" /></a></p>
+
+<p>Visit <a href="http://github.com/alabid/flylatex">FlyLatex</a></p>
+
+<h2 id="simpleset">SimpleSet</h2>
+
+<p>Advanced exercise prescription software for physical therapists and other health professionals.</p>
+
+<p><a href="http://www.simpleset.net"><img src="/images/apps/screenshots/simpleset.png" alt="" /></a></p>
+
+<p>Visit <a href="http://www.simpleset.net">SimpleSet</a></p>
+
+<h2 id="ghost">Ghost</h2>
+
+<p>Just a blogging platform.</p>
+
+<p><a href="https://ghost.org"><img src="/images/apps/screenshots/ghost.png" alt="" /></a></p>
+
+<p>Visit <a href="https://ghost.org">Ghost</a></p>
+
+<h2 id="loghuman">LogHuman</h2>
+
+<p>LogHuman is an application insights platform which enables developers to record information such as billing events, feature usage, or system hiccups, as well as flexible metadata to give these events context.</p>
+
+<p><a href="https://loghuman.com"><img src="/images/apps/screenshots/loghuman.png" alt="" /></a></p>
+
+<p>Visit <a href="https://loghuman.com">LogHuman</a></p>
+
+<h2 id="vogueverve">VogueVerve</h2>
+
+<p>VogueVerve is a minimalist fashion social platform. Follow, like and buy.</p>
+
+<p><a href="http://vogueverve.com"><img src="/images/apps/screenshots/vogueverve.png" alt="" /></a></p>
+
+<p>Visit <a href="http://vogueverve.com">VogueVerve</a></p>
+
+<h2 id="glip">Glip</h2>
+
+<p>Real-time team collaboration with integrated task management, video conferencing, shared calendars and more.</p>
+
+<p><a href="https://glip.com"><img src="/images/apps/screenshots/glip.png" alt="" /></a></p>
+
+<p>Visit <a href="https://glip.com">Glip</a></p>
+
+<h2 id="gugamarket">Gugamarket</h2>
+
+<p>Gugamarket is a fullstack REST API framework licensed under GPLv3. It supports giaya.com social login.
+Gugamarket is listed as one of the top Node/Express REST API’s at http://nodeframework.com/.</p>
+
+<p><a href="http://www.gugamarket.com"><img src="/images/apps/screenshots/gugamarket.png" alt="" /></a></p>
+
+<p>Visit <a href="http://www.gugamarket.com">Gugamarket</a></p>
+
+<h2 id="add-your-app-or-site">Add your app or site</h2>
+
+<p><a href="https://github.com/strongloop/expressjs.com/blob/gh-pages/ko/resources/applications.md">Edit the the Markdown file</a>,
+add a link to your app, then submit a pull request (GitHub login required).  Follow the format of the above listings.</p>
+
+
+    </section>
+
+    <!-- NLS_CHARSET=UTF-8 -->
+<noscript>
+    <iframe src="//www.googletagmanager.com/ns.html?id=GTM-5XL76H" height="0" width="0" style="display: none; visibility: hidden;"></iframe>
+</noscript>
+<script>
+(function(w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({
+        'gtm.start': new Date().getTime(),
+        event: 'gtm.js'
+    });
+    var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != 'dataLayer' ? '&l=' + l : '';
+    j.async = true;
+    j.src =
+        '//www.googletagmanager.com/gtm.js?id=' + i + dl;
+    f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-5XL76H');
+</script>
+<a id="top" href="#"><img src="/images/arrow.png"></a>
+
+<footer>
+    <div id="footer-content">
+        <div id="github">
+            <iframe src="http://ghbtns.com/github-btn.html?user=strongloop&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+        </div>
+        <div id="sponsor"><a href="https://github.com/strongloop/express/">Express 프로젝트</a>는 <a href="http://strongloop.com/">StrongLoop</a>가 후원합니다. </div>
+        <div id="fork"><a href="https://github.com/strongloop/expressjs.com">GitHub에서 웹사이트의 포크를 작성하십시오</a>.
+        </div>
+        <div>Copyright &copy; StrongLoop, Inc., and other expressjs.com contributors.</div>
+    </div>
+</footer>
+
+
+  </body>
+
+</html>

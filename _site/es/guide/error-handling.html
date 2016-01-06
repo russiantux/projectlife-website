@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="es">
+
+  <head>
+    <title>Manejo de errores de Express</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/dropit.css">
+    <link rel="stylesheet" href="/css/prism.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+    <link rel="stylesheet" href="/css/es.css">        
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script data-cfasync="false" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script data-cfasync="false" src="/js/app.js"></script>
+    <script data-cfasync="false" src="/js/retina.js"></script>
+    <script data-cfasync="false" src="/js/dropit.js"></script>
+    <script data-cfasync="false" src="/js/prism.js"></script>
+</head>
+
+
+  
+  <body class="non-en-doc">
+  
+
+    <section class="page content">
+
+      <header>
+  <div id="mobile-menu">
+      <div id="nav-button" class="fa fa-bars fa-2x button"></div>
+  </div>
+  <section id="logo"><a href="/" class="express">Express</a>
+  </section>
+  <div id="navbar">
+      <ul id="navmenu">
+          <li><a href="/es/" id="home-menu">Inicio</a></li>
+          <li>
+              <ul id="getting-started-menu" class="menu">
+                  <li><a href="/es/starter/installing.html">Cómo empezar</a>
+                      <ul>
+                          <li>
+                            <a href="/es/starter/installing.html">
+                              Instalación
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/es/starter/hello-world.html">
+                              Hello world
+                            </a>
+                          </li>
+                          <li>
+                          <a href="/es/starter/generator.html">
+                            Generador de Express
+                          </a>
+                          </li>
+                          <li>
+                            <a href="/es/starter/basic-routing.html">
+                              Direccionamiento básico
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/es/starter/static-files.html">
+                              Archivos estáticos
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/es/starter/faq.html">
+                              Preguntas más frecuentes
+                            </a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="guide-menu" class="menu">
+                  <li><a href="/es/guide/routing.html" class="active">Guía</a>
+                      <ul>
+                          <li><a href="/es/guide/routing.html">Direccionamiento</a>
+                          </li>
+                          <li><a href="/es/guide/writing-middleware.html">Escritura de middleware</a>
+                          </li>
+                          <li><a href="/es/guide/using-middleware.html">Utilización del middleware</a>
+                          </li>
+                          <li><a href="/es/guide/using-template-engines.html">Utilización de motores de plantilla</a>
+                          </li>
+                          <li><a href="/es/guide/error-handling.html">Manejo de errores</a>
+                          </li>
+                          <li><a href="/es/guide/debugging.html">Depuración</a>
+                          </li>
+                          <li><a href="/es/guide/behind-proxies.html">Express detrás de proxies</a>
+                          </li>
+                          <li><a href="/es/guide/migrating-4.html">Migración a Express 4</a>
+                          </li>
+                          <li><a href="/es/guide/migrating-5.html">Migración a Express 5</a>
+                          </li>
+                          <li><a href="/es/guide/database-integration.html">Integración de la base de datos</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="application-menu" class="menu">
+                  <li><a href="/es/4x/api.html">Referencia de API</a>
+                      <ul>
+                          <li><a href="/es/4x/api.html">4.x</a>
+                          </li>
+                          <li><a href="/es/3x/api.html">3.x (en desuso)</a>
+                          </li>
+                          <li><a href="/es/2x/">2.x (en desuso)</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="advanced-topics-menu" class="menu">
+                  <li><a href="/es/advanced/developing-template-engines.html">Temas avanzados</a>
+                      <ul>
+                          <li><a href="/es/advanced/developing-template-engines.html">Motores de plantilla</a>
+                          </li>
+                          <li><a href="/es/advanced/pm.html">Utilización de gestores de procesos</a>
+                          </li>
+                          <li><a href="/es/advanced/security-updates.html">Actualizaciones de seguridad</a>
+                          </li>
+                          <li><a href="/es/advanced/best-practice-security.html">Mejores prácticas de seguridad</a>
+                          </li>
+                          <li><a href="/es/advanced/best-practice-performance.html">Mejores prácticas de rendimiento</a>
+                          </li>
+
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="resources-menu" class="menu">
+                  <li><a href="/es/resources/glossary.html">Recursos</a>
+                      <ul>
+                          <li><a href="/es/resources/glossary.html">Glosario</a>
+                          </li>
+                          <li><a href="/es/resources/middleware.html">Middleware</a>
+                          </li>
+                          <li><a href="/es/resources/community.html">Comunidad</a>
+                          </li>
+                          <li><a href="/es/resources/books-blogs.html">Manuales y blogs</a>
+                          </li>
+                          <li><a href="/es/resources/applications.html">Aplicaciones</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+  </div><a href="http://strongloop.com/node-js/training/" title="Formación en Node y Express de StrongLoop" id="strongloop-header">Formación en Express y Node.js de StrongLoop</a>
+</header>
+
+
+      <div id="overlay"></div>
+
+      
+        <div id="i18n-notice-box" class="doc-box doc-warn">
+          <p>Este documento puede estar desfasado respecto a la documentación en inglés. Para ver las últimas actualizaciones, consulte la <a href="/">documentación en inglés</a>.
+</p>
+<p>This document might be outdated relative to the documentation in English. For the latest updates, please refer to the <a href="/">documentation in English</a>.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+
+        </div>
+      
+
+      <h1 id="manejo-de-errores">Manejo de errores</h1>
+
+<p>Defina las funciones de middleware de manejo de errores de la misma forma que otras funciones de middleware, excepto que las funciones de manejo de errores tienen cuatro argumentos en lugar de tres: <code class="highlighter-rouge">(err, req, res, next)</code>. Por ejemplo:</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+app.use(function(err, req, res, next) {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});
+</code>
+</pre>
+
+<p>El middleware de manejo de errores se define al final, después de otras llamadas de rutas y <code class="highlighter-rouge">app.use()</code>; por ejemplo:</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+var bodyParser = require('body-parser');
+var methodOverride = require('method-override');
+
+app.use(bodyParser());
+app.use(methodOverride());
+app.use(function(err, req, res, next) {
+  // logic
+});
+</code>
+</pre>
+
+<p>Las respuestas desde una función de middleware pueden estar en el formato que prefiera, por ejemplo, una página de errores HTML, un mensaje simple o una serie JSON.</p>
+
+<p>A efectos de la organización (y de infraestructura de nivel superior), puede definir varias funciones de middleware de manejo de errores, de la misma forma que con las funciones de middleware normales. Por ejemplo, si desea definir un manejador de errores para las solicitudes realizadas utilizando <code class="highlighter-rouge">XHR</code>, y las que no lo tienen, puede utilizar los siguientes mandatos:</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+var bodyParser = require('body-parser');
+var methodOverride = require('method-override');
+
+app.use(bodyParser());
+app.use(methodOverride());
+app.use(logErrors);
+app.use(clientErrorHandler);
+app.use(errorHandler);
+</code>
+</pre>
+
+<p>En este ejemplo, los <code class="highlighter-rouge">logErrors</code> genéricos pueden escribir información de solicitudes y errores en <code class="highlighter-rouge">stderr</code>, por ejemplo:</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+function logErrors(err, req, res, next) {
+  console.error(err.stack);
+  next(err);
+}
+</code>
+</pre>
+
+<p>También en este ejemplo, <code class="highlighter-rouge">clientErrorHandler</code> se define de la siguiente manera; en este caso, el error se pasa de forma explícita al siguiente:</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+function clientErrorHandler(err, req, res, next) {
+  if (req.xhr) {
+    res.status(500).send({ error: 'Something failed!' });
+  } else {
+    next(err);
+  }
+}
+</code>
+</pre>
+
+<p>La función que detecta todos los errores de <code class="highlighter-rouge">errorHandler</code> puede implementarse de la siguiente manera:</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+function errorHandler(err, req, res, next) {
+  res.status(500);
+  res.render('error', { error: err });
+}
+</code>
+</pre>
+
+<p>Si pasa cualquier valor a la función <code class="highlighter-rouge">next()</code> (excepto la serie <code class="highlighter-rouge">'route'</code>), Express considera que la solicitud actual tiene un error y omitirá las restantes funciones de middleware y direccionamiento que no son de manejo de errores. Si desea manejar ese error de alguna manera, deberá crear una ruta de manejo de errores como se describe en la siguiente sección.</p>
+
+<p>Si tiene un manejador de rutas con varias funciones de devolución de llamada, puede utilizar el parámetro <code class="highlighter-rouge">route</code> para omitir el siguiente manejador de rutas.  Por ejemplo:</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+app.get('/a_route_behind_paywall',
+  function checkIfPaidSubscriber(req, res, next) {
+    if(!req.user.hasPaid) {
+
+      // continue handling this request
+      next('route');
+    }
+  }, function getPaidContent(req, res, next) {
+    PaidContent.find(function(err, doc) {
+      if(err) return next(err);
+      res.json(doc);
+    });
+  });
+</code>
+</pre>
+
+<p>En este ejemplo, se omitirá el manejador <code class="highlighter-rouge">getPaidContent</code>, pero los restantes manejadores en <code class="highlighter-rouge">app</code> para <code class="highlighter-rouge">/a_route_behind_paywall</code> continuarán ejecutándose.</p>
+
+<div class="doc-box doc-info">
+  <p>Las llamadas a <code class="highlighter-rouge">next()</code> y <code class="highlighter-rouge">next(err)</code> indican que el manejador actual está completo y en qué estado.  <code class="highlighter-rouge">next(err)</code> omitirá los demás manejadores de la cadena, excepto los que se hayan configurado para manejar errores como se ha descrito anteriormente.</p>
+</div>
+
+<h2 id="el-manejador-de-errores-predeterminado">El manejador de errores predeterminado</h2>
+
+<p>Express se suministra con un manejador de errores incorporado, que se encarga de los errores que aparecen en la aplicación. Esta función de middleware de manejo de errores predeterminada se añade al final de la pila de funciones de middleware.</p>
+
+<p>Si pasa un error a <code class="highlighter-rouge">next()</code> y no lo maneja en el manejador de errores, lo manejará el manejador de errores incorporado; el error se escribirá en el cliente con el seguimiento de la pila. El seguimiento de la pila no se incluye en el entorno de producción.</p>
+
+<div class="doc-box doc-info">
+  <p>Establezca la variable de entorno <code class="highlighter-rouge">NODE_ENV</code> en <code class="highlighter-rouge">production</code>, para ejecutar la aplicación en modalidad de producción.</p>
+</div>
+
+<p>Si invoca <code class="highlighter-rouge">next()</code> con un error después de haber empezado a escribir la respuesta (por ejemplo, si encuentra un error mientras se envía la respuesta en modalidad continua al cliente), el manejador de errores predeterminado de Express cierra la conexión y falla la solicitud.</p>
+
+<p>Por lo tanto, cuando añade un manejador de errores personalizado, se recomienda delegar en los mecanismos de manejo de errores predeterminados de Express, cuando las cabeceras ya se han enviado al cliente:</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+function errorHandler(err, req, res, next) {
+  if (res.headersSent) {
+    return next(err);
+  }
+  res.status(500);
+  res.render('error', { error: err });
+}
+</code>
+</pre>
+
+
+    </section>
+
+    <!-- NLS_CHARSET=UTF-8 -->
+<noscript>
+    <iframe src="//www.googletagmanager.com/ns.html?id=GTM-5XL76H" height="0" width="0" style="display: none; visibility: hidden;"></iframe>
+</noscript>
+<script>
+(function(w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({
+        'gtm.start': new Date().getTime(),
+        event: 'gtm.js'
+    });
+    var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != 'dataLayer' ? '&l=' + l : '';
+    j.async = true;
+    j.src =
+        '//www.googletagmanager.com/gtm.js?id=' + i + dl;
+    f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-5XL76H');
+</script>
+<a id="top" href="#"><img src="/images/arrow.png"></a>
+
+<footer>
+    <div id="footer-content">
+        <div id="github">
+            <iframe src="http://ghbtns.com/github-btn.html?user=strongloop&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+        </div>
+        <div id="sponsor">El <a href="https://github.com/strongloop/express/">proyecto Express</a> está patrocinado por <a href="http://strongloop.com/">StrongLoop</a>. </div>
+        <div id="fork"><a href="https://github.com/strongloop/expressjs.com">Bifurque el sitio web en GitHub</a>.
+        </div>
+        <div>Copyright &copy; StrongLoop, Inc. y otros colaboradores de expressjs.com.</div>
+    </div>
+</footer>
+
+
+  </body>
+
+</html>

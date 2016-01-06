@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+  <head>
+    <title>Express atrás de proxies</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/dropit.css">
+    <link rel="stylesheet" href="/css/prism.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+    <link rel="stylesheet" href="/css/pt-br.css">        
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script data-cfasync="false" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script data-cfasync="false" src="/js/app.js"></script>
+    <script data-cfasync="false" src="/js/retina.js"></script>
+    <script data-cfasync="false" src="/js/dropit.js"></script>
+    <script data-cfasync="false" src="/js/prism.js"></script>
+</head>
+
+
+  
+  <body class="non-en-doc">
+  
+
+    <section class="page content">
+
+      <header>
+  <div id="mobile-menu">
+      <div id="nav-button" class="fa fa-bars fa-2x button"></div>
+  </div>
+  <section id="logo"><a href="/" class="express">Express</a>
+  </section>
+  <div id="navbar">
+      <ul id="navmenu">
+          <li><a href="/pt-br/" id="home-menu">Página Inicial</a></li>
+          <li>
+              <ul id="getting-started-menu" class="menu">
+                  <li><a href="/pt-br/starter/installing.html">Introdução</a>
+                      <ul>
+                          <li>
+                            <a href="/pt-br/starter/installing.html">
+                              Instalação
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/pt-br/starter/hello-world.html">
+                              Hello world
+                            </a>
+                          </li>
+                          <li>
+                          <a href="/pt-br/starter/generator.html">
+                            Gerador do Express
+                          </a>
+                          </li>
+                          <li>
+                            <a href="/pt-br/starter/basic-routing.html">
+                              Roteamento Básico
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/pt-br/starter/static-files.html">
+                              Arquivos Estáticos
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/pt-br/starter/faq.html">
+                              Perguntas mais frequentes
+                            </a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="guide-menu" class="menu">
+                  <li><a href="/pt-br/guide/routing.html" class="active">Guia</a>
+                      <ul>
+                          <li><a href="/pt-br/guide/routing.html">Roteamento</a>
+                          </li>
+                          <li><a href="/pt-br/guide/writing-middleware.html">Escrevendo o middleware</a>
+                          </li>
+                          <li><a href="/pt-br/guide/using-middleware.html">Usando o middleware</a>
+                          </li>
+                          <li><a href="/pt-br/guide/using-template-engines.html">Usando o mecanismo de modelo</a>
+                          </li>
+                          <li><a href="/pt-br/guide/error-handling.html">Manipulação de erros</a>
+                          </li>
+                          <li><a href="/pt-br/guide/debugging.html">Depuração</a>
+                          </li>
+                          <li><a href="/pt-br/guide/behind-proxies.html">Express atrás de proxies</a>
+                          </li>
+                          <li><a href="/pt-br/guide/migrating-4.html">Migrando para o Express 4</a>
+                          </li>
+                          <li><a href="/pt-br/guide/migrating-5.html">Migrando para o Express 5</a>
+                          </li>
+                          <li><a href="/pt-br/guide/database-integration.html">Integração de Banco de dados</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="application-menu" class="menu">
+                  <li><a href="/pt-br/4x/api.html">Referência da API</a>
+                      <ul>
+                          <li><a href="/pt-br/4x/api.html">4.x</a>
+                          </li>
+                          <li><a href="/pt-br/3x/api.html">3.x (descontinuada)</a>
+                          </li>
+                          <li><a href="/pt-br/2x/">2.x (descontinuada)</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="advanced-topics-menu" class="menu">
+                  <li><a href="/pt-br/advanced/developing-template-engines.html">Tópicos Avançados</a>
+                      <ul>
+                          <li><a href="/pt-br/advanced/developing-template-engines.html">Mecanismos de modelo</a>
+                          </li>
+                          <li><a href="/pt-br/advanced/pm.html">Usando gerenciadores de processos</a>
+                          </li>
+                          <li><a href="/pt-br/advanced/security-updates.html">Atualizações de segurança</a>
+                          </li>
+                          <li><a href="/pt-br/advanced/best-practice-security.html">Melhores práticas de segurança</a>
+                          </li>
+                          <li><a href="/pt-br/advanced/best-practice-performance.html">Melhores práticas de desempenho</a>
+                          </li>
+
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="resources-menu" class="menu">
+                  <li><a href="/pt-br/resources/glossary.html">Recursos</a>
+                      <ul>
+                          <li><a href="/pt-br/resources/glossary.html">Glossário</a>
+                          </li>
+                          <li><a href="/pt-br/resources/middleware.html">Middleware</a>
+                          </li>
+                          <li><a href="/pt-br/resources/community.html">Comunidade</a>
+                          </li>
+                          <li><a href="/pt-br/resources/books-blogs.html">Livros e blogs</a>
+                          </li>
+                          <li><a href="/pt-br/resources/applications.html">Aplicativos</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+  </div><a href="http://strongloop.com/node-js/training/" title="Treinamento de Node e Express do StrongLoop" id="strongloop-header">Treinamento de Express e Node.js do StrongLoop</a>
+</header>
+
+
+      <div id="overlay"></div>
+
+      
+        <div id="i18n-notice-box" class="doc-box doc-warn">
+          <p>Este documento pode estar desatualizado em relação à documentação em Inglês. Para obter as atualizações mais recentes, consulte a <a href="/">documentação em Inglês</a>.
+</p>
+<p>This document might be outdated relative to the documentation in English. For the latest updates, please refer to the <a href="/">documentation in English</a>.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+
+        </div>
+      
+
+      <h1 id="express-atrs-de-proxies">Express atrás de proxies</h1>
+
+<p>Ao executar um aplicativo do Express atrás de um proxy,
+configure (usando <a href="/pt-br/4x/api.html#app.set">app.set()</a>) a variável do
+aplicativo <code class="highlighter-rouge">trust proxy</code> para um dos valores
+listados na seguinte tabela.</p>
+
+<div class="doc-box doc-info">
+  <p>Apesar de a execução do aplicativo não falhar se a variável do
+aplicativo <code class="highlighter-rouge">trust proxy</code> não estiver configurada,
+ele irá registrar incorretamente o endereço de IP do proxy como o
+endereço de IP do cliente a não ser que o <code class="highlighter-rouge">trust
+proxy</code> esteja configurado.</p>
+</div>
+
+<table class="doctable" border="1">
+  <thead><tr><th>Tipo</th><th>Valor</th></tr></thead>
+  <tbody>
+    <tr>
+      <td>Booleano</td>
+<td>
+        <p>Se <code class="highlighter-rouge">true</code>, o endereço de IP do cliente será
+compreendido como a entrada mais a esquerda no cabeçalho <code class="highlighter-rouge">X-Forwarded-*</code>.</p>
+
+        <p>Se <code class="highlighter-rouge">false</code>, o aplicativo é compreendido como
+exposto diretamente à Internet e o endereço de IP do cliente é
+derivado a partir do <code class="highlighter-rouge">req.connection.remoteAddress</code>. Esta
+é a configuração padrão.</p>
+      </td>
+    </tr>
+    <tr>
+      <td>Endereços IP</td>
+<td>
+        <p>Um endereço de IP, sub-rede, ou uma matriz de endereços de IP e
+sub-redes confiáveis. A lista a seguir mostra os nomes de sub-rede
+pré-configurados:</p>
+
+        <ul>
+          <li>loopback - <code class="highlighter-rouge">127.0.0.1/8</code>, <code class="highlighter-rouge">::1/128</code></li>
+          <li>linklocal - <code class="highlighter-rouge">169.254.0.0/16</code>, <code class="highlighter-rouge">fe80::/10</code></li>
+          <li>uniquelocal - <code class="highlighter-rouge">10.0.0.0/8</code>, <code class="highlighter-rouge">172.16.0.0/12</code>, <code class="highlighter-rouge">192.168.0.0/16</code>, <code class="highlighter-rouge">fc00::/7</code></li>
+        </ul>
+
+        <p>É possível configurar endereços de IP de qualquer uma das
+formas a seguir:</p>
+
+        <pre>
+<code class="language-js" translate="no">app.set('trust proxy', 'loopback') // specify a single subnet
+app.set('trust proxy', 'loopback, 123.123.123.123') // specify a subnet and an address
+app.set('trust proxy', 'loopback, linklocal, uniquelocal') // specify multiple subnets as CSV
+app.set('trust proxy', ['loopback', 'linklocal', 'uniquelocal']) // specify multiple subnets as an array</code>
+</pre>
+
+        <p>Quando especificados, os endereços de IP ou sub-redes são
+excluídos do processo de determinação de endereço, e o endereço de
+IP não confiável mais próximos do servidor de aplicativos é
+determinado como o endereço de IP do cliente.</p>
+      </td>
+    </tr>
+    <tr>
+      <td>Número</td>
+<td>
+        <p>Confia no <code class="highlighter-rouge">n</code>-ésimo hop a partir do servidor de
+proxy frontal como o cliente.</p>
+      </td>
+    </tr>
+    <tr>
+      <td>Função</td>
+<td>
+        <p>Implementação de confiança customizada. Use apenas se souber o que está fazendo.</p>
+        <pre>
+<code class="language-js" translate="no">app.set('trust proxy', function (ip) {
+  if (ip === '127.0.0.1' || ip === '123.123.123.123') return true; // trusted IPs
+  else return false;
+})</code>
+</pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Configurando um valor não-<code class="highlighter-rouge">false</code> para o
+<code class="highlighter-rouge">trust
+proxy</code> resulta em três mudanças importantes:</p>
+
+<ul>
+  <li>
+    <p>O valor de <a href="/pt-br/api.html#req.hostname">req.hostname</a> é
+derivado do valor configurado no cabeçalho
+<code class="highlighter-rouge">X-Forwarded-Host</code>, que pode ser configurado pelo
+cliente ou pelo proxy.</p>
+  </li>
+  <li>
+    <p><code class="highlighter-rouge">X-Forwarded-Proto</code> pode ser
+configurado pelo proxy reverso para dizer ao aplicativo se ele é
+<code class="highlighter-rouge">https</code> ou <code class="highlighter-rouge">http</code> ou até um nome
+inválido. Este valor é refletido pelo <a href="/pt-br/api.html#req.protocol">req.protocol</a>.</p>
+  </li>
+  <li>
+    <p>Os valores <a href="/pt-br/api.html#req.ip">req.ip</a> e
+<a href="/pt-br/api.html#req.ips">req.ips</a> são populados com a lista de
+endereços do <code class="highlighter-rouge">X-Forwarded-For</code>.</p>
+  </li>
+</ul>
+
+<p>A configuração do <code class="highlighter-rouge">trust proxy</code> é
+implementada usando o pacote
+<a href="https://www.npmjs.com/package/proxy-addr">proxy-addr</a>. Para
+obter mais informações, consulte a documentação.</p>
+
+
+    </section>
+
+    <!-- NLS_CHARSET=UTF-8 -->
+<noscript>
+    <iframe src="//www.googletagmanager.com/ns.html?id=GTM-5XL76H" height="0" width="0" style="display: none; visibility: hidden;"></iframe>
+</noscript>
+<script>
+(function(w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({
+        'gtm.start': new Date().getTime(),
+        event: 'gtm.js'
+    });
+    var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != 'dataLayer' ? '&l=' + l : '';
+    j.async = true;
+    j.src =
+        '//www.googletagmanager.com/gtm.js?id=' + i + dl;
+    f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-5XL76H');
+</script>
+<a id="top" href="#"><img src="/images/arrow.png"></a>
+
+<footer>
+    <div id="footer-content">
+        <div id="github">
+            <iframe src="http://ghbtns.com/github-btn.html?user=strongloop&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+        </div>
+        <div id="sponsor">O
+<a href="https://github.com/strongloop/express/">projeto Express</a>
+é patrocinado pelo <a href="http://strongloop.com/">StrongLoop</a>. </div>
+        <div id="fork">
+<a href="https://github.com/strongloop/expressjs.com">Crie um Fork dowebsite no GitHub</a>.
+        </div>
+        <div>Copyright &copy; StrongLoop, Inc., e outros
+contribuidores do expressjs.com.</div>
+    </div>
+</footer>
+
+
+  </body>
+
+</html>

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+
+  <head>
+    <title>Utilización de motores de plantilla con Express</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/dropit.css">
+    <link rel="stylesheet" href="/css/prism.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+    <link rel="stylesheet" href="/css/es.css">        
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script data-cfasync="false" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script data-cfasync="false" src="/js/app.js"></script>
+    <script data-cfasync="false" src="/js/retina.js"></script>
+    <script data-cfasync="false" src="/js/dropit.js"></script>
+    <script data-cfasync="false" src="/js/prism.js"></script>
+</head>
+
+
+  
+  <body class="non-en-doc">
+  
+
+    <section class="page content">
+
+      <header>
+  <div id="mobile-menu">
+      <div id="nav-button" class="fa fa-bars fa-2x button"></div>
+  </div>
+  <section id="logo"><a href="/" class="express">Express</a>
+  </section>
+  <div id="navbar">
+      <ul id="navmenu">
+          <li><a href="/es/" id="home-menu">Inicio</a></li>
+          <li>
+              <ul id="getting-started-menu" class="menu">
+                  <li><a href="/es/starter/installing.html">Cómo empezar</a>
+                      <ul>
+                          <li>
+                            <a href="/es/starter/installing.html">
+                              Instalación
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/es/starter/hello-world.html">
+                              Hello world
+                            </a>
+                          </li>
+                          <li>
+                          <a href="/es/starter/generator.html">
+                            Generador de Express
+                          </a>
+                          </li>
+                          <li>
+                            <a href="/es/starter/basic-routing.html">
+                              Direccionamiento básico
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/es/starter/static-files.html">
+                              Archivos estáticos
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/es/starter/faq.html">
+                              Preguntas más frecuentes
+                            </a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="guide-menu" class="menu">
+                  <li><a href="/es/guide/routing.html" class="active">Guía</a>
+                      <ul>
+                          <li><a href="/es/guide/routing.html">Direccionamiento</a>
+                          </li>
+                          <li><a href="/es/guide/writing-middleware.html">Escritura de middleware</a>
+                          </li>
+                          <li><a href="/es/guide/using-middleware.html">Utilización del middleware</a>
+                          </li>
+                          <li><a href="/es/guide/using-template-engines.html">Utilización de motores de plantilla</a>
+                          </li>
+                          <li><a href="/es/guide/error-handling.html">Manejo de errores</a>
+                          </li>
+                          <li><a href="/es/guide/debugging.html">Depuración</a>
+                          </li>
+                          <li><a href="/es/guide/behind-proxies.html">Express detrás de proxies</a>
+                          </li>
+                          <li><a href="/es/guide/migrating-4.html">Migración a Express 4</a>
+                          </li>
+                          <li><a href="/es/guide/migrating-5.html">Migración a Express 5</a>
+                          </li>
+                          <li><a href="/es/guide/database-integration.html">Integración de la base de datos</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="application-menu" class="menu">
+                  <li><a href="/es/4x/api.html">Referencia de API</a>
+                      <ul>
+                          <li><a href="/es/4x/api.html">4.x</a>
+                          </li>
+                          <li><a href="/es/3x/api.html">3.x (en desuso)</a>
+                          </li>
+                          <li><a href="/es/2x/">2.x (en desuso)</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="advanced-topics-menu" class="menu">
+                  <li><a href="/es/advanced/developing-template-engines.html">Temas avanzados</a>
+                      <ul>
+                          <li><a href="/es/advanced/developing-template-engines.html">Motores de plantilla</a>
+                          </li>
+                          <li><a href="/es/advanced/pm.html">Utilización de gestores de procesos</a>
+                          </li>
+                          <li><a href="/es/advanced/security-updates.html">Actualizaciones de seguridad</a>
+                          </li>
+                          <li><a href="/es/advanced/best-practice-security.html">Mejores prácticas de seguridad</a>
+                          </li>
+                          <li><a href="/es/advanced/best-practice-performance.html">Mejores prácticas de rendimiento</a>
+                          </li>
+
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="resources-menu" class="menu">
+                  <li><a href="/es/resources/glossary.html">Recursos</a>
+                      <ul>
+                          <li><a href="/es/resources/glossary.html">Glosario</a>
+                          </li>
+                          <li><a href="/es/resources/middleware.html">Middleware</a>
+                          </li>
+                          <li><a href="/es/resources/community.html">Comunidad</a>
+                          </li>
+                          <li><a href="/es/resources/books-blogs.html">Manuales y blogs</a>
+                          </li>
+                          <li><a href="/es/resources/applications.html">Aplicaciones</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+  </div><a href="http://strongloop.com/node-js/training/" title="Formación en Node y Express de StrongLoop" id="strongloop-header">Formación en Express y Node.js de StrongLoop</a>
+</header>
+
+
+      <div id="overlay"></div>
+
+      
+        <div id="i18n-notice-box" class="doc-box doc-warn">
+          <p>Este documento puede estar desfasado respecto a la documentación en inglés. Para ver las últimas actualizaciones, consulte la <a href="/">documentación en inglés</a>.
+</p>
+<p>This document might be outdated relative to the documentation in English. For the latest updates, please refer to the <a href="/">documentation in English</a>.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+
+        </div>
+      
+
+      <h1 id="utilizacin-de-motores-de-plantilla-con-express">Utilización de motores de plantilla con Express</h1>
+
+<p>Para que Express pueda representar archivos de plantilla, deben establecerse los siguientes valores de aplicación:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">views</code>, el directorio donde se encuentran los archivos de plantilla. Ejemplo: <code class="highlighter-rouge">app.set('views', './views')</code></li>
+  <li><code class="highlighter-rouge">view engine</code>, el motor de plantilla que se utiliza. Ejemplo: <code class="highlighter-rouge">app.set('view engine', 'jade')</code></li>
+</ul>
+
+<p>A continuación, instale el paquete npm de motor de plantilla correspondiente:</p>
+
+<pre>
+<code class="language-sh" translate="no">
+$ npm install jade --save
+</code>
+</pre>
+
+<div class="doc-box doc-notice">
+  <p>Los motores de plantilla compatibles con Express como, por ejemplo, Jade exportan una función denominada <code class="highlighter-rouge">__express(filePath, options, callback)</code>, que es invocada por la función <code class="highlighter-rouge">res.render()</code> para representar el código de plantilla.</p>
+
+  <p>Algunos motores de plantilla no siguen esta convención. La biblioteca <a href="https://www.npmjs.org/package/consolidate">Consolidate.js</a> sigue esta convención correlacionando todos los motores de plantilla de Node.js más conocidos, por lo que funciona de forma ininterrumpida en Express.</p>
+</div>
+
+<p>Una vez establecida la propiedad view engine, no tiene que especificar el motor ni cargar el módulo de motor de plantilla en la aplicación; Express carga el módulo internamente, como se muestra a continuación (para el ejemplo anterior).</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+app.set('view engine', 'jade');
+</code>
+</pre>
+
+<p>Cree un archivo de plantilla Jade denominado <code class="highlighter-rouge">index.jade</code> en el directorio <code class="highlighter-rouge">views</code>, con el siguiente contenido:</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+html
+  head
+    title!= title
+  body
+    h1!= message
+</code>
+</pre>
+
+<p>A continuación, cree una ruta para representar el archivo <code class="highlighter-rouge">index.jade</code>. Si la propiedad <code class="highlighter-rouge">view engine</code> no se establece, debe especificar la extensión del archivo <code class="highlighter-rouge">view</code>. De lo contrario, puede omitirla.</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+app.get('/', function (req, res) {
+  res.render('index', { title: 'Hey', message: 'Hello there!'});
+});
+</code>
+</pre>
+
+<p>Cuando realice una solicitud a la página de inicio, el archivo <code class="highlighter-rouge">index.jade</code> se representará como HTML.</p>
+
+<p>Para obtener más información sobre cómo funcionan los motores de plantilla en Express, consulte: <a href="/es/advanced/developing-template-engines.html">“Desarrollo de motores de plantilla para Express”</a>.</p>
+
+
+    </section>
+
+    <!-- NLS_CHARSET=UTF-8 -->
+<noscript>
+    <iframe src="//www.googletagmanager.com/ns.html?id=GTM-5XL76H" height="0" width="0" style="display: none; visibility: hidden;"></iframe>
+</noscript>
+<script>
+(function(w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({
+        'gtm.start': new Date().getTime(),
+        event: 'gtm.js'
+    });
+    var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != 'dataLayer' ? '&l=' + l : '';
+    j.async = true;
+    j.src =
+        '//www.googletagmanager.com/gtm.js?id=' + i + dl;
+    f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-5XL76H');
+</script>
+<a id="top" href="#"><img src="/images/arrow.png"></a>
+
+<footer>
+    <div id="footer-content">
+        <div id="github">
+            <iframe src="http://ghbtns.com/github-btn.html?user=strongloop&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+        </div>
+        <div id="sponsor">El <a href="https://github.com/strongloop/express/">proyecto Express</a> está patrocinado por <a href="http://strongloop.com/">StrongLoop</a>. </div>
+        <div id="fork"><a href="https://github.com/strongloop/expressjs.com">Bifurque el sitio web en GitHub</a>.
+        </div>
+        <div>Copyright &copy; StrongLoop, Inc. y otros colaboradores de expressjs.com.</div>
+    </div>
+</footer>
+
+
+  </body>
+
+</html>

@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+  <head>
+    <title>Express 데이터베이스 통합</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/dropit.css">
+    <link rel="stylesheet" href="/css/prism.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+    <link rel="stylesheet" href="/css/ko.css">        
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script data-cfasync="false" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script data-cfasync="false" src="/js/app.js"></script>
+    <script data-cfasync="false" src="/js/retina.js"></script>
+    <script data-cfasync="false" src="/js/dropit.js"></script>
+    <script data-cfasync="false" src="/js/prism.js"></script>
+</head>
+
+
+  
+  <body class="non-en-doc">
+  
+
+    <section class="page content">
+
+      <header>
+  <div id="mobile-menu">
+      <div id="nav-button" class="fa fa-bars fa-2x button"></div>
+  </div>
+  <section id="logo"><a href="/" class="express">Express</a>
+  </section>
+  <div id="navbar">
+      <ul id="navmenu">
+          <li><a href="/ko/" id="home-menu">홈</a></li>
+          <li>
+              <ul id="getting-started-menu" class="menu">
+                  <li><a href="/ko/starter/installing.html">시작하기</a>
+                      <ul>
+                          <li>
+                            <a href="/ko/starter/installing.html">
+                              설치
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/ko/starter/hello-world.html">
+                              Hello world
+                            </a>
+                          </li>
+                          <li>
+                          <a href="/ko/starter/generator.html">
+                            Express 생성기
+                          </a>
+                          </li>
+                          <li>
+                            <a href="/ko/starter/basic-routing.html">
+                              기본 라우팅
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/ko/starter/static-files.html">
+                              정적 파일
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/ko/starter/faq.html">
+                              자주 묻는 질문(FAQ)
+                            </a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="guide-menu" class="menu">
+                  <li><a href="/ko/guide/routing.html" class="active">안내서</a>
+                      <ul>
+                          <li><a href="/ko/guide/routing.html">라우팅</a>
+                          </li>
+                          <li><a href="/ko/guide/writing-middleware.html">미들웨어 작성</a>
+                          </li>
+                          <li><a href="/ko/guide/using-middleware.html">미들웨어 사용</a>
+                          </li>
+                          <li><a href="/ko/guide/using-template-engines.html">템플리트 엔진 사용</a>
+                          </li>
+                          <li><a href="/ko/guide/error-handling.html">오류 처리</a>
+                          </li>
+                          <li><a href="/ko/guide/debugging.html">디버깅</a>
+                          </li>
+                          <li><a href="/ko/guide/behind-proxies.html">프록시 환경에서 Express 사용</a>
+                          </li>
+                          <li><a href="/ko/guide/migrating-4.html">Express 4로의 이전</a>
+                          </li>
+                          <li><a href="/ko/guide/migrating-5.html">Express 5로의 이전</a>
+                          </li>
+                          <li><a href="/ko/guide/database-integration.html">데이터베이스 통합</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="application-menu" class="menu">
+                  <li><a href="/ko/4x/api.html">API 참조</a>
+                      <ul>
+                          <li><a href="/ko/4x/api.html">4.x</a>
+                          </li>
+                          <li><a href="/ko/3x/api.html">3.x(더 이상 사용되지 않음)</a>
+                          </li>
+                          <li><a href="/ko/2x/">2.x(더 이상 사용되지 않음)</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="advanced-topics-menu" class="menu">
+                  <li><a href="/ko/advanced/developing-template-engines.html">고급 주제</a>
+                      <ul>
+                          <li><a href="/ko/advanced/developing-template-engines.html">템플리트 엔진</a>
+                          </li>
+                          <li><a href="/ko/advanced/pm.html">프로세스 관리자 사용</a>
+                          </li>
+                          <li><a href="/ko/advanced/security-updates.html">보안 업데이트</a>
+                          </li>
+                          <li><a href="/ko/advanced/best-practice-security.html">보안 우수 사례</a>
+                          </li>
+                          <li><a href="/ko/advanced/best-practice-performance.html">성능 우수 사례</a>
+                          </li>
+
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="resources-menu" class="menu">
+                  <li><a href="/ko/resources/glossary.html">자원</a>
+                      <ul>
+                          <li><a href="/ko/resources/glossary.html">용어집</a>
+                          </li>
+                          <li><a href="/ko/resources/middleware.html">미들웨어</a>
+                          </li>
+                          <li><a href="/ko/resources/community.html">커뮤니티</a>
+                          </li>
+                          <li><a href="/ko/resources/books-blogs.html">서적 및 블로그</a>
+                          </li>
+                          <li><a href="/ko/resources/applications.html">애플리케이션</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+  </div><a href="http://strongloop.com/node-js/training/" title="StrongLoop의 Node 및 Express 교육" id="strongloop-header">StrongLoop의 Express 및 Node.js 교육</a>
+</header>
+
+
+      <div id="overlay"></div>
+
+      
+        <div id="i18n-notice-box" class="doc-box doc-warn">
+          <p>이 문서는 영문판 문서에 비해 더 오래된 버전일 수도 있습니다. 최신 업데이트를 확인하려면 <a href="/">영문판 문서</a>를 참조하십시오.
+</p>
+<p>This document might be outdated relative to the documentation in English. For the latest updates, please refer to the <a href="/">documentation in English</a>.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+
+        </div>
+      
+
+      <h1 id="section">데이터베이스 통합</h1>
+
+<p>데이터베이스를 Express 앱에 연결하는 기능을 추가하려면 앱에 포함된 데이터베이스를 위한 적절한 Node.js 드라이버를 로드해야 합니다. 이 문서에서는 Express 앱의 데이터베이스 시스템에 가장 널리 이용되고 있는 Node.js 모듈 중 다음과 같은 몇 개의 모듈을 추가 및 사용하는 방법을 설명합니다.</p>
+
+<ul>
+  <li><a href="#cassandra">Cassandra</a></li>
+  <li><a href="#couchdb">CouchDB</a></li>
+  <li><a href="#leveldb">LevelDB</a></li>
+  <li><a href="#mysql">MySQL</a></li>
+  <li><a href="#mongo">MongoDB</a></li>
+  <li><a href="#neo4j">Neo4j</a></li>
+  <li><a href="#postgres">PostgreSQL</a></li>
+  <li><a href="#redis">Redis</a></li>
+  <li><a href="#sqlite">SQLite</a></li>
+  <li><a href="#elasticsearch">ElasticSearch</a></li>
+</ul>
+
+<div class="doc-box doc-notice">
+  <p>위의 데이터베이스 드라이버는 사용 가능한 여러 데이터베이스 드라이버 중 일부입니다.  다른 옵션을 확인하려면,
+<a href="https://www.npmjs.com/">npm</a> 사이트에서 검색하십시오.</p>
+</div>
+
+<p><a name="cassandra"></a></p>
+
+<h2 id="cassandra">Cassandra</h2>
+
+<p><strong>모듈</strong>: <a href="https://github.com/datastax/nodejs-driver">cassandra-driver</a>
+<strong>설치</strong></p>
+
+<pre>
+<code class="language-sh" translate="no">
+$ npm install cassandra-driver
+</code>
+</pre>
+
+<p><strong>예제</strong></p>
+
+<pre>
+<code class="language-javascript" translate="no">
+var cassandra = require('cassandra-driver');
+var client = new cassandra.Client({ contactPoints: ['localhost']});
+
+client.execute('select key from system.local', function(err, result) {
+  if (err) throw err;
+  console.log(result.rows[0]);
+});
+</code>
+</pre>
+
+<p><a name="couchdb"></a></p>
+
+<h2 id="couchdb">CouchDB</h2>
+
+<p><strong>모듈</strong>: <a href="https://github.com/dscape/nano">nano</a>
+<strong>설치</strong></p>
+
+<pre>
+<code class="language-sh" translate="no">
+$ npm install nano
+</code>
+</pre>
+
+<p><strong>예제</strong></p>
+
+<pre>
+<code class="language-javascript" translate="no">
+var nano = require('nano')('http://localhost:5984');
+nano.db.create('books');
+var books = nano.db.use('books');
+
+//Insert a book document in the books database
+books.insert({name: 'The Art of war'}, null, function(err, body) {
+  if (!err){
+    console.log(body);
+  }
+});
+
+//Get a list of all books
+books.list(function(err, body){
+  console.log(body.rows);
+}
+</code>
+</pre>
+
+<p><a name="leveldb"></a></p>
+
+<h2 id="leveldb">LevelDB</h2>
+
+<p><strong>모듈</strong>: <a href="https://github.com/rvagg/node-levelup">levelup</a>
+<strong>설치</strong></p>
+
+<pre>
+<code class="language-sh" translate="no">
+$ npm install level levelup leveldown
+</code>
+</pre>
+
+<p><strong>예제</strong></p>
+
+<pre>
+<code class="language-javascript" translate="no">
+var levelup = require('levelup');
+var db = levelup('./mydb');
+
+db.put('name', 'LevelUP', function (err) {
+
+  if (err) return console.log('Ooops!', err);
+  db.get('name', function (err, value) {
+    if (err) return console.log('Ooops!', err);
+    console.log('name=' + value)
+  });
+
+});
+</code>
+</pre>
+
+<p><a name="mysql"></a></p>
+
+<h2 id="mysql">MySQL</h2>
+
+<p><strong>모듈</strong>: <a href="https://github.com/felixge/node-mysql/">mysql</a>
+<strong>설치</strong></p>
+
+<pre>
+<code class="language-sh" translate="no">
+$ npm install mysql
+</code>
+</pre>
+
+<p><strong>예제</strong></p>
+
+<pre>
+<code class="language-javascript" translate="no">
+var mysql      = require('mysql');
+var connection = mysql.createConnection({
+  host     : 'localhost',
+  user     : 'dbuser',
+  password : 's3kreee7'
+});
+
+connection.connect();
+
+connection.query('SELECT 1 + 1 AS solution', function(err, rows, fields) {
+  if (err) throw err;
+  console.log('The solution is: ', rows[0].solution);
+});
+
+connection.end();
+</code>
+</pre>
+
+<p><a name="mongo"></a></p>
+
+<h2 id="mongodb">MongoDB</h2>
+
+<p><strong>모듈</strong>: <a href="https://github.com/mongodb/node-mongodb-native">mongodb</a>
+<strong>설치</strong></p>
+
+<pre>
+<code class="language-sh" translate="no">
+$ npm install mongodb
+</code>
+</pre>
+
+<p><strong>예제</strong></p>
+
+<pre>
+<code class="language-javascript" translate="no">
+var MongoClient = require('mongodb').MongoClient;
+
+MongoClient.connect('mongodb://localhost:27017/animals', function(err, db) {
+  if (err) {
+    throw err;
+  }
+  db.collection('mammals').find().toArray(function(err, result) {
+    if (err) {
+      throw err;
+    }
+    console.log(result);
+  });
+});
+</code>
+</pre>
+
+<p>MongoDB용 오브젝트 모델 드라이버가 필요한 경우에는 <a href="https://github.com/LearnBoost/mongoose">Mongoose</a>를 확인하십시오.</p>
+
+<p><a name="neo4j"></a></p>
+
+<h2 id="neo4j">Neo4j</h2>
+
+<p><strong>모듈</strong>: <a href="https://github.com/hacksparrow/apoc">apoc</a>
+<strong>설치</strong></p>
+
+<pre>
+<code class="language-sh" translate="no">
+$ npm install apoc
+</code>
+</pre>
+
+<p><strong>예제</strong></p>
+
+<pre>
+<code class="language-javascript" translate="no">
+var apoc = require('apoc');
+
+apoc.query('match (n) return n').exec().then(
+  function (response) {
+    console.log(response);
+  },
+  function (fail) {
+    console.log(fail);
+  }
+);
+</code>
+</pre>
+
+<p><a name="postgres"></a></p>
+
+<h2 id="postgresql">PostgreSQL</h2>
+
+<p><strong>모듈</strong>: <a href="https://github.com/brianc/node-postgres">pg</a>
+<strong>설치</strong></p>
+
+<pre>
+<code class="language-sh" translate="no">
+$ npm install pg
+</code>
+</pre>
+
+<p><strong>예제</strong></p>
+
+<pre>
+<code class="language-javascript" translate="no">
+var pg = require('pg');
+var conString = "postgres://username:password@localhost/database";
+
+pg.connect(conString, function(err, client, done) {
+
+  if (err) {
+    return console.error('error fetching client from pool', err);
+  }
+  client.query('SELECT $1::int AS number', ['1'], function(err, result) {
+    done();
+    if (err) {
+      return console.error('error running query', err);
+    }
+    console.log(result.rows[0].number);
+  });
+
+});
+</code>
+</pre>
+
+<p><a name="redis"></a></p>
+
+<h2 id="redis">Redis</h2>
+
+<p><strong>모듈</strong>: <a href="https://github.com/mranney/node_redis">redis</a>
+<strong>설치</strong></p>
+
+<pre>
+<code class="language-sh" translate="no">
+$ npm install redis
+</code>
+</pre>
+
+<p><strong>예제</strong></p>
+
+<pre>
+<code class="language-javascript" translate="no">
+var client = require('redis').createClient();
+
+client.on('error', function (err) {
+  console.log('Error ' + err);
+});
+
+client.set('string key', 'string val', redis.print);
+client.hset('hash key', 'hashtest 1', 'some value', redis.print);
+client.hset(['hash key', 'hashtest 2', 'some other value'], redis.print);
+
+client.hkeys('hash key', function (err, replies) {
+
+  console.log(replies.length + ' replies:');
+  replies.forEach(function (reply, i) {
+    console.log('    ' + i + ': ' + reply);
+  });
+
+  client.quit();
+
+});
+</code>
+</pre>
+
+<p><a name="sqlite"></a></p>
+
+<h2 id="sqlite">SQLite</h2>
+
+<p><strong>모듈</strong>: <a href="https://github.com/mapbox/node-sqlite3">sqlite3</a>
+<strong>설치</strong></p>
+
+<pre>
+<code class="language-sh" translate="no">
+$ npm install sqlite3
+</code>
+</pre>
+
+<p><strong>예제</strong></p>
+
+<pre>
+<code class="language-javascript" translate="no">
+var sqlite3 = require('sqlite3').verbose();
+var db = new sqlite3.Database(':memory:');
+
+db.serialize(function() {
+
+  db.run('CREATE TABLE lorem (info TEXT)');
+  var stmt = db.prepare('INSERT INTO lorem VALUES (?)');
+
+  for (var i = 0; i &lt; 10; i++) {
+    stmt.run('Ipsum ' + i);
+  }
+
+  stmt.finalize();
+
+  db.each('SELECT rowid AS id, info FROM lorem', function(err, row) {
+    console.log(row.id + ': ' + row.info);
+  });
+});
+
+db.close();
+</code>
+</pre>
+
+<p><a name="elasticsearch"></a></p>
+
+<h2 id="elasticsearch">ElasticSearch</h2>
+
+<p><strong>모듈</strong>: <a href="https://github.com/elastic/elasticsearch-js">elasticsearch</a>
+<strong>설치</strong></p>
+
+<pre>
+<code class="language-sh" translate="no">
+$ npm install elasticsearch
+</code>
+</pre>
+
+<p><strong>예제</strong></p>
+
+<pre>
+<code class="language-javascript" translate="no">
+var elasticsearch = require('elasticsearch');
+var client = elasticsearch.Client({
+  host: 'localhost:9200'
+});
+
+client.search({
+  index: 'books',
+  type: 'book',
+  body: {
+    query: {
+      multi_match: {
+        query: 'express js',
+        fields: ['title', 'description']
+      }
+    }
+  }
+}).then(function(response) {
+  var hits = response.hits.hits;
+}, function(error) {
+  console.trace(error.message);
+});
+</code>
+</pre>
+
+
+    </section>
+
+    <!-- NLS_CHARSET=UTF-8 -->
+<noscript>
+    <iframe src="//www.googletagmanager.com/ns.html?id=GTM-5XL76H" height="0" width="0" style="display: none; visibility: hidden;"></iframe>
+</noscript>
+<script>
+(function(w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({
+        'gtm.start': new Date().getTime(),
+        event: 'gtm.js'
+    });
+    var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != 'dataLayer' ? '&l=' + l : '';
+    j.async = true;
+    j.src =
+        '//www.googletagmanager.com/gtm.js?id=' + i + dl;
+    f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-5XL76H');
+</script>
+<a id="top" href="#"><img src="/images/arrow.png"></a>
+
+<footer>
+    <div id="footer-content">
+        <div id="github">
+            <iframe src="http://ghbtns.com/github-btn.html?user=strongloop&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+        </div>
+        <div id="sponsor"><a href="https://github.com/strongloop/express/">Express 프로젝트</a>는 <a href="http://strongloop.com/">StrongLoop</a>가 후원합니다. </div>
+        <div id="fork"><a href="https://github.com/strongloop/expressjs.com">GitHub에서 웹사이트의 포크를 작성하십시오</a>.
+        </div>
+        <div>Copyright &copy; StrongLoop, Inc., and other expressjs.com contributors.</div>
+    </div>
+</footer>
+
+
+  </body>
+
+</html>

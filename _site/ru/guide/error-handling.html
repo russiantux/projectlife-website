@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+  <head>
+    <title>Обработка ошибок в Express</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/dropit.css">
+    <link rel="stylesheet" href="/css/prism.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+    <link rel="stylesheet" href="/css/ru.css">        
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script data-cfasync="false" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script data-cfasync="false" src="/js/app.js"></script>
+    <script data-cfasync="false" src="/js/retina.js"></script>
+    <script data-cfasync="false" src="/js/dropit.js"></script>
+    <script data-cfasync="false" src="/js/prism.js"></script>
+</head>
+
+
+  
+  <body class="non-en-doc">
+  
+
+    <section class="page content">
+
+      <header>
+  <div id="mobile-menu">
+      <div id="nav-button" class="fa fa-bars fa-2x button"></div>
+  </div>
+  <section id="logo"><a href="/" class="express">Express</a>
+  </section>
+  <div id="navbar">
+      <ul id="navmenu">
+          <li><a href="/ru/" id="home-menu">Начальная страница</a></li>
+          <li>
+              <ul id="getting-started-menu" class="menu">
+                  <li><a href="/ru/starter/installing.html">Начало работы</a>
+                      <ul>
+                          <li>
+                            <a href="/ru/starter/installing.html">
+                              Установка
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/ru/starter/hello-world.html">
+                              Hello world
+                            </a>
+                          </li>
+                          <li>
+                          <a href="/ru/starter/generator.html">
+                            Генератор приложений Express
+                          </a>
+                          </li>
+                          <li>
+                            <a href="/ru/starter/basic-routing.html">
+                              Основы маршрутизации
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/ru/starter/static-files.html">
+                              Статические файлы
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/ru/starter/faq.html">
+                              FAQ
+                            </a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="guide-menu" class="menu">
+                  <li><a href="/ru/guide/routing.html" class="active">Руководство</a>
+                      <ul>
+                          <li><a href="/ru/guide/routing.html">Маршрутизация</a>
+                          </li>
+                          <li><a href="/ru/guide/writing-middleware.html">Написание кода промежуточных обработчиков</a>
+                          </li>
+                          <li><a href="/ru/guide/using-middleware.html">Использование промежуточных обработчиков</a>
+                          </li>
+                          <li><a href="/ru/guide/using-template-engines.html">Использование шаблонизаторов</a>
+                          </li>
+                          <li><a href="/ru/guide/error-handling.html">Обработка ошибок</a>
+                          </li>
+                          <li><a href="/ru/guide/debugging.html">Отладка</a>
+                          </li>
+                          <li><a href="/ru/guide/behind-proxies.html">Express за прокси</a>
+                          </li>
+                          <li><a href="/ru/guide/migrating-4.html">Переход к Express 4</a>
+                          </li>
+                          <li><a href="/ru/guide/migrating-5.html">Переход к Express 5</a>
+                          </li>
+                          <li><a href="/ru/guide/database-integration.html">Интеграция с базами данных</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="application-menu" class="menu">
+                  <li><a href="/ru/4x/api.html">Справочник по API</a>
+                      <ul>
+                          <li><a href="/ru/4x/api.html">4.x</a>
+                          </li>
+                          <li><a href="/ru/3x/api.html">3.x (устарел)</a>
+                          </li>
+                          <li><a href="/ru/2x/">2.x (устарел)</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="advanced-topics-menu" class="menu">
+                  <li><a href="/ru/advanced/developing-template-engines.html">Расширенные возможности</a>
+                      <ul>
+                          <li><a href="/ru/advanced/developing-template-engines.html">Шаблонизаторы</a>
+                          </li>
+                          <li><a href="/ru/advanced/pm.html">Работа с диспетчерами процессов</a>
+                          </li>
+                          <li><a href="/ru/advanced/security-updates.html">Обновления системы безопасности</a>
+                          </li>
+                          <li><a href="/ru/advanced/best-practice-security.html">Лучшие практические методы в области защиты</a>
+                          </li>
+                          <li><a href="/ru/advanced/best-practice-performance.html">Лучшие практические методы улучшения производительности</a>
+                          </li>
+
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="resources-menu" class="menu">
+                  <li><a href="/ru/resources/glossary.html">Ресурсы</a>
+                      <ul>
+                          <li><a href="/ru/resources/glossary.html">Глоссарий</a>
+                          </li>
+                          <li><a href="/ru/resources/middleware.html">Промежуточный обработчик</a>
+                          </li>
+                          <li><a href="/ru/resources/community.html">Сообщество</a>
+                          </li>
+                          <li><a href="/ru/resources/books-blogs.html">Книги и блоги</a>
+                          </li>
+                          <li><a href="/ru/resources/applications.html">Приложения</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+  </div><a href="http://strongloop.com/node-js/training/" title="Обучение по Node и Express от StrongLoop" id="strongloop-header">Обучение по Express и Node.js от StrongLoop</a>
+</header>
+
+
+      <div id="overlay"></div>
+
+      
+        <div id="i18n-notice-box" class="doc-box doc-warn">
+          <p>Этот документ может быть устаревшим по отношению к документации на английском языке. Последние обновления содержатся в <a href="/">документации на английском языке</a>.
+</p>
+<p>This document might be outdated relative to the documentation in English. For the latest updates, please refer to the <a href="/">documentation in English</a>.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+
+        </div>
+      
+
+      <h1 id="section">Обработка ошибок</h1>
+
+<p>Функции промежуточного обработчика для обработки ошибок определяются так же, как и другие функции промежуточной обработки, но с указанием для функции обработки ошибок не трех, а четырех аргументов: <code class="highlighter-rouge">(err, req, res, next)</code>. Например:</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+app.use(function(err, req, res, next) {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});
+</code>
+</pre>
+
+<p>Промежуточный обработчик для обработки ошибок должен быть определен последним, после указания всех <code class="highlighter-rouge">app.use()</code> и вызовов маршрутов; например:</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+var bodyParser = require('body-parser');
+var methodOverride = require('method-override');
+
+app.use(bodyParser());
+app.use(methodOverride());
+app.use(function(err, req, res, next) {
+  // logic
+});
+</code>
+</pre>
+
+<p>Ответы, поступающие из функции промежуточной обработки, могут иметь любой формат, в зависимости от ваших предпочтений. Например, это может быть страница сообщения об ошибке HTML, простое сообщение или строка JSON.</p>
+
+<p>В целях упорядочения (и для фреймворков более высокого уровня) можно определить несколько функций промежуточной обработки ошибок, точно так же, как это допускается для обычных функций промежуточной обработки. Например, для того чтобы определить обработчик ошибок для запросов, совершаемых с помощью <code class="highlighter-rouge">XHR</code>, и для остальных запросов, можно воспользоваться следующими командами:</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+var bodyParser = require('body-parser');
+var methodOverride = require('method-override');
+
+app.use(bodyParser());
+app.use(methodOverride());
+app.use(logErrors);
+app.use(clientErrorHandler);
+app.use(errorHandler);
+</code>
+</pre>
+
+<p>В данном примере базовый код <code class="highlighter-rouge">logErrors</code> может записывать информацию о запросах и ошибках в <code class="highlighter-rouge">stderr</code>, например:</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+function logErrors(err, req, res, next) {
+  console.error(err.stack);
+  next(err);
+}
+</code>
+</pre>
+
+<p>Кроме того, в данном примере <code class="highlighter-rouge">clientErrorHandler</code> определен, как указано ниже; в таком случае ошибка явным образом передается далее следующему обработчику:</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+function clientErrorHandler(err, req, res, next) {
+  if (req.xhr) {
+    res.status(500).send({ error: 'Something failed!' });
+  } else {
+    next(err);
+  }
+}
+</code>
+</pre>
+
+<p>“Обобщающая” функция <code class="highlighter-rouge">errorHandler</code> может быть реализована так:</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+function errorHandler(err, req, res, next) {
+  res.status(500);
+  res.render('error', { error: err });
+}
+</code>
+</pre>
+
+<p>При передаче какого-либо объекта в функцию <code class="highlighter-rouge">next()</code> (кроме строки <code class="highlighter-rouge">'route'</code>), Express интерпретирует текущий запрос как ошибку и пропустит все остальные функции маршрутизации и промежуточной обработки, не являющиеся функциями обработки ошибок. Для того чтобы обработать данную ошибку определенным образом, необходимо создать маршрут обработки ошибок, как описано в следующем разделе.</p>
+
+<p>Если задан обработчик ошибок с несколькими функциями обратного вызова, можно воспользоваться параметром <code class="highlighter-rouge">route</code>, чтобы перейти к следующему обработчику маршрута.  Например:</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+app.get('/a_route_behind_paywall',
+  function checkIfPaidSubscriber(req, res, next) {
+    if(!req.user.hasPaid) {
+
+      // continue handling this request
+      next('route');
+    }
+  }, function getPaidContent(req, res, next) {
+    PaidContent.find(function(err, doc) {
+      if(err) return next(err);
+      res.json(doc);
+    });
+  });
+</code>
+</pre>
+
+<p>В данном примере обработчик <code class="highlighter-rouge">getPaidContent</code> будет пропущен, но выполнение всех остальных обработчиков в <code class="highlighter-rouge">app</code> для  <code class="highlighter-rouge">/a_route_behind_paywall</code> будет продолжено.</p>
+
+<div class="doc-box doc-info">
+  <p>Вызовы <code class="highlighter-rouge">next()</code> и <code class="highlighter-rouge">next(err)</code> указывают на завершение выполнения текущего обработчика и на его состояние.  <code class="highlighter-rouge">next(err)</code> пропускает все остальные обработчики в цепочке, кроме заданных для обработки ошибок, как описано выше.</p>
+</div>
+
+<h2 id="section-1">Стандартный обработчик ошибок</h2>
+
+<p>В Express предусмотрен встроенный обработчик ошибок, который обрабатывает любые возможные ошибки, встречающиеся в приложении. Этот стандартный обработчик ошибок добавляется в конец стека функций промежуточной обработки.</p>
+
+<p>В случае передачи ошибки в <code class="highlighter-rouge">next()</code> без обработки с помощью обработчика ошибок, такая ошибка будет обработана встроенным обработчиком ошибок. Ошибка будет записана на клиенте с помощью трассировки стека. Трассировка стека не включена в рабочую среду.</p>
+
+<div class="doc-box doc-info">
+  <p>Для запуска приложения в рабочем режиме необходимо задать для переменной среды <code class="highlighter-rouge">NODE_ENV</code> значение <code class="highlighter-rouge">production</code>.</p>
+</div>
+
+<p>При вызове <code class="highlighter-rouge">next()</code> с ошибкой после начала записи ответа
+(например, если ошибка обнаружена во время включения ответа в поток, направляемый клиенту), стандартный обработчик ошибок Express закрывает соединение и отклоняет запрос.</p>
+
+<p>Поэтому при добавлении нестандартного обработчика ошибок вам потребуется делегирование в стандартные
+механизмы обработки ошибок в Express в случае, если заголовки уже были отправлены клиенту:</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+function errorHandler(err, req, res, next) {
+  if (res.headersSent) {
+    return next(err);
+  }
+  res.status(500);
+  res.render('error', { error: err });
+}
+</code>
+</pre>
+
+
+    </section>
+
+    <!-- NLS_CHARSET=UTF-8 -->
+<noscript>
+    <iframe src="//www.googletagmanager.com/ns.html?id=GTM-5XL76H" height="0" width="0" style="display: none; visibility: hidden;"></iframe>
+</noscript>
+<script>
+(function(w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({
+        'gtm.start': new Date().getTime(),
+        event: 'gtm.js'
+    });
+    var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != 'dataLayer' ? '&l=' + l : '';
+    j.async = true;
+    j.src =
+        '//www.googletagmanager.com/gtm.js?id=' + i + dl;
+    f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-5XL76H');
+</script>
+<a id="top" href="#"><img src="/images/arrow.png"></a>
+
+<footer>
+    <div id="footer-content">
+        <div id="github">
+            <iframe src="http://ghbtns.com/github-btn.html?user=strongloop&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+        </div>
+        <div id="sponsor">Спонсором <a href="https://github.com/strongloop/express/">проекта Express</a> выступает компания <a href="http://strongloop.com/">StrongLoop</a>. </div>
+        <div id="fork"><a href="https://github.com/strongloop/expressjs.com">Создайте клон веб-сайта на GitHub</a>.
+        </div>
+        <div>Copyright &copy; StrongLoop, Inc. и других участников expressjs.com.</div>
+    </div>
+</footer>
+
+
+  </body>
+
+</html>

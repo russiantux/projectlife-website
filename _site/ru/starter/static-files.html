@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+  <head>
+    <title>Предоставление статических файлов в Express</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/dropit.css">
+    <link rel="stylesheet" href="/css/prism.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+    <link rel="stylesheet" href="/css/ru.css">        
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script data-cfasync="false" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script data-cfasync="false" src="/js/app.js"></script>
+    <script data-cfasync="false" src="/js/retina.js"></script>
+    <script data-cfasync="false" src="/js/dropit.js"></script>
+    <script data-cfasync="false" src="/js/prism.js"></script>
+</head>
+
+
+  
+  <body class="non-en-doc">
+  
+
+    <section class="page content">
+
+      <header>
+  <div id="mobile-menu">
+      <div id="nav-button" class="fa fa-bars fa-2x button"></div>
+  </div>
+  <section id="logo"><a href="/" class="express">Express</a>
+  </section>
+  <div id="navbar">
+      <ul id="navmenu">
+          <li><a href="/ru/" id="home-menu">Начальная страница</a></li>
+          <li>
+              <ul id="getting-started-menu" class="menu">
+                  <li><a href="/ru/starter/installing.html" class="active">Начало работы</a>
+                      <ul>
+                          <li>
+                            <a href="/ru/starter/installing.html">
+                              Установка
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/ru/starter/hello-world.html">
+                              Hello world
+                            </a>
+                          </li>
+                          <li>
+                          <a href="/ru/starter/generator.html">
+                            Генератор приложений Express
+                          </a>
+                          </li>
+                          <li>
+                            <a href="/ru/starter/basic-routing.html">
+                              Основы маршрутизации
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/ru/starter/static-files.html">
+                              Статические файлы
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/ru/starter/faq.html">
+                              FAQ
+                            </a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="guide-menu" class="menu">
+                  <li><a href="/ru/guide/routing.html">Руководство</a>
+                      <ul>
+                          <li><a href="/ru/guide/routing.html">Маршрутизация</a>
+                          </li>
+                          <li><a href="/ru/guide/writing-middleware.html">Написание кода промежуточных обработчиков</a>
+                          </li>
+                          <li><a href="/ru/guide/using-middleware.html">Использование промежуточных обработчиков</a>
+                          </li>
+                          <li><a href="/ru/guide/using-template-engines.html">Использование шаблонизаторов</a>
+                          </li>
+                          <li><a href="/ru/guide/error-handling.html">Обработка ошибок</a>
+                          </li>
+                          <li><a href="/ru/guide/debugging.html">Отладка</a>
+                          </li>
+                          <li><a href="/ru/guide/behind-proxies.html">Express за прокси</a>
+                          </li>
+                          <li><a href="/ru/guide/migrating-4.html">Переход к Express 4</a>
+                          </li>
+                          <li><a href="/ru/guide/migrating-5.html">Переход к Express 5</a>
+                          </li>
+                          <li><a href="/ru/guide/database-integration.html">Интеграция с базами данных</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="application-menu" class="menu">
+                  <li><a href="/ru/4x/api.html">Справочник по API</a>
+                      <ul>
+                          <li><a href="/ru/4x/api.html">4.x</a>
+                          </li>
+                          <li><a href="/ru/3x/api.html">3.x (устарел)</a>
+                          </li>
+                          <li><a href="/ru/2x/">2.x (устарел)</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="advanced-topics-menu" class="menu">
+                  <li><a href="/ru/advanced/developing-template-engines.html">Расширенные возможности</a>
+                      <ul>
+                          <li><a href="/ru/advanced/developing-template-engines.html">Шаблонизаторы</a>
+                          </li>
+                          <li><a href="/ru/advanced/pm.html">Работа с диспетчерами процессов</a>
+                          </li>
+                          <li><a href="/ru/advanced/security-updates.html">Обновления системы безопасности</a>
+                          </li>
+                          <li><a href="/ru/advanced/best-practice-security.html">Лучшие практические методы в области защиты</a>
+                          </li>
+                          <li><a href="/ru/advanced/best-practice-performance.html">Лучшие практические методы улучшения производительности</a>
+                          </li>
+
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="resources-menu" class="menu">
+                  <li><a href="/ru/resources/glossary.html">Ресурсы</a>
+                      <ul>
+                          <li><a href="/ru/resources/glossary.html">Глоссарий</a>
+                          </li>
+                          <li><a href="/ru/resources/middleware.html">Промежуточный обработчик</a>
+                          </li>
+                          <li><a href="/ru/resources/community.html">Сообщество</a>
+                          </li>
+                          <li><a href="/ru/resources/books-blogs.html">Книги и блоги</a>
+                          </li>
+                          <li><a href="/ru/resources/applications.html">Приложения</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+  </div><a href="http://strongloop.com/node-js/training/" title="Обучение по Node и Express от StrongLoop" id="strongloop-header">Обучение по Express и Node.js от StrongLoop</a>
+</header>
+
+
+      <div id="overlay"></div>
+
+      
+        <div id="i18n-notice-box" class="doc-box doc-warn">
+          <p>Этот документ может быть устаревшим по отношению к документации на английском языке. Последние обновления содержатся в <a href="/">документации на английском языке</a>.
+</p>
+<p>This document might be outdated relative to the documentation in English. For the latest updates, please refer to the <a href="/">documentation in English</a>.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+
+        </div>
+      
+
+      <h1 id="express">Предоставление статических файлов в Express</h1>
+
+<p>Для предоставления статических файлов, например, изображений, файлов CSS и JavaScript в Express используется функция промежуточной обработки <code class="highlighter-rouge">express.static</code>.</p>
+
+<p>Для того чтобы начать непосредственное предоставление файлов, необходимо передать имя каталога, в котором находятся статические ресурсы, в функцию промежуточной обработки <code class="highlighter-rouge">express.static</code>. Например, воспользуйтесь приведенным ниже кодом для предоставления изображений, файлов CSS и JavaScript, расположенных в каталоге <code class="highlighter-rouge">public</code>:</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+app.use(express.static('public'));
+</code>
+</pre>
+
+<p>Теперь можно загрузить файлы, находящиеся в каталоге <code class="highlighter-rouge">public</code> directory:</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+http://localhost:3000/images/kitten.jpg
+http://localhost:3000/css/style.css
+http://localhost:3000/js/app.js
+http://localhost:3000/images/bg.png
+http://localhost:3000/hello.html
+</code>
+</pre>
+
+<div class="doc-box doc-info">
+Express выполняет поиск файлов относительно статического каталога, поэтому имя статического каталога не является частью URL.
+</div>
+
+<p>Для использования нескольких каталогов, содержащих статические ресурсы, необходимо вызвать функцию промежуточной обработки <code class="highlighter-rouge">express.static</code> несколько раз:</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+app.use(express.static('public'));
+app.use(express.static('files'));
+</code>
+</pre>
+
+<p>Express выполняет поиск файлов в том порядке, в котором указаны статические каталоги в функции промежуточной обработки <code class="highlighter-rouge">express.static</code>.</p>
+
+<p>Для того чтобы создать префикс виртуального пути (то есть, пути, фактически не существующего в файловой системе) для файлов, предоставляемых с помощью функции <code class="highlighter-rouge">express.static</code>, необходимо <a href="/ru/4x/api.html#app.use">указать путь монтирования</a> для статического каталога, как показано ниже:</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+app.use('/static', express.static('public'));
+</code>
+</pre>
+
+<p>Теперь можно загрузить файлы, находящиеся в каталоге <code class="highlighter-rouge">public</code>, указанного в префиксе пути <code class="highlighter-rouge">/static</code>.</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+http://localhost:3000/static/images/kitten.jpg
+http://localhost:3000/static/css/style.css
+http://localhost:3000/static/js/app.js
+http://localhost:3000/static/images/bg.png
+http://localhost:3000/static/hello.html
+</code>
+</pre>
+
+<p>Тем не менее, путь, переданный в функцию <code class="highlighter-rouge">express.static</code>, указан относительно каталога, из которого запускается процесс <code class="highlighter-rouge">node</code>. В случае запуска приложения Express из другого каталога, безопаснее использовать абсолютный путь к каталогу для предоставления файлов:</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+app.use('/static', express.static(__dirname + '/public'));
+</code>
+</pre>
+
+
+    </section>
+
+    <!-- NLS_CHARSET=UTF-8 -->
+<noscript>
+    <iframe src="//www.googletagmanager.com/ns.html?id=GTM-5XL76H" height="0" width="0" style="display: none; visibility: hidden;"></iframe>
+</noscript>
+<script>
+(function(w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({
+        'gtm.start': new Date().getTime(),
+        event: 'gtm.js'
+    });
+    var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != 'dataLayer' ? '&l=' + l : '';
+    j.async = true;
+    j.src =
+        '//www.googletagmanager.com/gtm.js?id=' + i + dl;
+    f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-5XL76H');
+</script>
+<a id="top" href="#"><img src="/images/arrow.png"></a>
+
+<footer>
+    <div id="footer-content">
+        <div id="github">
+            <iframe src="http://ghbtns.com/github-btn.html?user=strongloop&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+        </div>
+        <div id="sponsor">Спонсором <a href="https://github.com/strongloop/express/">проекта Express</a> выступает компания <a href="http://strongloop.com/">StrongLoop</a>. </div>
+        <div id="fork"><a href="https://github.com/strongloop/expressjs.com">Создайте клон веб-сайта на GitHub</a>.
+        </div>
+        <div>Copyright &copy; StrongLoop, Inc. и других участников expressjs.com.</div>
+    </div>
+</footer>
+
+
+  </body>
+
+</html>

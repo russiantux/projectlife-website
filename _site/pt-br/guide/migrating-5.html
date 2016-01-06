@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+  <head>
+    <title>Migrando para o Express 5</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/dropit.css">
+    <link rel="stylesheet" href="/css/prism.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+    <link rel="stylesheet" href="/css/pt-br.css">        
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script data-cfasync="false" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script data-cfasync="false" src="/js/app.js"></script>
+    <script data-cfasync="false" src="/js/retina.js"></script>
+    <script data-cfasync="false" src="/js/dropit.js"></script>
+    <script data-cfasync="false" src="/js/prism.js"></script>
+</head>
+
+
+  
+  <body class="non-en-doc">
+  
+
+    <section class="page content">
+
+      <header>
+  <div id="mobile-menu">
+      <div id="nav-button" class="fa fa-bars fa-2x button"></div>
+  </div>
+  <section id="logo"><a href="/" class="express">Express</a>
+  </section>
+  <div id="navbar">
+      <ul id="navmenu">
+          <li><a href="/pt-br/" id="home-menu">Página Inicial</a></li>
+          <li>
+              <ul id="getting-started-menu" class="menu">
+                  <li><a href="/pt-br/starter/installing.html">Introdução</a>
+                      <ul>
+                          <li>
+                            <a href="/pt-br/starter/installing.html">
+                              Instalação
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/pt-br/starter/hello-world.html">
+                              Hello world
+                            </a>
+                          </li>
+                          <li>
+                          <a href="/pt-br/starter/generator.html">
+                            Gerador do Express
+                          </a>
+                          </li>
+                          <li>
+                            <a href="/pt-br/starter/basic-routing.html">
+                              Roteamento Básico
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/pt-br/starter/static-files.html">
+                              Arquivos Estáticos
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/pt-br/starter/faq.html">
+                              Perguntas mais frequentes
+                            </a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="guide-menu" class="menu">
+                  <li><a href="/pt-br/guide/routing.html" class="active">Guia</a>
+                      <ul>
+                          <li><a href="/pt-br/guide/routing.html">Roteamento</a>
+                          </li>
+                          <li><a href="/pt-br/guide/writing-middleware.html">Escrevendo o middleware</a>
+                          </li>
+                          <li><a href="/pt-br/guide/using-middleware.html">Usando o middleware</a>
+                          </li>
+                          <li><a href="/pt-br/guide/using-template-engines.html">Usando o mecanismo de modelo</a>
+                          </li>
+                          <li><a href="/pt-br/guide/error-handling.html">Manipulação de erros</a>
+                          </li>
+                          <li><a href="/pt-br/guide/debugging.html">Depuração</a>
+                          </li>
+                          <li><a href="/pt-br/guide/behind-proxies.html">Express atrás de proxies</a>
+                          </li>
+                          <li><a href="/pt-br/guide/migrating-4.html">Migrando para o Express 4</a>
+                          </li>
+                          <li><a href="/pt-br/guide/migrating-5.html">Migrando para o Express 5</a>
+                          </li>
+                          <li><a href="/pt-br/guide/database-integration.html">Integração de Banco de dados</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="application-menu" class="menu">
+                  <li><a href="/pt-br/4x/api.html">Referência da API</a>
+                      <ul>
+                          <li><a href="/pt-br/4x/api.html">4.x</a>
+                          </li>
+                          <li><a href="/pt-br/3x/api.html">3.x (descontinuada)</a>
+                          </li>
+                          <li><a href="/pt-br/2x/">2.x (descontinuada)</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="advanced-topics-menu" class="menu">
+                  <li><a href="/pt-br/advanced/developing-template-engines.html">Tópicos Avançados</a>
+                      <ul>
+                          <li><a href="/pt-br/advanced/developing-template-engines.html">Mecanismos de modelo</a>
+                          </li>
+                          <li><a href="/pt-br/advanced/pm.html">Usando gerenciadores de processos</a>
+                          </li>
+                          <li><a href="/pt-br/advanced/security-updates.html">Atualizações de segurança</a>
+                          </li>
+                          <li><a href="/pt-br/advanced/best-practice-security.html">Melhores práticas de segurança</a>
+                          </li>
+                          <li><a href="/pt-br/advanced/best-practice-performance.html">Melhores práticas de desempenho</a>
+                          </li>
+
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="resources-menu" class="menu">
+                  <li><a href="/pt-br/resources/glossary.html">Recursos</a>
+                      <ul>
+                          <li><a href="/pt-br/resources/glossary.html">Glossário</a>
+                          </li>
+                          <li><a href="/pt-br/resources/middleware.html">Middleware</a>
+                          </li>
+                          <li><a href="/pt-br/resources/community.html">Comunidade</a>
+                          </li>
+                          <li><a href="/pt-br/resources/books-blogs.html">Livros e blogs</a>
+                          </li>
+                          <li><a href="/pt-br/resources/applications.html">Aplicativos</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+  </div><a href="http://strongloop.com/node-js/training/" title="Treinamento de Node e Express do StrongLoop" id="strongloop-header">Treinamento de Express e Node.js do StrongLoop</a>
+</header>
+
+
+      <div id="overlay"></div>
+
+      
+        <div id="i18n-notice-box" class="doc-box doc-warn">
+          <p>Este documento pode estar desatualizado em relação à documentação em Inglês. Para obter as atualizações mais recentes, consulte a <a href="/">documentação em Inglês</a>.
+</p>
+<p>This document might be outdated relative to the documentation in English. For the latest updates, please refer to the <a href="/">documentation in English</a>.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+
+        </div>
+      
+
+      <h1 id="migrando-para-o-express-5">Migrando para o Express 5</h1>
+
+<h2 id="overview">Visão Geral</h2>
+
+<p>O Express 5.0 ainda está no estágio de liberação alfa, mas aqui
+está uma prévia das mudanças que estarão na liberação e como migrar
+seu aplicativo do Express 4 app para o Express 5.</p>
+
+<p>O Express 5 não é muito diferente do Express 4: As mudanças na
+API não são tão significantes quanto as do 3.0 para o 4.0.  Apesar de
+a API básica permanecer a mesma, ainda existem mudanças disruptivas;
+em outras palavras um programa do Express 4 existente pode não
+funcionar se você atualizá-lo para usar o Express 5.</p>
+
+<p>Para instalar o alfa mais recente e ter uma prévia do Express
+5, digite o seguinte comando no diretório raiz do seu aplicativo:</p>
+
+<pre>
+<code class="language-sh" translate="no">
+$ npm install express@5.0.0-alpha.2 --save
+</code>
+</pre>
+
+<p>É possível em seguida executar seus testes automatizados para
+verificar o que falha, e corrigir os problemas de acordo com as
+atualizações abaixo. Após endereçar as falhas nos testes, execute o
+seu aplicativo para verificar quais erros ocorrem. Você descobrirá
+imediatamente se o aplicativo utiliza quaisquer métodos ou
+propriedades que não são suportados.</p>
+
+<h2 id="changes">Mudanças no Express 5</h2>
+
+<p>Aqui está a lista de mudanças (até a liberação alpha 2) que
+irão afetá-lo como um usuário do Express.
+Consulte por
+<a href="https://github.com/strongloop/express/pull/2237">solicitação
+de pull</a> para obter uma lista de todas funcionalidades
+planejadas.</p>
+
+<p><strong>Métodos e propriedades removidas</strong></p>
+
+<ul class="doclist">
+  <li><a href="#app.del">app.del()</a></li>
+  <li><a href="#app.param">app.param(fn)</a></li>
+  <li><a href="#plural">Nomes de métodos pluralizados</a></li>
+  <li><a href="#leading">Vírgula no início no argumento nome para o  app.param(name, fn)</a></li>
+  <li><a href="#req.param">req.param(name)</a></li>
+  <li><a href="#res.json">res.json(obj, status)</a></li>
+  <li><a href="#res.jsonp">res.jsonp(obj, status)</a></li>
+  <li><a href="#res.send.body">res.send(body, status)</a></li>
+  <li><a href="#res.send.status">res.send(status)</a></li>
+  <li><a href="#res.sendfile">res.sendfile()</a></li>
+</ul>
+
+<p><strong>Mudadas</strong></p>
+
+<ul class="doclist">
+  <li><a href="#app.router">app.router</a></li>
+  <li><a href="#req.host">req.host</a></li>
+  <li><a href="#req.query">req.query</a></li>
+</ul>
+
+<p><strong>Melhorias</strong></p>
+
+<ul class="doclist">
+  <li><a href="#res.render">res.render()</a></li>
+</ul>
+
+<h3>Métodos e propriedades removidas</h3>
+
+<p>Se estiver usando qualquer um desses métodos ou propriedades
+no seu aplicativo, ele irá quebrar. Portanto, será necessário alterar
+o seu aplicativo após fazer a atualização para a versão 5.</p>
+
+<h4 id="app.del">app.del()</h4>
+
+<p>O Express 5 não suporta mais a função <code class="highlighter-rouge">app.del()</code>. Se
+você usas esta função um erro será lançado. Para registrar rotas HTTP DELETE, use a função <code class="highlighter-rouge">app.delete()</code> ao invés disso.</p>
+
+<p>Inicialmente <code class="highlighter-rouge">del</code> era usada ao invés de
+<code class="highlighter-rouge">delete</code>, porque <code class="highlighter-rouge">delete</code> é uma
+palavra-chave reservada no JavaScript. Entretanto, a partir do ECMAScript 6,
+<code class="highlighter-rouge">delete</code> e outras palavras-chave reservadas podem
+legalmente ser usadas como nomes de propriedades. É possível ler a
+discussão que levou à descontinuação da função <code class="highlighter-rouge">app.del</code> aqui.</p>
+
+<h4 id="app.param">app.param(fn)</h4>
+
+<p>A assinatura <code class="highlighter-rouge">app.param(fn)</code> foi usada para
+modificar o comportamento da função <code class="highlighter-rouge">app.param(name, fn)</code>. Ela
+foi descontinuada desde a v4.11.0, e o Express 5 não a suporta mais de nenhuma forma.</p>
+
+<h4 id="plural">Nomes de métodos pluralizados</h4>
+
+<p>Os seguintes nomes de métodos podem ser pluralizados. No
+Express 4, o uso dos métodos antigos resultava em um aviso de
+descontinuação.  O Express 5 não os suporta mais de forma nenhuma:</p>
+
+<p><code class="highlighter-rouge">req.acceptsCharset()</code> é substituído por <code class="highlighter-rouge">req.acceptsCharsets()</code>.</p>
+
+<p><code class="highlighter-rouge">req.acceptsEncoding()</code> é substituído por <code class="highlighter-rouge">req.acceptsEncodings()</code>.</p>
+
+<p><code class="highlighter-rouge">req.acceptsLanguage()</code> é substituído por <code class="highlighter-rouge">req.acceptsLanguages()</code>.</p>
+
+<h4 id="leading">Dois pontos no começo (:) do nome do app.param(name, fn)</h4>
+
+<p>Um caractere de dois pontos (:) no início do nome para a função
+<code class="highlighter-rouge">app.param(name, fn)</code> é um remanescente do Express
+3, e para fins de compatibilidade com versões anteriores, o Express 4
+suportava-o com um aviso de descontinuação. O Express 5 irá
+silenciosamente ignorá-lo e usar o nome do parâmetro sem prefixá-lo
+com os dois pontos.</p>
+
+<p>Isso não deve afetar o seu código se você seguiu a documentação
+do Express 4 do <a href="/pt-br/4x/api.html#app.param">app.param</a>, já que ela não
+menciona os dois pontos no início.</p>
+
+<h4 id="req.param">req.param(name)</h4>
+
+<p>Este é um método potencialmente confuso e perigoso de recuperação de dados de formulário foi removido. Você precisará agora especificamente olhar para o nome do parâmetro enviado no objeto <code class="highlighter-rouge">req.params</code>,
+<code class="highlighter-rouge">req.body</code>, ou <code class="highlighter-rouge">req.query</code>.</p>
+
+<h4 id="res.json">res.json(obj, status)</h4>
+
+<p>O Express 5 não suporta mais a assinatura <code class="highlighter-rouge">res.json(obj, status)</code>. Ao
+invés disso, configure o status e então encadeie-o ao método <code class="highlighter-rouge">res.json()</code> assim:
+<code class="highlighter-rouge">res.status(status).json(obj)</code>.</p>
+
+<h4 id="res.jsonp">res.jsonp(obj, status)</h4>
+
+<p>O Express 5 não suporta mais a assinatura <code class="highlighter-rouge">res.jsonp(obj, status)</code>. Ao invés disso, configure o status e então encadeie-o ao método
+<code class="highlighter-rouge">res.jsonp()</code> assim: <code class="highlighter-rouge">res.status(status).jsonp(obj)</code>.</p>
+
+<h4 id="res.send.body">res.send(body, status)</h4>
+
+<p>O Express 5 não suporta mais a assinatura <code class="highlighter-rouge">res.send(obj, status)</code>. Ao invés disso, configure o status e então encadeie-o ao método
+<code class="highlighter-rouge">res.send()</code> assim: <code class="highlighter-rouge">res.status(status).send(obj)</code>.</p>
+
+<h4 id="res.send.status">res.send(status)</h4>
+
+<p>O Express 5 não suporta mais a assinatura <code>res.send(<em>status</em>)</code>, onde <em><code class="highlighter-rouge">status</code></em>
+é um número. Ao invés disso, use a função
+<code class="highlighter-rouge">res.sendStatus(statusCode)</code>, que configura o código
+do status do cabeçalho de resposta HTTP  e envia a versão de texto do
+código: “Não Encontrado”, “Erro Interno de Servidor”, e assim por
+diante.
+Se precisar enviar um número usando a função
+<code class="highlighter-rouge">res.send()</code>, coloque o número entre aspas para
+converte-lo para um sequência de caracteres, para que o Express não o
+interprete como uma tentativa de usar a assinatura antiga não
+suportada.</p>
+
+<h4 id="res.sendfile">res.sendfile()</h4>
+
+<p>A função <code class="highlighter-rouge">res.sendfile()</code> foi substituída pela
+versão em formato camel-case <code class="highlighter-rouge">res.sendFile()</code> no
+Express 5.</p>
+
+<h3>Mudadas</h3>
+
+<h4 id="app.router">app.router</h4>
+
+<p>O objeto <code class="highlighter-rouge">app.router</code>, que foi removido no
+Express 4, está de volta no Express 5. Na nove versão, este objeto é
+apenas uma referência para o roteador Express base, diferentemente do
+Express 3, onde um aplicativo tinha que carregá-lo explicitamente.</p>
+
+<h4 id="req.host">req.host</h4>
+
+<p>No Express 4, a função <code class="highlighter-rouge">req.host</code>
+incorretamente removia o número da porta caso estivesse presente. No
+Express 5 o número da porta é mantido.</p>
+
+<h4 id="req.query">req.query</h4>
+
+<p>No Express 4.7 e do Express 5 para frente, o analisador
+sintático de consulta pode aceitar <code class="highlighter-rouge">false</code> para
+desativar  a análise sintática de sequência de consulta quando desejar
+usar sua própria função para a lógica de análise sintática de
+sequência de consultas.</p>
+
+<h3>Melhorias</h3>
+
+<h4 id="res.render">res.render()</h4>
+
+<p>Este método agora impinge comportamento assíncrono  para todos
+os mecanismos de visualização, evitando erros causados pelos
+mecanismos de visualização que tinham uma implementação síncrona e
+que violavam a interface recomendada.</p>
+
+
+    </section>
+
+    <!-- NLS_CHARSET=UTF-8 -->
+<noscript>
+    <iframe src="//www.googletagmanager.com/ns.html?id=GTM-5XL76H" height="0" width="0" style="display: none; visibility: hidden;"></iframe>
+</noscript>
+<script>
+(function(w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({
+        'gtm.start': new Date().getTime(),
+        event: 'gtm.js'
+    });
+    var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != 'dataLayer' ? '&l=' + l : '';
+    j.async = true;
+    j.src =
+        '//www.googletagmanager.com/gtm.js?id=' + i + dl;
+    f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-5XL76H');
+</script>
+<a id="top" href="#"><img src="/images/arrow.png"></a>
+
+<footer>
+    <div id="footer-content">
+        <div id="github">
+            <iframe src="http://ghbtns.com/github-btn.html?user=strongloop&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+        </div>
+        <div id="sponsor">O
+<a href="https://github.com/strongloop/express/">projeto Express</a>
+é patrocinado pelo <a href="http://strongloop.com/">StrongLoop</a>. </div>
+        <div id="fork">
+<a href="https://github.com/strongloop/expressjs.com">Crie um Fork dowebsite no GitHub</a>.
+        </div>
+        <div>Copyright &copy; StrongLoop, Inc., e outros
+contribuidores do expressjs.com.</div>
+    </div>
+</footer>
+
+
+  </body>
+
+</html>

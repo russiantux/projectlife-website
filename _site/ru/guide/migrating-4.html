@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+  <head>
+    <title>Миграция до версии Express 4</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/dropit.css">
+    <link rel="stylesheet" href="/css/prism.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+    <link rel="stylesheet" href="/css/ru.css">        
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script data-cfasync="false" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script data-cfasync="false" src="/js/app.js"></script>
+    <script data-cfasync="false" src="/js/retina.js"></script>
+    <script data-cfasync="false" src="/js/dropit.js"></script>
+    <script data-cfasync="false" src="/js/prism.js"></script>
+</head>
+
+
+  
+  <body class="non-en-doc">
+  
+
+    <section class="page content">
+
+      <header>
+  <div id="mobile-menu">
+      <div id="nav-button" class="fa fa-bars fa-2x button"></div>
+  </div>
+  <section id="logo"><a href="/" class="express">Express</a>
+  </section>
+  <div id="navbar">
+      <ul id="navmenu">
+          <li><a href="/ru/" id="home-menu">Начальная страница</a></li>
+          <li>
+              <ul id="getting-started-menu" class="menu">
+                  <li><a href="/ru/starter/installing.html">Начало работы</a>
+                      <ul>
+                          <li>
+                            <a href="/ru/starter/installing.html">
+                              Установка
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/ru/starter/hello-world.html">
+                              Hello world
+                            </a>
+                          </li>
+                          <li>
+                          <a href="/ru/starter/generator.html">
+                            Генератор приложений Express
+                          </a>
+                          </li>
+                          <li>
+                            <a href="/ru/starter/basic-routing.html">
+                              Основы маршрутизации
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/ru/starter/static-files.html">
+                              Статические файлы
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/ru/starter/faq.html">
+                              FAQ
+                            </a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="guide-menu" class="menu">
+                  <li><a href="/ru/guide/routing.html" class="active">Руководство</a>
+                      <ul>
+                          <li><a href="/ru/guide/routing.html">Маршрутизация</a>
+                          </li>
+                          <li><a href="/ru/guide/writing-middleware.html">Написание кода промежуточных обработчиков</a>
+                          </li>
+                          <li><a href="/ru/guide/using-middleware.html">Использование промежуточных обработчиков</a>
+                          </li>
+                          <li><a href="/ru/guide/using-template-engines.html">Использование шаблонизаторов</a>
+                          </li>
+                          <li><a href="/ru/guide/error-handling.html">Обработка ошибок</a>
+                          </li>
+                          <li><a href="/ru/guide/debugging.html">Отладка</a>
+                          </li>
+                          <li><a href="/ru/guide/behind-proxies.html">Express за прокси</a>
+                          </li>
+                          <li><a href="/ru/guide/migrating-4.html">Переход к Express 4</a>
+                          </li>
+                          <li><a href="/ru/guide/migrating-5.html">Переход к Express 5</a>
+                          </li>
+                          <li><a href="/ru/guide/database-integration.html">Интеграция с базами данных</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="application-menu" class="menu">
+                  <li><a href="/ru/4x/api.html">Справочник по API</a>
+                      <ul>
+                          <li><a href="/ru/4x/api.html">4.x</a>
+                          </li>
+                          <li><a href="/ru/3x/api.html">3.x (устарел)</a>
+                          </li>
+                          <li><a href="/ru/2x/">2.x (устарел)</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="advanced-topics-menu" class="menu">
+                  <li><a href="/ru/advanced/developing-template-engines.html">Расширенные возможности</a>
+                      <ul>
+                          <li><a href="/ru/advanced/developing-template-engines.html">Шаблонизаторы</a>
+                          </li>
+                          <li><a href="/ru/advanced/pm.html">Работа с диспетчерами процессов</a>
+                          </li>
+                          <li><a href="/ru/advanced/security-updates.html">Обновления системы безопасности</a>
+                          </li>
+                          <li><a href="/ru/advanced/best-practice-security.html">Лучшие практические методы в области защиты</a>
+                          </li>
+                          <li><a href="/ru/advanced/best-practice-performance.html">Лучшие практические методы улучшения производительности</a>
+                          </li>
+
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="resources-menu" class="menu">
+                  <li><a href="/ru/resources/glossary.html">Ресурсы</a>
+                      <ul>
+                          <li><a href="/ru/resources/glossary.html">Глоссарий</a>
+                          </li>
+                          <li><a href="/ru/resources/middleware.html">Промежуточный обработчик</a>
+                          </li>
+                          <li><a href="/ru/resources/community.html">Сообщество</a>
+                          </li>
+                          <li><a href="/ru/resources/books-blogs.html">Книги и блоги</a>
+                          </li>
+                          <li><a href="/ru/resources/applications.html">Приложения</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+  </div><a href="http://strongloop.com/node-js/training/" title="Обучение по Node и Express от StrongLoop" id="strongloop-header">Обучение по Express и Node.js от StrongLoop</a>
+</header>
+
+
+      <div id="overlay"></div>
+
+      
+        <div id="i18n-notice-box" class="doc-box doc-warn">
+          <p>Этот документ может быть устаревшим по отношению к документации на английском языке. Последние обновления содержатся в <a href="/">документации на английском языке</a>.
+</p>
+<p>This document might be outdated relative to the documentation in English. For the latest updates, please refer to the <a href="/">documentation in English</a>.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+
+        </div>
+      
+
+      <h1 id="express-4">Переход к Express 4</h1>
+
+<h2 id="overview">Обзор</h2>
+
+<p>Express 4, на самом деле, ломает существующий код Express 3. Это означает, что существующее приложение Express 3 не будет работать, если обновить версию Express в установленных зависимостях данного приложения.</p>
+
+<p>В этой статье содержится следующая информация:</p>
+
+<ul class="doclist">
+  <li><a href="#changes">Изменения в Express 4.</a></li>
+  <li><a href="#example-migration">Пример</a> миграции приложения Express 3 в Express 4.</li>
+  <li><a href="#app-gen">Обновление до версии генератора приложений Express 4.</a></li>
+</ul>
+
+<h2 id="changes">Изменения в Express 4</h2>
+
+<p>В Express 4 реализованы следующие существенные изменения:</p>
+
+<ul class="doclist">
+  <li><a href="#core-changes">Изменения ядра Express и системы промежуточных обработчиков.</a> Зависимости от Connect и встроенных промежуточных обработчиков были удалены, поэтому вам потребуется установить промежуточные обработчики самостоятельно.
+  </li>
+  <li><a href="#routing">Изменения в системе маршрутизации.</a></li>
+  <li><a href="#other-changes">Прочие изменения.</a></li>
+</ul>
+
+<p>См. также:</p>
+
+<ul>
+  <li><a href="https://github.com/strongloop/express/wiki/New-features-in-4.x">Новые функции в 4.x.</a></li>
+  <li><a href="https://github.com/strongloop/express/wiki/Migrating-from-3.x-to-4.x">Миграция из 3.x в 4.x.</a></li>
+</ul>
+
+<h3 id="core-changes">
+Изменения ядра Express и системы промежуточных обработчиков
+</h3>
+
+<p>Express 4 больше не является зависимым от Connect, и из его ядра удалены все встроенные промежуточные обработчики,
+за исключением функции <code class="highlighter-rouge">express.static</code>. Это означает, что теперь
+Express представляет собой независимый веб-фреймворк маршрутизации и промежуточной обработки, и обновления промежуточных обработчиков никак не влияют на новые версии и выпуски Express.</p>
+
+<p>Без встроенных промежуточных обработчиков вам необходимо явным образом установить все средства промежуточной обработки, необходимые для запуска вашего приложения. Выполните следующие действия:</p>
+
+<ol>
+  <li>Установите модуль: <code class="highlighter-rouge">npm install --save &lt;module-name&gt;</code></li>
+  <li>В своем приложении затребуйте модуль: <code class="highlighter-rouge">require('module-name')</code></li>
+  <li>Используйте модуль согласно документации к нему: <code class="highlighter-rouge">app.use( ... )</code></li>
+</ol>
+
+<p>В таблице ниже приводится список соответствий между промежуточными обработчиками Express 3 и Express 4.</p>
+
+<table class="doctable" border="1">
+<tr><th>Express 3</th><th>Express 4</th></tr>
+<tr><td><code>express.bodyParser</code></td>
+<td><a href="https://github.com/expressjs/body-parser">body-parser</a> +
+<a href="https://github.com/expressjs/multer">multer</a></td></tr>
+<tr><td><code>express.compress</code></td>
+<td><a href="https://github.com/expressjs/compression">compression</a></td></tr>
+<tr><td><code>express.cookieSession</code></td>
+<td><a href="https://github.com/expressjs/cookie-session">cookie-session</a></td></tr>
+<tr><td><code>express.cookieParser</code></td>
+<td><a href="https://github.com/expressjs/cookie-parser">cookie-parser</a></td></tr>
+<tr><td><code>express.logger</code></td>
+<td><a href="https://github.com/expressjs/morgan">morgan</a></td></tr>
+<tr><td><code>express.session</code></td>
+<td><a href="https://github.com/expressjs/session">express-session</a></td></tr>
+<tr><td><code>express.favicon</code></td>
+<td><a href="https://github.com/expressjs/serve-favicon">serve-favicon</a></td></tr>
+<tr><td><code>express.responseTime</code></td>
+<td><a href="https://github.com/expressjs/response-time">response-time</a></td></tr>
+<tr><td><code>express.errorHandler</code></td>
+<td><a href="https://github.com/expressjs/errorhandler">errorhandler</a></td></tr>
+<tr><td><code>express.methodOverride</code></td>
+<td><a href="https://github.com/expressjs/method-override">method-override</a></td></tr>
+<tr><td><code>express.timeout</code></td>
+<td><a href="https://github.com/expressjs/timeout">connect-timeout</a></td></tr>
+<tr><td><code>express.vhost</code></td>
+<td><a href="https://github.com/expressjs/vhost">vhost</a></td></tr>
+<tr><td><code>express.csrf</code></td>
+<td><a href="https://github.com/expressjs/csurf">csurf</a></td></tr>
+<tr><td><code>express.directory</code></td>
+<td><a href="https://github.com/expressjs/serve-index">serve-index</a></td></tr>
+<tr><td><code>express.static</code></td>
+<td><a href="https://github.com/expressjs/serve-static">serve-static</a></td></tr>
+</table>
+
+<p>Это <a href="https://github.com/senchalabs/connect#middleware">полный список</a> промежуточных обработчиков Express 4.</p>
+
+<p>В большинстве случаев можно просто заменить промежуточные обработчики старой, 3-й, версии на соответствующие обработчики Express 4. Дополнительную информацию можно найти в документации к модулю в GitHub.</p>
+
+<h4 id="app-use"><code>app.use</code> принимает параметры</h4>
+
+<p>В версии 4 можно использовать параметр переменной для определения пути загрузки функций промежуточной обработки, после чего считать значение параметра из обработчика маршрута.
+Например:</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+app.use('/book/:id', function(req, res, next) {
+  console.log('ID:', req.params.id);
+  next();
+});
+</code>
+</pre>
+<h3 id="routing">
+Система маршрутизации
+</h3>
+
+<p>Теперь промежуточные обработчики маршрутизации загружаются в приложения неявным образом, поэтому вам не нужно обращать внимание на порядок загрузки промежуточных обработчиков <code class="highlighter-rouge">router</code>.</p>
+
+<p>Способ определения маршрутов остается неизменным, но в системе маршрутизации предусмотрено две новые функции, предназначенные для упорядочения маршрутов:</p>
+
+<ul class="doclist">
+  <li>Новый метод <code class="highlighter-rouge">app.route()</code> - для создания обработчиков маршрутов, образующих цепочки, для пути маршрута.</li>
+  <li>Новый класс <code class="highlighter-rouge">express.Router</code> - для создания модульных монтируемых обработчиков маршрутов.</li>
+</ul>
+
+<h4 id="app-route">Метод <code>app.route()</code></h4>
+
+<p>Новый метод <code class="highlighter-rouge">app.route()</code> позволяет создавать обработчики маршрутов, образующие цепочки, для пути маршрута. Поскольку путь указан в одном расположении, удобно создавать модульные маршруты, чтобы минимизировать избыточность и количество опечаток. Дополнительная информация
+о маршрутах приводится в документации по <a href="/ru/4x/api.html#router"><code class="highlighter-rouge">Router()</code></a>.</p>
+
+<p>Ниже приведен пример объединенных в цепочку обработчиков маршрутов, определенных с помощью функции <code class="highlighter-rouge">app.route()</code>.</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+app.route('/book')
+  .get(function(req, res) {
+    res.send('Get a random book');
+  })
+  .post(function(req, res) {
+    res.send('Add a book');
+  })
+  .put(function(req, res) {
+    res.send('Update the book');
+  });
+</code>
+</pre>
+
+<h4 id="express-router">Класс <code>express.Router</code></h4>
+
+<p>Еще одной функцией, позволяющей упорядочить маршруты, является новый класс <code class="highlighter-rouge">express.Router</code>, с помощью которого можно создавать модульные монтируемые обработчики маршрутов. Экземпляр <code class="highlighter-rouge">Router</code> представляет собой комплексную систему промежуточных обработчиков и маршрутизации; по этой причине его часто называют “мини-приложением”.</p>
+
+<p>В приведенном ниже примере создается маршрутизатор в виде модуля, в него загружается промежуточный обработчик, определяется несколько маршрутов, и модуль монтируется в путь в главном приложении.</p>
+
+<p>Например, создайте файл маршрутизатора с именем <code class="highlighter-rouge">birds.js</code> в каталоге приложения со следующим содержанием:</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+var express = require('express');
+var router = express.Router();
+
+// middleware specific to this router
+router.use(function timeLog(req, res, next) {
+  console.log('Time: ', Date.now());
+  next();
+});
+// define the home page route
+router.get('/', function(req, res) {
+  res.send('Birds home page');
+});
+// define the about route
+router.get('/about', function(req, res) {
+  res.send('About birds');
+});
+
+module.exports = router;
+</code>
+</pre>
+
+<p>Потом загрузите модуль маршрутизации в приложение:</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+var birds = require('./birds');
+...
+app.use('/birds', birds);
+</code>
+</pre>
+
+<p>Данное приложение теперь сможет обрабатывать запросы, адресованные ресурсам в путях <code class="highlighter-rouge">/birds</code> и
+<code class="highlighter-rouge">/birds/about</code>, и вызывать специальный промежуточный обработчик <code class="highlighter-rouge">timeLog</code> данного маршрута.</p>
+
+<h3 id="other-changes">
+Прочие изменения
+</h3>
+
+<p>В приведенной ниже таблице перечислены прочие, не слишком масштабные, но важные изменения, внесенные в версии Express 4:</p>
+
+<table class="doctable" border="1">
+<tr>
+<th>Объект</th>
+<th>Описание</th>
+</tr>
+<tr>
+<td>Node.js</td>
+<td>Express 4 требуется Node.js 0.10.x или более поздних версий; поддержка
+Node.js 0.8.x приостановлена.</td>
+</tr>
+<tr>
+<td>
+      <p><code class="highlighter-rouge">http.createServer()</code></p>
+    </td>
+<td>
+      <p>Модуль <code class="highlighter-rouge">http</code> теперь необходим только в случае, если вам требуется работать с ним непосредственно (socket.io/SPDY/HTTPS). Приложение можно запустить с помощью функции <code class="highlighter-rouge">app.listen()</code>.</p>
+    </td>
+</tr>
+<tr>
+<td>
+      <p><code class="highlighter-rouge">app.configure()</code></p>
+    </td>
+<td>
+      <p>Функция <code class="highlighter-rouge">app.configure()</code> удалена.  Для определения среды и соответствующей настройки приложения используйте
+<code class="highlighter-rouge">process.env.NODE_ENV</code> или функцию
+<code class="highlighter-rouge">app.get('env')</code>.</p>
+    </td>
+</tr>
+<tr>
+<td>
+      <p><code class="highlighter-rouge">json spaces</code></p>
+    </td>
+<td>
+      <p>Свойство приложения <code class="highlighter-rouge">json spaces</code> в Express 4 по умолчанию отключено.</p>
+    </td>
+</tr>
+<tr>
+<td>
+      <p><code class="highlighter-rouge">req.accepted()</code></p>
+    </td>
+<td>
+      <p>Используйте <code class="highlighter-rouge">req.accepts()</code>, <code class="highlighter-rouge">req.acceptsEncodings()</code>,
+<code class="highlighter-rouge">req.acceptsCharsets()</code> и <code class="highlighter-rouge">req.acceptsLanguages()</code>.</p>
+    </td>
+</tr>
+<tr>
+<td>
+      <p><code class="highlighter-rouge">res.location()</code></p>
+    </td>
+<td>
+      <p>Относительные URL-адреса более не распознаются.</p>
+    </td>
+</tr>
+<tr>
+<td>
+      <p><code class="highlighter-rouge">req.params</code></p>
+    </td>
+<td>
+      <p>Был массив; теперь объект.</p>
+    </td>
+</tr>
+<tr>
+<td>
+      <p><code class="highlighter-rouge">res.locals</code></p>
+    </td>
+<td>
+      <p>Была функция; теперь объект.</p>
+    </td>
+</tr>
+<tr>
+<td>
+      <p><code class="highlighter-rouge">res.headerSent</code></p>
+    </td>
+<td>
+      <p>Изменен на <code class="highlighter-rouge">res.headersSent</code>.</p>
+    </td>
+</tr>
+<tr>
+<td>
+      <p><code class="highlighter-rouge">app.route</code></p>
+    </td>
+<td>
+      <p>Теперь представлен как <code class="highlighter-rouge">app.mountpath</code>.</p>
+    </td>
+</tr>
+<tr>
+<td>
+      <p><code class="highlighter-rouge">res.on('header')</code></p>
+    </td>
+<td>
+      <p>Удален.</p>
+    </td>
+</tr>
+<tr>
+<td>
+      <p><code class="highlighter-rouge">res.charset</code></p>
+    </td>
+<td>
+      <p>Удален.</p>
+    </td>
+</tr>
+<tr>
+<td>
+      <p><code class="highlighter-rouge">res.setHeader('Set-Cookie', val)</code></p>
+    </td>
+<td>
+      <p>Функциональность ограничена установкой исходного значения cookie. Для использования дополнительных функциональных возможностей применяется
+<code class="highlighter-rouge">res.cookie()</code>.</p>
+    </td>
+</tr>
+</table>
+
+<h2 id="example-migration">Пример миграции приложения</h2>
+
+<p>Ниже приводится пример миграции приложения Express 3 в Express 4.
+Рассмотрим файлы <code class="highlighter-rouge">app.js</code> и <code class="highlighter-rouge">package.json</code>.</p>
+
+<h3>
+Приложение версии 3
+</h3>
+
+<h4><code>app.js</code></h4>
+
+<p>Рассмотрим приложение Express v.3, включающее в себя следующий файл <code class="highlighter-rouge">app.js</code>:</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+var express = require('express');
+var routes = require('./routes');
+var user = require('./routes/user');
+var http = require('http');
+var path = require('path');
+
+var app = express();
+
+// all environments
+app.set('port', process.env.PORT || 3000);
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
+app.use(express.favicon());
+app.use(express.logger('dev'));
+app.use(express.methodOverride());
+app.use(express.session({ secret: 'your secret here' }));
+app.use(express.bodyParser());
+app.use(app.router);
+app.use(express.static(path.join(__dirname, 'public')));
+
+// development only
+if ('development' == app.get('env')) {
+  app.use(express.errorHandler());
+}
+
+app.get('/', routes.index);
+app.get('/users', user.list);
+
+http.createServer(app).listen(app.get('port'), function(){
+  console.log('Express server listening on port ' + app.get('port'));
+});
+</code>
+</pre>
+
+<h4><code>package.json</code></h4>
+
+<p>Сопутствующий ему файл <code class="highlighter-rouge">package.json</code> версии 3, может выглядеть примерно так:</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+{
+  "name": "application-name",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "3.12.0",
+    "jade": "*"
+  }
+}
+</code>
+</pre>
+
+<h3>
+Процесс
+</h3>
+
+<p>Процесс миграции начинается с установки обязательных промежуточных обработчиков для приложения Express 4 и обновления Express и Jade до соответствующих последних версий с помощью следующей команды:</p>
+
+<pre>
+<code class="language-sh" translate="no">
+$ npm install serve-favicon morgan method-override express-session body-parser multer errorhandler express@latest jade@latest --save
+</code>
+</pre>
+
+<p>Внесите в файл <code class="highlighter-rouge">app.js</code> следующие изменения:</p>
+
+<ol>
+  <li>
+    <p>Встроенные функции промежуточной обработки Express <code class="highlighter-rouge">express.favicon</code>,
+ <code class="highlighter-rouge">express.logger</code>, <code class="highlighter-rouge">express.methodOverride</code>,
+ <code class="highlighter-rouge">express.session</code>, <code class="highlighter-rouge">express.bodyParser</code> и
+ <code class="highlighter-rouge">express.errorHandler</code> более не доступны в объекте
+ <code class="highlighter-rouge">express</code>.  Необходимо вручную установить соответствующие им альтернативные объекты и загрузить их в приложение.</p>
+  </li>
+  <li>
+    <p>Функцию <code class="highlighter-rouge">app.router</code> загружать не нужно.
+ Она не является действительным объектом приложения Express 4, поэтому удалите код
+ <code class="highlighter-rouge">app.use(app.router);</code>.</p>
+  </li>
+  <li>
+    <p>Убедитесь в том, что функции промежуточной обработки загружаются в соответствующем порядке, - загрузите <code class="highlighter-rouge">errorHandler</code> после загрузки маршрутов приложения.</p>
+  </li>
+</ol>
+
+<h3>Приложение версии 4</h3>
+
+<h4><code>package.json</code></h4>
+
+<p>При запуске указанной выше команды <code class="highlighter-rouge">npm</code> будет выполнено обновление <code class="highlighter-rouge">package.json</code> следующим образом:</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+{
+  "name": "application-name",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.5.2",
+    "errorhandler": "^1.1.1",
+    "express": "^4.8.0",
+    "express-session": "^1.7.2",
+    "jade": "^1.5.0",
+    "method-override": "^2.1.2",
+    "morgan": "^1.2.2",
+    "multer": "^0.1.3",
+    "serve-favicon": "^2.0.1"
+  }
+}
+</code>
+</pre>
+
+<h4><code>app.js</code></h4>
+
+<p>Затем удалите недействительный код, загрузите обязательные промежуточные обработчики и внесите остальные необходимые изменения. Файл <code class="highlighter-rouge">app.js</code> будет иметь вид:</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+var http = require('http');
+var express = require('express');
+var routes = require('./routes');
+var user = require('./routes/user');
+var path = require('path');
+
+var favicon = require('serve-favicon');
+var logger = require('morgan');
+var methodOverride = require('method-override');
+var session = require('express-session');
+var bodyParser = require('body-parser');
+var multer = require('multer');
+var errorHandler = require('errorhandler');
+
+var app = express();
+
+// all environments
+app.set('port', process.env.PORT || 3000);
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
+app.use(favicon(__dirname + '/public/favicon.ico'));
+app.use(logger('dev'));
+app.use(methodOverride());
+app.use(session({ resave: true,
+                  saveUninitialized: true,
+                  secret: 'uwotm8' }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(multer());
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.get('/', routes.index);
+app.get('/users', user.list);
+
+// error handling middleware should be loaded after the loading the routes
+if ('development' == app.get('env')) {
+  app.use(errorHandler());
+}
+
+var server = http.createServer(app);
+server.listen(app.get('port'), function(){
+  console.log('Express server listening on port ' + app.get('port'));
+});
+</code>
+</pre>
+
+<div class="doc-box doc-info">
+  <p>Если вам не нужно работать непосредственно с модулем <code class="highlighter-rouge">http</code> (socket.io/SPDY/HTTPS), загружать его не обязательно, а приложение можно просто запустить следующим образом:</p>
+  <pre>
+<code class="language-js" translate="no">app.listen(app.get('port'), function(){
+  console.log('Express server listening on port ' + app.get('port'));
+});</code>
+</pre>
+</div>
+
+<h3>Запустите приложение</h3>
+
+<p>Процесс миграции завершен, и данное приложение теперь является приложением версии
+Express 4. Для подтверждения запустите приложение с помощью следующей команды:</p>
+
+<pre>
+<code class="language-sh" translate="no">
+$ node .
+</code>
+</pre>
+
+<p>Загрузите <a href="http://localhost:3000">http://localhost:3000</a>. Будет отображена домашняя страница в Express 4.</p>
+
+<h2 id="app-gen">Обновление до версии генератора приложений Express 4</h2>
+
+<p>Инструмент командной строки для генерации приложений Express остается неизменным -
+  <code class="highlighter-rouge">express</code>, но для обновления его до новой версии необходимо удалить установку
+  генератора приложений Express 3, а затем установить новый <code class="highlighter-rouge">express-generator</code>.</p>
+
+<h3>Установка </h3>
+
+<p>Если в системе уже установлен генератор приложений Express 3, его необходимо удалить:</p>
+
+<pre>
+<code class="language-sh" translate="no">
+$ npm uninstall -g express
+</code>
+</pre>
+<p>В зависимости от настроек прав доступа к файлам и каталогам, эту команду, возможно, следует вызвать с помощью <code class="highlighter-rouge">sudo</code>.</p>
+
+<p>Теперь установите новый генератор:</p>
+
+<pre>
+<code class="language-sh" translate="no">
+$ npm install -g express-generator
+</code>
+</pre>
+
+<p>В зависимости от настроек прав доступа к файлам и каталогам, эту команду, возможно, следует вызвать с помощью <code class="highlighter-rouge">sudo</code>.</p>
+
+<p>Итак, команда <code class="highlighter-rouge">express</code> в вашей системе обновлена до версии генератора
+Express 4.</p>
+
+<h3>Изменения генератора приложений </h3>
+
+<p>Опции команд и их использование, в основном, остались без изменений, за исключением следующих:</p>
+
+<ul class="doclist">
+  <li>Удалена опция <code class="highlighter-rouge">--sessions</code>.</li>
+  <li>Удалена опция <code class="highlighter-rouge">--jshtml</code>.</li>
+  <li>Добавлена опция <code class="highlighter-rouge">--hogan</code> для поддержки <a href="http://twitter.github.io/hogan.js/">Hogan.js</a>.</li>
+</ul>
+
+<h3>Пример</h3>
+
+<p>Выполните следующую команду для создания приложения Express 4:</p>
+
+<pre>
+<code class="language-sh" translate="no">
+$ express app4
+</code>
+</pre>
+
+<p>Обратив внимание на содержимое файла <code class="highlighter-rouge">app4/app.js</code>, вы заметите, что все функции
+промежуточной обработки (кроме <code class="highlighter-rouge">express.static</code>), обязательные для приложения, загружаются
+как независимые модули, а промежуточный обработчик <code class="highlighter-rouge">router</code> больше не загружается в приложение явным образом.</p>
+
+<p>Также вы заметите, что файл <code class="highlighter-rouge">app.js</code> теперь является модулем Node.js, а не самостоятельным приложением, которое генерировалось старой версией генератора.</p>
+
+<p>После установки зависимостей запустите приложение с помощью следующей команды:</p>
+
+<pre>
+<code class="language-sh" translate="no">
+$ npm start
+</code>
+</pre>
+
+<p>Обратив внимание на сценарий запуска npm в файле <code class="highlighter-rouge">package.json</code>,
+вы заметите, что, фактически, командой, запускающей приложение, является
+<code class="highlighter-rouge">node ./bin/www</code>, которой в Express 3 соответствовала команда <code class="highlighter-rouge">node app.js</code>.</p>
+
+<p>Поскольку файл <code class="highlighter-rouge">app.js</code>, созданный генератором Express 4, теперь является модулем
+Node.js, его уже нельзя запускать отдельно как приложение (если не изменить код). Модуль необходимо загрузить в файл Node.js и запустить через файл Node.js. В данном случае, файлом Node.js является <code class="highlighter-rouge">./bin/www</code>.</p>
+
+<p>Ни каталог <code class="highlighter-rouge">bin</code>, ни файл <code class="highlighter-rouge">www</code> без расширения
+не являются обязательными для создания приложения Express или запуска такого приложения. Это всего лишь
+рекомендованные генератором значения, которые можно менять в соответствии с вашими потребностями.</p>
+
+<p>Для того чтобы избавиться от каталога <code class="highlighter-rouge">www</code> и оставить все, “как было в Express 3”,
+удалите строку <code class="highlighter-rouge">module.exports = app;</code> в конце файла
+<code class="highlighter-rouge">app.js</code>, а вместо нее вставьте следующий код:</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+app.set('port', process.env.PORT || 3000);
+
+var server = app.listen(app.get('port'), function() {
+  debug('Express server listening on port ' + server.address().port);
+});
+</code>
+</pre>
+
+<p>Убедитесь в том, что вы загрузили модуль <code class="highlighter-rouge">debug</code> в начало файла <code class="highlighter-rouge">app.js</code> с помощью следующего кода:</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+var debug = require('debug')('app4');
+</code>
+</pre>
+
+<p>Далее, замените <code class="highlighter-rouge">"start": "node ./bin/www"</code> в файле <code class="highlighter-rouge">package.json</code> на <code class="highlighter-rouge">"start": "node app.js"</code>.</p>
+
+<p>Итак, функциональность <code class="highlighter-rouge">./bin/www</code> была перемещена обратно в
+<code class="highlighter-rouge">app.js</code>.  Такое изменение не является рекомендованным, но цель данного упражнения заключалась в том, чтобы помочь вам разобраться в принципах работы файла <code class="highlighter-rouge">./bin/www</code> и понять, почему файл <code class="highlighter-rouge">app.js</code> теперь нельзя запускать как самостоятельный.</p>
+
+
+    </section>
+
+    <!-- NLS_CHARSET=UTF-8 -->
+<noscript>
+    <iframe src="//www.googletagmanager.com/ns.html?id=GTM-5XL76H" height="0" width="0" style="display: none; visibility: hidden;"></iframe>
+</noscript>
+<script>
+(function(w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({
+        'gtm.start': new Date().getTime(),
+        event: 'gtm.js'
+    });
+    var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != 'dataLayer' ? '&l=' + l : '';
+    j.async = true;
+    j.src =
+        '//www.googletagmanager.com/gtm.js?id=' + i + dl;
+    f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-5XL76H');
+</script>
+<a id="top" href="#"><img src="/images/arrow.png"></a>
+
+<footer>
+    <div id="footer-content">
+        <div id="github">
+            <iframe src="http://ghbtns.com/github-btn.html?user=strongloop&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+        </div>
+        <div id="sponsor">Спонсором <a href="https://github.com/strongloop/express/">проекта Express</a> выступает компания <a href="http://strongloop.com/">StrongLoop</a>. </div>
+        <div id="fork"><a href="https://github.com/strongloop/expressjs.com">Создайте клон веб-сайта на GitHub</a>.
+        </div>
+        <div>Copyright &copy; StrongLoop, Inc. и других участников expressjs.com.</div>
+    </div>
+</footer>
+
+
+  </body>
+
+</html>

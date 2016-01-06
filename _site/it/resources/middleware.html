@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="it">
+
+  <head>
+    <title>Middleware Express</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/dropit.css">
+    <link rel="stylesheet" href="/css/prism.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+    <link rel="stylesheet" href="/css/it.css">        
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script data-cfasync="false" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script data-cfasync="false" src="/js/app.js"></script>
+    <script data-cfasync="false" src="/js/retina.js"></script>
+    <script data-cfasync="false" src="/js/dropit.js"></script>
+    <script data-cfasync="false" src="/js/prism.js"></script>
+</head>
+
+
+  
+  <body class="non-en-doc">
+  
+
+    <section class="page content">
+
+      ﻿<header>
+  <div id="mobile-menu">
+      <div id="nav-button" class="fa fa-bars fa-2x button"></div>
+  </div>
+  <section id="logo"><a href="/" class="express">Express</a>
+  </section>
+  <div id="navbar">
+      <ul id="navmenu">
+          <li><a href="/it/" id="home-menu">Home</a></li>
+          <li>
+              <ul id="getting-started-menu" class="menu">
+                  <li><a href="/it/starter/installing.html">Introduzione</a>
+                      <ul>
+                          <li>
+                            <a href="/it/starter/installing.html">
+                              Installazione</a>
+                          </li>
+                          <li>
+                            <a href="/it/starter/hello-world.html">
+                              Hello world
+                            </a>
+                          </li>
+                          <li>
+                          <a href="/it/starter/generator.html">
+                            Programma di creazione Express
+                          </a>
+                          </li>
+                          <li>
+                            <a href="/it/starter/basic-routing.html">
+                              Routing di base</a>
+                          </li>
+                          <li>
+                            <a href="/it/starter/static-files.html">
+                              File statici
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/it/starter/faq.html">
+                              FAQ</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="guide-menu" class="menu">
+                  <li><a href="/it/guide/routing.html">Guida</a>
+                      <ul>
+                          <li><a href="/it/guide/routing.html">Routing</a>
+                          </li>
+                          <li><a href="/it/guide/writing-middleware.html">Scrittura del middleware</a>
+                          </li>
+                          <li><a href="/it/guide/using-middleware.html">Utilizzo del middleware</a>
+                          </li>
+                          <li><a href="/it/guide/using-template-engines.html">Utilizzo dei motori di template</a>
+                          </li>
+                          <li><a href="/it/guide/error-handling.html">Gestione degli errori</a>
+                          </li>
+                          <li><a href="/it/guide/debugging.html">Debug</a>
+                          </li>
+                          <li><a href="/it/guide/behind-proxies.html">Express con i proxy</a>
+                          </li>
+                          <li><a href="/it/guide/migrating-4.html">Passaggio a Express 4</a>
+                          </li>
+                          <li><a href="/it/guide/migrating-5.html">Passaggio a Express 5</a>
+                          </li>
+                          <li><a href="/it/guide/database-integration.html">Integrazione database</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="application-menu" class="menu">
+                  <li><a href="/it/4x/api.html">Riferimento API</a>
+                      <ul>
+                          <li><a href="/it/4x/api.html">4.x</a>
+                          </li>
+                          <li><a href="/it/3x/api.html">3.x (deprecato)</a>
+                          </li>
+                          <li><a href="/it/2x/">2.x (deprecato)</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="advanced-topics-menu" class="menu">
+                  <li><a href="/it/advanced/developing-template-engines.html">Argomenti avanzati</a>
+                      <ul>
+                          <li><a href="/it/advanced/developing-template-engines.html">Motori di template</a>
+                          </li>
+                          <li><a href="/it/advanced/pm.html">Utilizzo dei process manager</a>
+                          </li>
+                          <li><a href="/it/advanced/security-updates.html">Aggiornamenti sulla sicurezza</a>
+                          </li>
+                          <li><a href="/it/advanced/best-practice-security.html">Best practice sulla sicurezza</a>
+                          </li>
+                          <li><a href="/it/advanced/best-practice-performance.html">Best practice sulle prestazioni</a>
+                          </li>
+
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="resources-menu" class="menu">
+                  <li><a href="/it/resources/glossary.html" class="active">Risorse</a>
+                      <ul>
+                          <li><a href="/it/resources/glossary.html">Glossario</a>
+                          </li>
+                          <li><a href="/it/resources/middleware.html">Middleware</a>
+                          </li>
+                          <li><a href="/it/resources/community.html">Community</a>
+                          </li>
+                          <li><a href="/it/resources/books-blogs.html">Manuali e blog</a>
+                          </li>
+                          <li><a href="/it/resources/applications.html">Applicazioni</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+  </div><a href="http://strongloop.com/node-js/training/" title="Formazione di Node ed Express da StrongLoop" id="strongloop-header">Formazione di Express e Node.js da StrongLoop</a>
+</header>
+
+
+      <div id="overlay"></div>
+
+      
+        <div id="i18n-notice-box" class="doc-box doc-warn">
+          <p>È possibile che questo documento non sia aggiornato poiché la documentazione è in inglese. Per gli ultimi aggiornamenti, fare riferimento alla <a href="/">documentazione in inglese</a>.
+</p>
+<p>This document might be outdated relative to the documentation in English. For the latest updates, please refer to the <a href="/">documentation in English</a>.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+
+        </div>
+      
+
+      <h1 id="middleware-di-terzi">Middleware di terzi</h1>
+
+<p>Di seguito vengono riportati alcuni moduli middleware Express:</p>
+
+<ul>
+  <li><a href="https://github.com/expressjs/body-parser">body-parser</a>: in precedenza <code class="highlighter-rouge">express.bodyParser</code>, <code class="highlighter-rouge">json</code> e <code class="highlighter-rouge">urlencoded</code>.
+  Consultare inoltre:
+    <ul>
+      <li><a href="https://github.com/raynos/body">body</a></li>
+      <li><a href="https://github.com/visionmedia/co-body">co-body</a></li>
+      <li><a href="https://github.com/stream-utils/raw-body">raw-body</a></li>
+    </ul>
+  </li>
+  <li><a href="https://github.com/expressjs/compression">compression</a>: in precedenza <code class="highlighter-rouge">express.compress</code></li>
+  <li><a href="https://github.com/msemenistyi/connect-image-optimus">connect-image-optimus</a>: moduli middleware Connect/Express per una gestione dell’immagine ottimale. Se possibile, cambia le estensioni delle immagini a <code class="highlighter-rouge">.webp</code> o <code class="highlighter-rouge">.jxr</code>.</li>
+  <li><a href="https://github.com/expressjs/timeout">connect-timeout</a>: in precedenza <code class="highlighter-rouge">express.timeout</code></li>
+  <li><a href="https://github.com/expressjs/cookie-parser">cookie-parser</a>: in precedenza <code class="highlighter-rouge">express.cookieParser</code></li>
+  <li><a href="https://github.com/expressjs/cookie-session">cookie-session</a>: in precedenza <code class="highlighter-rouge">express.cookieSession</code></li>
+  <li><a href="https://github.com/expressjs/csurf">csurf</a>: in precedenza <code class="highlighter-rouge">express.csrf</code></li>
+  <li><a href="https://github.com/expressjs/errorhandler">errorhandler</a>: in precedenza <code class="highlighter-rouge">express.errorHandler</code></li>
+  <li><a href="https://github.com/devoidfury/express-debug">express-debug</a>: uno strumento di sviluppo riservato che aggiunge una scheda contenente informazioni sulle variabili di template (locali), sessione corrente, dati della richiesta utili e altro ancora all’applicazione.</li>
+  <li><a href="https://github.com/nemtsov/express-partial-response">express-partial-response</a>: modulo middleware Express per filtrare le parti delle risposte JSON in base alla stringa query <code class="highlighter-rouge">fields</code>; utilizzando una risposta parziale API Google.</li>
+  <li><a href="https://github.com/expressjs/session">express-session</a>: in precedenza <code class="highlighter-rouge">express.session</code></li>
+  <li><a href="https://github.com/jamiesteven/express-simple-cdn">express-simple-cdn</a>: modulo middleware Express per l’utilizzo di un CDN per asset statici, con supporto host multiplo (Ad esempio: cdn1.host.com, cdn2.host.com).</li>
+  <li><a href="https://github.com/ericf/express-slash">express-slash</a>: modulo middleware Express per persone che sono rigide sull’utilizzo di barre.</li>
+  <li><a href="https://github.com/stormpath/stormpath-express">express-stormpath</a>: modulo middleware Express per lo storage utente, autenticazione, autorizzazione, SSO e sicurezza dati.</li>
+  <li><a href="https://github.com/jamiesteven/express-uncapitalize">express-uncapitalize</a>: modulo middleware per il reindirizzamento delle richieste HTTP contenenti caratteri maiuscoli per una forma con caratteri minuscoli canonica.</li>
+  <li><a href="https://github.com/helmetjs/helmet">helmet</a>: modulo che aiuta a proteggere le applicazioni impostando varie intestazioni HTTP.</li>
+  <li><a href="https://github.com/coderaiser/join-io" title="join-io">join-io</a>: modulo per unire i file in entrata per ridurre il conteggio delle richieste.</li>
+  <li><a href="https://github.com/expressjs/method-override">method-override</a>: in precedenza <code class="highlighter-rouge">express.methodOverride</code></li>
+  <li><a href="https://github.com/expressjs/morgan">morgan</a>: in precedenza <code class="highlighter-rouge">logger</code></li>
+  <li><a href="https://github.com/jaredhanson/passport">passport</a>: modulo middleware Express per l’autenticazione.</li>
+  <li><a href="https://github.com/expressjs/response-time">response-time</a>: in precedenza <code class="highlighter-rouge">express.responseTime</code></li>
+  <li><a href="https://github.com/expressjs/serve-favicon">serve-favicon</a>: in precedenza <code class="highlighter-rouge">express.favicon</code></li>
+  <li><a href="https://github.com/expressjs/serve-index">serve-index</a>: in precedenza <code class="highlighter-rouge">express.directory</code></li>
+  <li><a href="https://github.com/expressjs/serve-static">serve-static</a>: modulo per gestire i contenuti statici.</li>
+  <li><a href="https://github.com/paulwalker/connect-static-expiry">static-expiry</a>: URL riconosciute o Caching Header per asset statici incluso il supporto per uno o più domini esterni.</li>
+  <li><a href="https://github.com/expressjs/vhost">vhost</a>: in precedenza <code class="highlighter-rouge">express.vhost</code></li>
+  <li><a href="https://github.com/madhums/node-view-helpers">view-helpers</a>: modulo middleware Express che fornisce metodi di aiuto comuni per le viste.</li>
+  <li><a href="https://github.com/hdngr/siracha">sriracha-admin</a>: modulo middleware Express che crea in modo dinamico un sito admin per Mongoose.</li>
+</ul>
+
+<p>Alcuni moduli middleware precedentemente inclusi in Connect non sono più supportati dal team di Connect/Express. Questi moduli sono stati sostituiti da un modulo alternativo o dovrebbero essere sostituiti a un modulo migliore. Utilizzare una delle seguenti alternative:</p>
+
+<ul>
+  <li>express.cookieParser
+    <ul>
+      <li><a href="https://github.com/jed/cookies">cookie</a> e <a href="https://github.com/jed/keygrip">keygrip</a></li>
+    </ul>
+  </li>
+  <li>express.limit
+    <ul>
+      <li><a href="https://github.com/stream-utils/raw-body">raw-body</a></li>
+    </ul>
+  </li>
+  <li>express.multipart
+    <ul>
+      <li><a href="https://github.com/mscdex/connect-busboy">connect-busboy</a></li>
+      <li><a href="https://github.com/expressjs/multer">multer</a></li>
+      <li><a href="https://github.com/superjoe30/connect-multiparty">connect-multiparty</a></li>
+    </ul>
+  </li>
+  <li>express.query
+    <ul>
+      <li><a href="https://github.com/visionmedia/node-querystring">qs</a></li>
+    </ul>
+  </li>
+  <li>express.staticCache
+    <ul>
+      <li><a href="https://github.com/isaacs/st">st</a></li>
+      <li><a href="https://github.com/andrewrk/connect-static">connect-static</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p>Per ulteriori moduli middleware, consultare:</p>
+
+<ul>
+  <li><a href="https://github.com/Raynos/http-framework/wiki/Modules">http-framework</a></li>
+  <li><a href="https://github.com/expressjs">expressjs</a></li>
+</ul>
+
+
+    </section>
+
+    <!-- NLS_CHARSET=UTF-8 -->
+<noscript>
+    <iframe src="//www.googletagmanager.com/ns.html?id=GTM-5XL76H" height="0" width="0" style="display: none; visibility: hidden;"></iframe>
+</noscript>
+<script>
+(function(w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({
+        'gtm.start': new Date().getTime(),
+        event: 'gtm.js'
+    });
+    var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != 'dataLayer' ? '&l=' + l : '';
+    j.async = true;
+    j.src =
+        '//www.googletagmanager.com/gtm.js?id=' + i + dl;
+    f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-5XL76H');
+</script>
+<a id="top" href="#"><img src="/images/arrow.png"></a>
+
+<footer>
+    <div id="footer-content">
+        <div id="github">
+            <iframe src="http://ghbtns.com/github-btn.html?user=strongloop&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+        </div>
+        <div id="sponsor">Il <a href="https://github.com/strongloop/express/">progetto Express</a> è sponsorizzato da <a href="http://strongloop.com/">StrongLoop</a>. </div>
+        <div id="fork"><a href="https://github.com/strongloop/expressjs.com">Avviare il sito web su GitHub</a>.
+        </div>
+        <div>Copyright &copy; StrongLoop, Inc. e altri contributor di expressjs.com.</div>
+    </div>
+</footer>
+
+
+  </body>
+
+</html>

@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+  <head>
+    <title>编写中间件以用于 Express 应用程序</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/dropit.css">
+    <link rel="stylesheet" href="/css/prism.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+    <link rel="stylesheet" href="/css/zh-cn.css">        
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script data-cfasync="false" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script data-cfasync="false" src="/js/app.js"></script>
+    <script data-cfasync="false" src="/js/retina.js"></script>
+    <script data-cfasync="false" src="/js/dropit.js"></script>
+    <script data-cfasync="false" src="/js/prism.js"></script>
+</head>
+
+
+  
+  <body class="non-en-doc">
+  
+
+    <section class="page content">
+
+      <header>
+  <div id="mobile-menu">
+      <div id="nav-button" class="fa fa-bars fa-2x button"></div>
+  </div>
+  <section id="logo"><a href="/" class="express">Express</a>
+  </section>
+  <div id="navbar">
+      <ul id="navmenu">
+          <li><a href="/zh-cn/" id="home-menu">主页</a></li>
+          <li>
+              <ul id="getting-started-menu" class="menu">
+                  <li><a href="/zh-cn/starter/installing.html">入门</a>
+                      <ul>
+                          <li>
+                            <a href="/zh-cn/starter/installing.html">
+                              安装
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/zh-cn/starter/hello-world.html">
+                              Hello world
+                            </a>
+                          </li>
+                          <li>
+                          <a href="/zh-cn/starter/generator.html">
+                            Express 生成器
+                          </a>
+                          </li>
+                          <li>
+                            <a href="/zh-cn/starter/basic-routing.html">
+                              基本路由
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/zh-cn/starter/static-files.html">
+                              静态文件
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/zh-cn/starter/faq.html">
+                              常见问题及解答
+                            </a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="guide-menu" class="menu">
+                  <li><a href="/zh-cn/guide/routing.html" class="active">指南</a>
+                      <ul>
+                          <li><a href="/zh-cn/guide/routing.html">路由</a>
+                          </li>
+                          <li><a href="/zh-cn/guide/writing-middleware.html">编写中间件</a>
+                          </li>
+                          <li><a href="/zh-cn/guide/using-middleware.html">使用中间件</a>
+                          </li>
+                          <li><a href="/zh-cn/guide/using-template-engines.html">使用模板引擎</a>
+                          </li>
+                          <li><a href="/zh-cn/guide/error-handling.html">错误处理</a>
+                          </li>
+                          <li><a href="/zh-cn/guide/debugging.html">调试</a>
+                          </li>
+                          <li><a href="/zh-cn/guide/behind-proxies.html">代理背后的 Express</a>
+                          </li>
+                          <li><a href="/zh-cn/guide/migrating-4.html">迁移到 Express 4</a>
+                          </li>
+                          <li><a href="/zh-cn/guide/migrating-5.html">迁移到 Express 5</a>
+                          </li>
+                          <li><a href="/zh-cn/guide/database-integration.html">数据库集成</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="application-menu" class="menu">
+                  <li><a href="/zh-cn/4x/api.html">API 参考</a>
+                      <ul>
+                          <li><a href="/zh-cn/4x/api.html">4.x</a>
+                          </li>
+                          <li><a href="/zh-cn/3x/api.html">3.x（不推荐）</a>
+                          </li>
+                          <li><a href="/zh-cn/2x/">2.x（不推荐）</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="advanced-topics-menu" class="menu">
+                  <li><a href="/zh-cn/advanced/developing-template-engines.html">高级主题</a>
+                      <ul>
+                          <li><a href="/zh-cn/advanced/developing-template-engines.html">模板引擎</a>
+                          </li>
+                          <li><a href="/zh-cn/advanced/pm.html">使用进程管理器</a>
+                          </li>
+                          <li><a href="/zh-cn/advanced/security-updates.html">安全更新</a>
+                          </li>
+                          <li><a href="/zh-cn/advanced/best-practice-security.html">安全最佳实践</a>
+                          </li>
+                          <li><a href="/zh-cn/advanced/best-practice-performance.html">性能最佳实践</a>
+                          </li>
+
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="resources-menu" class="menu">
+                  <li><a href="/zh-cn/resources/glossary.html">资源</a>
+                      <ul>
+                          <li><a href="/zh-cn/resources/glossary.html">词汇表</a>
+                          </li>
+                          <li><a href="/zh-cn/resources/middleware.html">中间件</a>
+                          </li>
+                          <li><a href="/zh-cn/resources/community.html">社区</a>
+                          </li>
+                          <li><a href="/zh-cn/resources/books-blogs.html">书籍和博客</a>
+                          </li>
+                          <li><a href="/zh-cn/resources/applications.html">应用程序</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+  </div><a href="http://strongloop.com/node-js/training/" title="来自 StrongLoop 的 Node 和 Express 培训" id="strongloop-header">来自 StrongLoop 的 Express 和 Node.js 培训</a>
+</header>
+
+
+      <div id="overlay"></div>
+
+      
+        <div id="i18n-notice-box" class="doc-box doc-warn">
+          <p>相对于英文版的文档，本文档可能已过时。要了解最近的更新，请参阅<a href="/">英文版文档</a>。
+</p>
+<p>This document might be outdated relative to the documentation in English. For the latest updates, please refer to the <a href="/">documentation in English</a>.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+
+        </div>
+      
+
+      <h1 id="express-">编写中间件以用于 Express 应用程序</h1>
+
+<h2>概述</h2>
+
+<p><em>中间件</em>函数能够访问<a href="/zh-cn/4x/api.html#req">请求对象</a> (<code class="highlighter-rouge">req</code>)、<a href="/zh-cn/4x/api.html#res">响应对象</a> (<code class="highlighter-rouge">res</code>) 以及应用程序的请求/响应循环中的下一个中间件函数。下一个中间件函数通常由名为 <code class="highlighter-rouge">next</code> 的变量来表示。</p>
+
+<p>中间件函数可以执行以下任务：</p>
+
+<ul>
+  <li>执行任何代码。</li>
+  <li>对请求和响应对象进行更改。</li>
+  <li>结束请求/响应循环。</li>
+  <li>调用堆栈中的下一个中间件。</li>
+</ul>
+
+<p>如果当前中间件函数没有结束请求/响应循环，那么它必须调用 <code class="highlighter-rouge">next()</code>，以将控制权传递给下一个中间件函数。否则，请求将保持挂起状态。</p>
+
+<p>以下示例显示中间件函数调用的元素：</p>
+
+<table id="mw-fig"> 
+<tr><td id="mw-fig-imgcell">
+<img src="/images/express-mw.png" id="mw-fig-img" />
+</td>
+<td class="mw-fig-callouts">
+<div class="callout" id="callout1">中间件函数适用的 HTTP 方法。</div>
+
+<div class="callout" id="callout2">中间件函数适用的路径（路由）。</div>
+
+<div class="callout" id="callout3">中间件函数。</div>
+
+<div class="callout" id="callout4">中间件函数的回调自变量，按约定称为“next”。</div>
+
+<div class="callout" id="callout5">中间件函数的 HTTP <a href="../4x/api.html#res">响应</a>自变量，按约定称为“res”。</div>
+
+<div class="callout" id="callout6">中间件函数的 HTTP <a href="../4x/api.html#req">请求</a>自变量，按约定称为“req”。</div>
+</td></tr>
+</table>
+
+<p>以下是“Hello World”Express 应用程序的简单示例，将为其定义两个中间件函数：</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+var express = require('express');
+var app = express();
+
+app.get('/', function (req, res) {
+  res.send('Hello World!');
+});
+
+app.listen(3000);
+</code>
+</pre>
+
+<h2>开发</h2>
+
+<p>以下是称为“myLogger”的中间件函数的简单示例。此函数仅在应用程序的请求通过它时显示“LOGGED”。中间件函数会分配给名为 <code class="highlighter-rouge">myLogger</code> 的变量。</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+var myLogger = function (req, res, next) {
+  console.log('LOGGED');
+  next();
+};
+</code>
+</pre>
+
+<div class="doc-box doc-notice">
+  <p>请注意以上对 <code class="highlighter-rouge">next()</code> 的调用。调用此函数时，将调用应用程序中的下一个中间件函数。
+<code class="highlighter-rouge">next()</code> 函数不是 Node.js 或 Express API 的一部分，而是传递给中间件函数的第三自变量。<code class="highlighter-rouge">next()</code> 函数可以命名为任何名称，但是按约定，始终命名为“next”。为了避免混淆，请始终使用此约定。</p>
+</div>
+
+<p>要装入中间件函数，请调用 <code class="highlighter-rouge">app.use()</code> 并指定中间件函数。
+例如，以下代码在根路径 (/) 的路由之前装入 <code class="highlighter-rouge">myLogger</code> 中间件函数。</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+var express = require('express');
+var app = express();
+
+var myLogger = function (req, res, next) {
+  console.log('LOGGED');
+  next();
+};
+
+app.use(myLogger);
+
+app.get('/', function (req, res) {
+  res.send('Hello World!');
+});
+
+app.listen(3000);
+</code>
+</pre>
+
+<p>应用程序每次收到请求时，会在终端上显示消息“LOGGED”。</p>
+
+<p>中间件装入顺序很重要：首先装入的中间件函数也首先被执行。</p>
+
+<p>如果在根路径的路由之后装入 <code class="highlighter-rouge">myLogger</code>，那么请求永远都不会到达该函数，应用程序也不会显示“LOGGED”，因为根路径的路由处理程序终止了请求/响应循环。</p>
+
+<p>中间件函数 <code class="highlighter-rouge">myLogger</code> 只是显示消息，然后通过调用 <code class="highlighter-rouge">next()</code> 函数将请求传递到堆栈中的下一个中间件函数。</p>
+
+<p>下一个示例将名为 <code class="highlighter-rouge">requestTime</code> 的属性添加到请求对象。我们将此中间件函数命名为“requestTime”。</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+var requestTime = function (req, res, next) {
+  req.requestTime = Date.now();
+  next();
+};
+</code>
+</pre>
+
+<p>现在，该应用程序使用 <code class="highlighter-rouge">requestTime</code> 中间件函数。此外，根路径路由的回调函数使用由中间件函数添加到 <code class="highlighter-rouge">req</code>（请求对象）的属性。</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+var express = require('express');
+var app = express();
+
+var requestTime = function (req, res, next) {
+  req.requestTime = Date.now();
+  next();
+};
+
+app.use(requestTime);
+
+app.get('/', function (req, res) {
+  var responseText = 'Hello World!<br />';
+  responseText += '<small>Requested at: ' + req.requestTime + '</small>';
+  res.send(responseText);
+});
+
+app.listen(3000);
+</code>
+</pre>
+
+<p>您向应用程序根发出请求时，此应用程序当前在浏览器中显示请求的时间戳记。</p>
+
+<p>因为您拥有请求对象、响应对象、堆栈中的下一个中间件函数以及整个 Node.js API 的访问权，所以中间件函数的可能性是无穷的。</p>
+
+<p>有关 Express 中间件的更多信息，请参阅：<a href="/zh-cn/guide/using-middleware.html">使用 Express 中间件</a>。</p>
+
+
+    </section>
+
+    <!-- NLS_CHARSET=UTF-8 -->
+<noscript>
+    <iframe src="//www.googletagmanager.com/ns.html?id=GTM-5XL76H" height="0" width="0" style="display: none; visibility: hidden;"></iframe>
+</noscript>
+<script>
+(function(w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({
+        'gtm.start': new Date().getTime(),
+        event: 'gtm.js'
+    });
+    var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != 'dataLayer' ? '&l=' + l : '';
+    j.async = true;
+    j.src =
+        '//www.googletagmanager.com/gtm.js?id=' + i + dl;
+    f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-5XL76H');
+</script>
+<a id="top" href="#"><img src="/images/arrow.png"></a>
+
+<footer>
+    <div id="footer-content">
+        <div id="github">
+            <iframe src="http://ghbtns.com/github-btn.html?user=strongloop&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+        </div>
+        <div id="sponsor"><a href="https://github.com/strongloop/express/">Express 项目</a>由 <a href="http://strongloop.com/">StrongLoop</a> 赞助。</div>
+        <div id="fork"><a href="https://github.com/strongloop/expressjs.com">在 GitHub 上派生出网站</a>。</div>
+        <div>Copyright &copy; StrongLoop, Inc., and other expressjs.com contributors.</div>
+    </div>
+</footer>
+
+
+  </body>
+
+</html>

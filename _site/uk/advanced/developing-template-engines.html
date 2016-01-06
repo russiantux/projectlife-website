@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+  <head>
+    <title>Developing template engines for Express</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/dropit.css">
+    <link rel="stylesheet" href="/css/prism.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+    <link rel="stylesheet" href="/css/uk.css">        
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script data-cfasync="false" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script data-cfasync="false" src="/js/app.js"></script>
+    <script data-cfasync="false" src="/js/retina.js"></script>
+    <script data-cfasync="false" src="/js/dropit.js"></script>
+    <script data-cfasync="false" src="/js/prism.js"></script>
+</head>
+
+
+  
+  <body class="non-en-doc">
+  
+
+    <section class="page content">
+
+      <header>
+  <div id="mobile-menu">
+      <div id="nav-button" class="fa fa-bars fa-2x button"></div>
+  </div>
+  <section id="logo"><a href="/" class="express">Express</a>
+  </section>
+  <div id="navbar">
+      <ul id="navmenu">
+          <li><a href="/uk/" id="home-menu">Home</a></li>
+          <li>
+              <ul id="getting-started-menu" class="menu">
+                  <li><a href="/uk/starter/installing.html">Getting started</a>
+                      <ul>
+                          <li>
+                            <a href="/uk/starter/installing.html">
+                              Installing
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/uk/starter/hello-world.html">
+                              Hello world
+                            </a>
+                          </li>
+                          <li>
+                          <a href="/uk/starter/generator.html">
+                            Express generator
+                          </a>
+                          </li>
+                          <li>
+                            <a href="/uk/starter/basic-routing.html">
+                              Basic routing
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/uk/starter/static-files.html">
+                              Static files
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/uk/starter/faq.html">
+                              FAQ
+                            </a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="guide-menu" class="menu">
+                  <li><a href="/uk/guide/routing.html">Guide</a>
+                      <ul>
+                          <li><a href="/uk/guide/routing.html">Routing</a>
+                          </li>
+                          <li><a href="/uk/guide/writing-middleware.html">Writing middleware</a>
+                          </li>
+                          <li><a href="/uk/guide/using-middleware.html">Using middleware</a>
+                          </li>
+                          <li><a href="/uk/guide/using-template-engines.html">Using template engines</a>
+                          </li>
+                          <li><a href="/uk/guide/error-handling.html">Error handling</a>
+                          </li>
+                          <li><a href="/uk/guide/debugging.html">Debugging</a>
+                          </li>
+                          <li><a href="/uk/guide/behind-proxies.html">Express behind proxies</a>
+                          </li>
+                          <li><a href="/uk/guide/migrating-4.html">Moving to Express 4</a>
+                          </li>
+                          <li><a href="/uk/guide/migrating-5.html">Moving to Express 5</a>
+                          </li>
+                          <li><a href="/uk/guide/database-integration.html">Database integration</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="application-menu" class="menu">
+                  <li><a href="/uk/4x/api.html">API reference</a>
+                      <ul>
+                          <li><a href="/uk/4x/api.html">4.x</a>
+                          </li>
+                          <li><a href="/uk/3x/api.html">3.x (deprecated)</a>
+                          </li>
+                          <li><a href="/uk/2x/">2.x (deprecated)</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="advanced-topics-menu" class="menu">
+                  <li><a href="/uk/advanced/developing-template-engines.html" class="active">Advanced topics</a>
+                      <ul>
+                          <li><a href="/uk/advanced/developing-template-engines.html">Template engines</a>
+                          </li>
+                          <li><a href="/uk/advanced/pm.html">Using process managers</a>
+                          </li>
+                          <li><a href="/uk/advanced/security-updates.html">Security updates</a>
+                          </li>
+                          <li><a href="/uk/advanced/best-practice-security.html">Security best practices</a>
+                          </li>
+                          <li><a href="/uk/advanced/best-practice-performance.html">Performance best practices</a>
+                          </li>
+
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="resources-menu" class="menu">
+                  <li><a href="/uk/resources/glossary.html">Resources</a>
+                      <ul>
+                          <li><a href="/uk/resources/glossary.html">Glossary</a>
+                          </li>
+                          <li><a href="/uk/resources/middleware.html">Middleware</a>
+                          </li>
+                          <li><a href="/uk/resources/community.html">Community</a>
+                          </li>
+                          <li><a href="/uk/resources/books-blogs.html">Books and blogs</a>
+                          </li>
+                          <li><a href="/uk/resources/applications.html">Applications</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+  </div><a href="http://strongloop.com/node-js/training/" title="Node and Express Training from StrongLoop" id="strongloop-header">Express and Node.js Training from StrongLoop</a>
+</header>
+
+
+      <div id="overlay"></div>
+
+      
+        <div id="i18n-notice-box" class="doc-box doc-warn">
+          <p>This document might be outdated relative to the documentation in English. For the latest updates, please refer to the <a href="/">documentation in English</a>.
+</p>
+<p>This document might be outdated relative to the documentation in English. For the latest updates, please refer to the <a href="/">documentation in English</a>.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+
+        </div>
+      
+
+      <h1 id="developing-template-engines-for-express">Developing template engines for Express</h1>
+
+<p>Use the <code class="highlighter-rouge">app.engine(ext, callback)</code> method to create your own template engine. <code class="highlighter-rouge">ext</code> refers to the file extension, <code class="highlighter-rouge">callback</code> is the template engine function which accepts the location of the file, the options object, and the callback function, as its parameters.</p>
+
+<p>The following is an example of implementing a very simple template engine for rendering “.ntl” files.</p>
+
+<pre><code class="language-javascript" translate="no">
+var fs = require('fs'); // this engine requires the fs module
+app.engine('ntl', function (filePath, options, callback) { // define the template engine
+  fs.readFile(filePath, function (err, content) {
+    if (err) throw new Error(err);
+    // this is an extremely simple template engine
+    var rendered = content.toString().replace('#title#', '<title>'+ options.title +'</title>')
+    .replace('#message#', '<h1>'+ options.message +'</h1>');
+    return callback(null, rendered);
+  })
+});
+app.set('views', './views'); // specify the views directory
+app.set('view engine', 'ntl'); // register the template engine
+</code></pre>
+
+<p>Your app will now be able to render “.ntl” files. Create a file named “index.ntl” in the views directory with the following content.</p>
+
+<pre><code class="language-javascript" translate="no">
+#title#
+#message#
+</code></pre>
+<p>Then, create the following route in your app.</p>
+
+<pre><code class="language-javascript" translate="no">
+app.get('/', function (req, res) {
+  res.render('index', { title: 'Hey', message: 'Hello there!'});
+})
+</code></pre>
+<p>On making a request to the home page, “index.ntl” will be rendered as HTML.</p>
+
+
+    </section>
+
+    <noscript>
+    <iframe src="//www.googletagmanager.com/ns.html?id=GTM-5XL76H" height="0" width="0" style="display: none; visibility: hidden;"></iframe>
+</noscript>
+<script>
+(function(w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({
+        'gtm.start': new Date().getTime(),
+        event: 'gtm.js'
+    });
+    var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != 'dataLayer' ? '&l=' + l : '';
+    j.async = true;
+    j.src =
+        '//www.googletagmanager.com/gtm.js?id=' + i + dl;
+    f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-5XL76H');
+</script>
+<a id="top" href="#"><img src="/images/arrow.png"></a>
+
+<footer>
+    <div id="footer-content">
+        <div id="github">
+            <iframe src="http://ghbtns.com/github-btn.html?user=strongloop&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+        </div>
+        <div id="sponsor">The <a href="https://github.com/strongloop/express/">Express project</a> is sponsored by <a href="http://strongloop.com/">StrongLoop</a>. </div>
+        <div id="fork"><a href="https://github.com/strongloop/expressjs.com">Fork the website on GitHub</a>.
+        </div>
+        <div>Copyright &copy; StrongLoop, Inc., and other expressjs.com contributors.</div>
+    </div>
+</footer>
+
+
+  </body>
+
+</html>

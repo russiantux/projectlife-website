@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+  <head>
+    <title>Express 词汇表</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/dropit.css">
+    <link rel="stylesheet" href="/css/prism.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+    <link rel="stylesheet" href="/css/zh-cn.css">        
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script data-cfasync="false" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script data-cfasync="false" src="/js/app.js"></script>
+    <script data-cfasync="false" src="/js/retina.js"></script>
+    <script data-cfasync="false" src="/js/dropit.js"></script>
+    <script data-cfasync="false" src="/js/prism.js"></script>
+</head>
+
+
+  
+  <body class="non-en-doc">
+  
+
+    <section class="page content">
+
+      <header>
+  <div id="mobile-menu">
+      <div id="nav-button" class="fa fa-bars fa-2x button"></div>
+  </div>
+  <section id="logo"><a href="/" class="express">Express</a>
+  </section>
+  <div id="navbar">
+      <ul id="navmenu">
+          <li><a href="/zh-cn/" id="home-menu">主页</a></li>
+          <li>
+              <ul id="getting-started-menu" class="menu">
+                  <li><a href="/zh-cn/starter/installing.html">入门</a>
+                      <ul>
+                          <li>
+                            <a href="/zh-cn/starter/installing.html">
+                              安装
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/zh-cn/starter/hello-world.html">
+                              Hello world
+                            </a>
+                          </li>
+                          <li>
+                          <a href="/zh-cn/starter/generator.html">
+                            Express 生成器
+                          </a>
+                          </li>
+                          <li>
+                            <a href="/zh-cn/starter/basic-routing.html">
+                              基本路由
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/zh-cn/starter/static-files.html">
+                              静态文件
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/zh-cn/starter/faq.html">
+                              常见问题及解答
+                            </a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="guide-menu" class="menu">
+                  <li><a href="/zh-cn/guide/routing.html">指南</a>
+                      <ul>
+                          <li><a href="/zh-cn/guide/routing.html">路由</a>
+                          </li>
+                          <li><a href="/zh-cn/guide/writing-middleware.html">编写中间件</a>
+                          </li>
+                          <li><a href="/zh-cn/guide/using-middleware.html">使用中间件</a>
+                          </li>
+                          <li><a href="/zh-cn/guide/using-template-engines.html">使用模板引擎</a>
+                          </li>
+                          <li><a href="/zh-cn/guide/error-handling.html">错误处理</a>
+                          </li>
+                          <li><a href="/zh-cn/guide/debugging.html">调试</a>
+                          </li>
+                          <li><a href="/zh-cn/guide/behind-proxies.html">代理背后的 Express</a>
+                          </li>
+                          <li><a href="/zh-cn/guide/migrating-4.html">迁移到 Express 4</a>
+                          </li>
+                          <li><a href="/zh-cn/guide/migrating-5.html">迁移到 Express 5</a>
+                          </li>
+                          <li><a href="/zh-cn/guide/database-integration.html">数据库集成</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="application-menu" class="menu">
+                  <li><a href="/zh-cn/4x/api.html">API 参考</a>
+                      <ul>
+                          <li><a href="/zh-cn/4x/api.html">4.x</a>
+                          </li>
+                          <li><a href="/zh-cn/3x/api.html">3.x（不推荐）</a>
+                          </li>
+                          <li><a href="/zh-cn/2x/">2.x（不推荐）</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="advanced-topics-menu" class="menu">
+                  <li><a href="/zh-cn/advanced/developing-template-engines.html">高级主题</a>
+                      <ul>
+                          <li><a href="/zh-cn/advanced/developing-template-engines.html">模板引擎</a>
+                          </li>
+                          <li><a href="/zh-cn/advanced/pm.html">使用进程管理器</a>
+                          </li>
+                          <li><a href="/zh-cn/advanced/security-updates.html">安全更新</a>
+                          </li>
+                          <li><a href="/zh-cn/advanced/best-practice-security.html">安全最佳实践</a>
+                          </li>
+                          <li><a href="/zh-cn/advanced/best-practice-performance.html">性能最佳实践</a>
+                          </li>
+
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="resources-menu" class="menu">
+                  <li><a href="/zh-cn/resources/glossary.html" class="active">资源</a>
+                      <ul>
+                          <li><a href="/zh-cn/resources/glossary.html">词汇表</a>
+                          </li>
+                          <li><a href="/zh-cn/resources/middleware.html">中间件</a>
+                          </li>
+                          <li><a href="/zh-cn/resources/community.html">社区</a>
+                          </li>
+                          <li><a href="/zh-cn/resources/books-blogs.html">书籍和博客</a>
+                          </li>
+                          <li><a href="/zh-cn/resources/applications.html">应用程序</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+  </div><a href="http://strongloop.com/node-js/training/" title="来自 StrongLoop 的 Node 和 Express 培训" id="strongloop-header">来自 StrongLoop 的 Express 和 Node.js 培训</a>
+</header>
+
+
+      <div id="overlay"></div>
+
+      
+        <div id="i18n-notice-box" class="doc-box doc-warn">
+          <p>相对于英文版的文档，本文档可能已过时。要了解最近的更新，请参阅<a href="/">英文版文档</a>。
+</p>
+<p>This document might be outdated relative to the documentation in English. For the latest updates, please refer to the <a href="/">documentation in English</a>.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+
+        </div>
+      
+
+      <h1 id="section">词汇表</h1>
+
+<div class="doc-box doc-warn">当前这是工作草稿</div>
+
+<h3 id="open-source-open-source">开放源码 (open-source, open source)</h3>
+
+<p>英文中用作形容词时，以连字符连接；例如：“This is open-source software”。请参阅 <a href="http://en.wikipedia.org/wiki/Open-source_software">Wikipedia 上的开源软件</a>。注：虽然不对此术语添加连字符也很常见，但是我们使用标准英语规则对复合形容词添加连字符。</p>
+
+<h3 id="route">路由 (route)</h3>
+
+<p>标识资源的部分 URL。例如，在 <code class="highlighter-rouge">http://foo.com/products/id</code> 中，“/products/id”是路由。</p>
+
+<h3 id="router">路由器 (router)</h3>
+
+<p>请参阅“API 参考”中的<a href="/zh-cn/4x/api.html#router">路由器</a>。</p>
+
+<h3 id="request">请求 (request)</h3>
+
+<p>HTTP 请求。客户机向服务器提交 HTTP 请求消息，然后服务器返回响应。该请求必须使用若干<a href="https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods">请求方法</a>之一，例如 GET、POST 等。</p>
+
+<h3 id="response">响应 (response)</h3>
+
+<p>HTTP 响应。服务器将 HTTP 响应消息返回给客户机。此响应包含关于请求的完整状态信息，可能还在消息体中包含请求的内容。</p>
+
+<h3 id="application">应用程序 (application)</h3>
+
+<p>一般而言，表示设计为针对特定目的执行操作的一个或多个程序。在 Express 的上下文中，表示使用 Node.js 平台上运行的 Express API 的一个程序。可能还指<a href="/zh-cn/api.html#express">应用程序对象</a>。</p>
+
+<h3 id="middleware">中间件 (middleware)</h3>
+
+<p>在最终请求处理程序之前由 Express 路由层调用的函数，因此位于原始请求与最终期望的路由之间的中间位置。有关中间件的术语有几点说明：</p>
+
+<ul>
+  <li>调用 <code class="highlighter-rouge">var foo = require('middleware')</code>：<em>需要</em>或<em>使用</em> Node.js 模块。随后 <code class="highlighter-rouge">var mw = foo()</code> 语句通常返回中间件。</li>
+  <li>调用 <code class="highlighter-rouge">app.use(mw)</code>：<em>将中间件添加到全局处理堆栈</em>。</li>
+  <li>调用 <code class="highlighter-rouge">app.get('/foo', mw, function (req, res) { ... })</code>：<em>将中间件添加到“GET /foo”处理堆栈</em>。</li>
+</ul>
+
+<h3 id="api">API</h3>
+
+<p>应用程序编程接口。在首次使用时包含此缩写。</p>
+
+<h3 id="express">Express</h3>
+
+<p>Node.js 应用程序的一种高度包容、快速而极简的 Web 框架。一般而言，“Express”优先于“Express.js”，但是后者也可接受。</p>
+
+<h3 id="libuv">libuv</h3>
+
+<p>一种多平台支持库，关注异步 I/O，主要供 Node.js 使用。</p>
+
+<h3 id="nodejs">Node.js</h3>
+
+<p>用于构建可扩展网络应用程序的一种软件平台。Node.js 将 JavaScript 用作其脚本编制语言，并通过非阻塞 I/O 和单线程事件循环实现大吞吐量。请参阅 <a href="http://nodejs.org/">nodejs.org</a>。<strong>使用说明</strong>：最初为“Node.js”，后来成为“Node”。</p>
+
+
+    </section>
+
+    <!-- NLS_CHARSET=UTF-8 -->
+<noscript>
+    <iframe src="//www.googletagmanager.com/ns.html?id=GTM-5XL76H" height="0" width="0" style="display: none; visibility: hidden;"></iframe>
+</noscript>
+<script>
+(function(w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({
+        'gtm.start': new Date().getTime(),
+        event: 'gtm.js'
+    });
+    var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != 'dataLayer' ? '&l=' + l : '';
+    j.async = true;
+    j.src =
+        '//www.googletagmanager.com/gtm.js?id=' + i + dl;
+    f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-5XL76H');
+</script>
+<a id="top" href="#"><img src="/images/arrow.png"></a>
+
+<footer>
+    <div id="footer-content">
+        <div id="github">
+            <iframe src="http://ghbtns.com/github-btn.html?user=strongloop&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+        </div>
+        <div id="sponsor"><a href="https://github.com/strongloop/express/">Express 项目</a>由 <a href="http://strongloop.com/">StrongLoop</a> 赞助。</div>
+        <div id="fork"><a href="https://github.com/strongloop/expressjs.com">在 GitHub 上派生出网站</a>。</div>
+        <div>Copyright &copy; StrongLoop, Inc., and other expressjs.com contributors.</div>
+    </div>
+</footer>
+
+
+  </body>
+
+</html>

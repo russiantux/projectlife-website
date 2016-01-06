@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+  <head>
+    <title>Debugging Express</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/dropit.css">
+    <link rel="stylesheet" href="/css/prism.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+    <link rel="stylesheet" href="/css/uz.css">        
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script data-cfasync="false" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script data-cfasync="false" src="/js/app.js"></script>
+    <script data-cfasync="false" src="/js/retina.js"></script>
+    <script data-cfasync="false" src="/js/dropit.js"></script>
+    <script data-cfasync="false" src="/js/prism.js"></script>
+</head>
+
+
+  
+  <body class="non-en-doc">
+  
+
+    <section class="page content">
+
+      <header>
+  <div id="mobile-menu">
+      <div id="nav-button" class="fa fa-bars fa-2x button"></div>
+  </div>
+  <section id="logo"><a href="/" class="express">Express</a>
+  </section>
+  <div id="navbar">
+      <ul id="navmenu">
+          <li><a href="/uz/" id="home-menu">Home</a></li>
+          <li>
+              <ul id="getting-started-menu" class="menu">
+                  <li><a href="/uz/starter/installing.html">Getting started</a>
+                      <ul>
+                          <li>
+                            <a href="/uz/starter/installing.html">
+                              Installing
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/uz/starter/hello-world.html">
+                              Hello world
+                            </a>
+                          </li>
+                          <li>
+                          <a href="/uz/starter/generator.html">
+                            Express generator
+                          </a>
+                          </li>
+                          <li>
+                            <a href="/uz/starter/basic-routing.html">
+                              Basic routing
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/uz/starter/static-files.html">
+                              Static files
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/uz/starter/faq.html">
+                              FAQ
+                            </a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="guide-menu" class="menu">
+                  <li><a href="/uz/guide/routing.html" class="active">Guide</a>
+                      <ul>
+                          <li><a href="/uz/guide/routing.html">Routing</a>
+                          </li>
+                          <li><a href="/uz/guide/writing-middleware.html">Writing middleware</a>
+                          </li>
+                          <li><a href="/uz/guide/using-middleware.html">Using middleware</a>
+                          </li>
+                          <li><a href="/uz/guide/using-template-engines.html">Using template engines</a>
+                          </li>
+                          <li><a href="/uz/guide/error-handling.html">Error handling</a>
+                          </li>
+                          <li><a href="/uz/guide/debugging.html">Debugging</a>
+                          </li>
+                          <li><a href="/uz/guide/behind-proxies.html">Express behind proxies</a>
+                          </li>
+                          <li><a href="/uz/guide/migrating-4.html">Moving to Express 4</a>
+                          </li>
+                          <li><a href="/uz/guide/migrating-5.html">Moving to Express 5</a>
+                          </li>
+                          <li><a href="/uz/guide/database-integration.html">Database integration</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="application-menu" class="menu">
+                  <li><a href="/uz/4x/api.html">API reference</a>
+                      <ul>
+                          <li><a href="/uz/4x/api.html">4.x</a>
+                          </li>
+                          <li><a href="/uz/3x/api.html">3.x (deprecated)</a>
+                          </li>
+                          <li><a href="/uz/2x/">2.x (deprecated)</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="advanced-topics-menu" class="menu">
+                  <li><a href="/uz/advanced/developing-template-engines.html">Advanced topics</a>
+                      <ul>
+                          <li><a href="/uz/advanced/developing-template-engines.html">Template engines</a>
+                          </li>
+                          <li><a href="/uz/advanced/pm.html">Using process managers</a>
+                          </li>
+                          <li><a href="/uz/advanced/security-updates.html">Security updates</a>
+                          </li>
+                          <li><a href="/uz/advanced/best-practice-security.html">Security best practices</a>
+                          </li>
+                          <li><a href="/uz/advanced/best-practice-performance.html">Performance best practices</a>
+                          </li>
+
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="resources-menu" class="menu">
+                  <li><a href="/uz/resources/glossary.html">Resources</a>
+                      <ul>
+                          <li><a href="/uz/resources/glossary.html">Glossary</a>
+                          </li>
+                          <li><a href="/uz/resources/middleware.html">Middleware</a>
+                          </li>
+                          <li><a href="/uz/resources/community.html">Community</a>
+                          </li>
+                          <li><a href="/uz/resources/books-blogs.html">Books and blogs</a>
+                          </li>
+                          <li><a href="/uz/resources/applications.html">Applications</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+  </div><a href="http://strongloop.com/node-js/training/" title="Node and Express Training from StrongLoop" id="strongloop-header">Express and Node.js Training from StrongLoop</a>
+</header>
+
+
+      <div id="overlay"></div>
+
+      
+        <div id="i18n-notice-box" class="doc-box doc-warn">
+          <p>This document might be outdated relative to the documentation in English. For the latest updates, please refer to the <a href="/">documentation in English</a>.
+</p>
+<p>This document might be outdated relative to the documentation in English. For the latest updates, please refer to the <a href="/">documentation in English</a>.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+
+        </div>
+      
+
+      <h1 id="debugging-express">Debugging Express</h1>
+
+<p>Express uses the <a href="https://github.com/visionmedia/debug">debug</a> module
+internally to log information about route matches, middleware in use, application mode,
+and the flow of the request-response cycle.</p>
+
+<div class="doc-box doc-info">
+  <p><code class="highlighter-rouge">debug</code> is like an augmented version of <code class="highlighter-rouge">console.log</code>. But unlike <code class="highlighter-rouge">console.log</code>, you don’t have to
+comment out <code class="highlighter-rouge">debug</code> logs in production code. It is turned off by default and can be conditionally turned on with the use an environment variable named <code class="highlighter-rouge">DEBUG</code>.</p>
+</div>
+
+<p>To see all the internal logs used in Express, simply set the <code class="highlighter-rouge">DEBUG</code> environment variable to
+<code class="highlighter-rouge">express:*</code> when launching your app.</p>
+
+<pre><code class="language-sh" translate="no">
+$ DEBUG=express:* node index.js
+</code></pre>
+
+<p>On Windows, use the corresponding command.</p>
+
+<pre><code class="language-sh" translate="no">
+&gt; set DEBUG=express:* &amp; node index.js
+</code></pre>
+
+<p>Running this on the default app generated by the <a href="/starter/generator.html">express generator</a> would print the following.</p>
+
+<pre><code class="language-sh" translate="no">
+$ DEBUG=express:* node ./bin/www
+  express:router:route new / +0ms
+  express:router:layer new / +1ms
+  express:router:route get / +1ms
+  express:router:layer new / +0ms
+  express:router:route new / +1ms
+  express:router:layer new / +0ms
+  express:router:route get / +0ms
+  express:router:layer new / +0ms
+  express:application compile etag weak +1ms
+  express:application compile query parser extended +0ms
+  express:application compile trust proxy false +0ms
+  express:application booting in development mode +1ms
+  express:router use / query +0ms
+  express:router:layer new / +0ms
+  express:router use / expressInit +0ms
+  express:router:layer new / +0ms
+  express:router use / favicon +1ms
+  express:router:layer new / +0ms
+  express:router use / logger +0ms
+  express:router:layer new / +0ms
+  express:router use / jsonParser +0ms
+  express:router:layer new / +1ms
+  express:router use / urlencodedParser +0ms
+  express:router:layer new / +0ms
+  express:router use / cookieParser +0ms
+  express:router:layer new / +0ms
+  express:router use / stylus +90ms
+  express:router:layer new / +0ms
+  express:router use / serveStatic +0ms
+  express:router:layer new / +0ms
+  express:router use / router +0ms
+  express:router:layer new / +1ms
+  express:router use /users router +0ms
+  express:router:layer new /users +0ms
+  express:router use / <anonymous> +0ms
+  express:router:layer new / +0ms
+  express:router use / <anonymous> +0ms
+  express:router:layer new / +0ms
+  express:router use / <anonymous> +0ms
+  express:router:layer new / +0ms
+
+
+Now, when a request is made to the app, you will see the logs specified in the Express code.
+
+<pre><code class="language-sh" translate="no">
+  express:router dispatching GET / +4h
+  express:router query  : / +2ms
+  express:router expressInit  : / +0ms
+  express:router favicon  : / +0ms
+  express:router logger  : / +1ms
+  express:router jsonParser  : / +0ms
+  express:router urlencodedParser  : / +1ms
+  express:router cookieParser  : / +0ms
+  express:router stylus  : / +0ms
+  express:router serveStatic  : / +2ms
+  express:router router  : / +2ms
+  express:router dispatching GET / +1ms
+  express:view lookup "index.jade" +338ms
+  express:view stat "/projects/example/views/index.jade" +0ms
+  express:view render "/projects/example/views/index.jade" +1ms
+</code></pre>
+
+To see the logs only from the router implementation set the value of `DEBUG` to `express:router`. Likewise, to see logs only from the application implementation set the value of `DEBUG` to `express:application`, and so on.
+
+## `express`-generated app
+
+The app generated by the `express` command also uses the `debug` module and its debug namespace is scoped to the name of the application.
+
+If you generated the app with
+
+<pre><code class="language-sh" translate="no">
+$ express sample-app
+</code></pre>
+
+You can enable the debug statements with the following command
+
+<pre><code class="language-sh" translate="no">
+$ DEBUG=sample-app node ./bin/www
+</code></pre>
+
+You can specify more than one debug namespace by assignning a comma separated list of names, as shown below.
+
+<pre><code class="language-sh" translate="no">
+$ DEBUG=http,mail,express:* node index.js
+</code></pre>
+
+For more documentation on `debug`, see the [debug guide](https://github.com/visionmedia/debug).
+</anonymous></anonymous></anonymous></code></pre>
+
+
+    </section>
+
+    <noscript>
+    <iframe src="//www.googletagmanager.com/ns.html?id=GTM-5XL76H" height="0" width="0" style="display: none; visibility: hidden;"></iframe>
+</noscript>
+<script>
+(function(w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({
+        'gtm.start': new Date().getTime(),
+        event: 'gtm.js'
+    });
+    var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != 'dataLayer' ? '&l=' + l : '';
+    j.async = true;
+    j.src =
+        '//www.googletagmanager.com/gtm.js?id=' + i + dl;
+    f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-5XL76H');
+</script>
+<a id="top" href="#"><img src="/images/arrow.png"></a>
+
+<footer>
+    <div id="footer-content">
+        <div id="github">
+            <iframe src="http://ghbtns.com/github-btn.html?user=strongloop&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+        </div>
+        <div id="sponsor">The <a href="https://github.com/strongloop/express/">Express project</a> is sponsored by <a href="http://strongloop.com/">StrongLoop</a>. </div>
+        <div id="fork"><a href="https://github.com/strongloop/expressjs.com">Fork the website on GitHub</a>.
+        </div>
+        <div>Copyright &copy; StrongLoop, Inc., and other expressjs.com contributors.</div>
+    </div>
+</footer>
+
+
+  </body>
+
+</html>

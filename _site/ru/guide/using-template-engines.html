@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+  <head>
+    <title>Использование шаблонизаторов в Express</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/dropit.css">
+    <link rel="stylesheet" href="/css/prism.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+    <link rel="stylesheet" href="/css/ru.css">        
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script data-cfasync="false" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script data-cfasync="false" src="/js/app.js"></script>
+    <script data-cfasync="false" src="/js/retina.js"></script>
+    <script data-cfasync="false" src="/js/dropit.js"></script>
+    <script data-cfasync="false" src="/js/prism.js"></script>
+</head>
+
+
+  
+  <body class="non-en-doc">
+  
+
+    <section class="page content">
+
+      <header>
+  <div id="mobile-menu">
+      <div id="nav-button" class="fa fa-bars fa-2x button"></div>
+  </div>
+  <section id="logo"><a href="/" class="express">Express</a>
+  </section>
+  <div id="navbar">
+      <ul id="navmenu">
+          <li><a href="/ru/" id="home-menu">Начальная страница</a></li>
+          <li>
+              <ul id="getting-started-menu" class="menu">
+                  <li><a href="/ru/starter/installing.html">Начало работы</a>
+                      <ul>
+                          <li>
+                            <a href="/ru/starter/installing.html">
+                              Установка
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/ru/starter/hello-world.html">
+                              Hello world
+                            </a>
+                          </li>
+                          <li>
+                          <a href="/ru/starter/generator.html">
+                            Генератор приложений Express
+                          </a>
+                          </li>
+                          <li>
+                            <a href="/ru/starter/basic-routing.html">
+                              Основы маршрутизации
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/ru/starter/static-files.html">
+                              Статические файлы
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/ru/starter/faq.html">
+                              FAQ
+                            </a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="guide-menu" class="menu">
+                  <li><a href="/ru/guide/routing.html" class="active">Руководство</a>
+                      <ul>
+                          <li><a href="/ru/guide/routing.html">Маршрутизация</a>
+                          </li>
+                          <li><a href="/ru/guide/writing-middleware.html">Написание кода промежуточных обработчиков</a>
+                          </li>
+                          <li><a href="/ru/guide/using-middleware.html">Использование промежуточных обработчиков</a>
+                          </li>
+                          <li><a href="/ru/guide/using-template-engines.html">Использование шаблонизаторов</a>
+                          </li>
+                          <li><a href="/ru/guide/error-handling.html">Обработка ошибок</a>
+                          </li>
+                          <li><a href="/ru/guide/debugging.html">Отладка</a>
+                          </li>
+                          <li><a href="/ru/guide/behind-proxies.html">Express за прокси</a>
+                          </li>
+                          <li><a href="/ru/guide/migrating-4.html">Переход к Express 4</a>
+                          </li>
+                          <li><a href="/ru/guide/migrating-5.html">Переход к Express 5</a>
+                          </li>
+                          <li><a href="/ru/guide/database-integration.html">Интеграция с базами данных</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="application-menu" class="menu">
+                  <li><a href="/ru/4x/api.html">Справочник по API</a>
+                      <ul>
+                          <li><a href="/ru/4x/api.html">4.x</a>
+                          </li>
+                          <li><a href="/ru/3x/api.html">3.x (устарел)</a>
+                          </li>
+                          <li><a href="/ru/2x/">2.x (устарел)</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="advanced-topics-menu" class="menu">
+                  <li><a href="/ru/advanced/developing-template-engines.html">Расширенные возможности</a>
+                      <ul>
+                          <li><a href="/ru/advanced/developing-template-engines.html">Шаблонизаторы</a>
+                          </li>
+                          <li><a href="/ru/advanced/pm.html">Работа с диспетчерами процессов</a>
+                          </li>
+                          <li><a href="/ru/advanced/security-updates.html">Обновления системы безопасности</a>
+                          </li>
+                          <li><a href="/ru/advanced/best-practice-security.html">Лучшие практические методы в области защиты</a>
+                          </li>
+                          <li><a href="/ru/advanced/best-practice-performance.html">Лучшие практические методы улучшения производительности</a>
+                          </li>
+
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="resources-menu" class="menu">
+                  <li><a href="/ru/resources/glossary.html">Ресурсы</a>
+                      <ul>
+                          <li><a href="/ru/resources/glossary.html">Глоссарий</a>
+                          </li>
+                          <li><a href="/ru/resources/middleware.html">Промежуточный обработчик</a>
+                          </li>
+                          <li><a href="/ru/resources/community.html">Сообщество</a>
+                          </li>
+                          <li><a href="/ru/resources/books-blogs.html">Книги и блоги</a>
+                          </li>
+                          <li><a href="/ru/resources/applications.html">Приложения</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+  </div><a href="http://strongloop.com/node-js/training/" title="Обучение по Node и Express от StrongLoop" id="strongloop-header">Обучение по Express и Node.js от StrongLoop</a>
+</header>
+
+
+      <div id="overlay"></div>
+
+      
+        <div id="i18n-notice-box" class="doc-box doc-warn">
+          <p>Этот документ может быть устаревшим по отношению к документации на английском языке. Последние обновления содержатся в <a href="/">документации на английском языке</a>.
+</p>
+<p>This document might be outdated relative to the documentation in English. For the latest updates, please refer to the <a href="/">documentation in English</a>.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+
+        </div>
+      
+
+      <h1 id="express">Использование шаблонизаторов в Express</h1>
+
+<p>Для того чтобы отображать в Express файлы шаблонов, необходимо задать следующие параметры приложения:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">views</code>, каталог, в котором находятся файлы шаблонов. Например: <code class="highlighter-rouge">app.set('views', './views')</code></li>
+  <li><code class="highlighter-rouge">view engine</code>, используемый шаблонизатор. Например: <code class="highlighter-rouge">app.set('view engine', 'jade')</code></li>
+</ul>
+
+<p>Затем установите соответствующий пакет npm шаблонизатора:</p>
+
+<pre>
+<code class="language-sh" translate="no">
+$ npm install jade --save
+</code>
+</pre>
+
+<div class="doc-box doc-notice">
+  <p>Шаблонизаторы, совместимые с Express, например, Jade, экспортируют функцию <code class="highlighter-rouge">__express(filePath, options, callback)</code>, вызываемую с помощью функции <code class="highlighter-rouge">res.render()</code> для вывода кода шаблона.</p>
+
+  <p>Это правило действует не для всех шаблонизаторов. Библиотека <a href="https://www.npmjs.org/package/consolidate">Consolidate.js</a> соблюдает его путем преобразования всех популярных шаблонизаторов Node.js, благодаря чему работает в Express без проблем.</p>
+</div>
+
+<p>После указания механизма визуализации (view engine) не нужно указывать его или загружать модуль шаблонизатора в приложение; Express загружает модуль внутренними средствами, как показано далее (для примера, приведенного выше).</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+app.set('view engine', 'jade');
+</code>
+</pre>
+
+<p>Создайте файл шаблона Jade с именем <code class="highlighter-rouge">index.jade</code> в каталоге <code class="highlighter-rouge">views</code> со следующим содержанием:</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+html
+  head
+    title!= title
+  body
+    h1!= message
+</code>
+</pre>
+
+<p>Затем создайте маршрут для вывода файла <code class="highlighter-rouge">index.jade</code>. Если свойство <code class="highlighter-rouge">view engine</code> не задано, необходимо указать расширение файла <code class="highlighter-rouge">view</code>. В противном случае, можно не указывать расширение.</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+app.get('/', function (req, res) {
+  res.render('index', { title: 'Hey', message: 'Hello there!'});
+});
+</code>
+</pre>
+
+<p>При выполнении запроса к домашней странице файл <code class="highlighter-rouge">index.jade</code> будет отображаться как HTML.</p>
+
+<p>Для получения дополнительной информации о работе шаблонизаторов в Express обратитесь к разделу <a href="/ru/advanced/developing-template-engines.html">“Разработка шаблонизаторов для Express”</a>.</p>
+
+
+    </section>
+
+    <!-- NLS_CHARSET=UTF-8 -->
+<noscript>
+    <iframe src="//www.googletagmanager.com/ns.html?id=GTM-5XL76H" height="0" width="0" style="display: none; visibility: hidden;"></iframe>
+</noscript>
+<script>
+(function(w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({
+        'gtm.start': new Date().getTime(),
+        event: 'gtm.js'
+    });
+    var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != 'dataLayer' ? '&l=' + l : '';
+    j.async = true;
+    j.src =
+        '//www.googletagmanager.com/gtm.js?id=' + i + dl;
+    f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-5XL76H');
+</script>
+<a id="top" href="#"><img src="/images/arrow.png"></a>
+
+<footer>
+    <div id="footer-content">
+        <div id="github">
+            <iframe src="http://ghbtns.com/github-btn.html?user=strongloop&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+        </div>
+        <div id="sponsor">Спонсором <a href="https://github.com/strongloop/express/">проекта Express</a> выступает компания <a href="http://strongloop.com/">StrongLoop</a>. </div>
+        <div id="fork"><a href="https://github.com/strongloop/expressjs.com">Создайте клон веб-сайта на GitHub</a>.
+        </div>
+        <div>Copyright &copy; StrongLoop, Inc. и других участников expressjs.com.</div>
+    </div>
+</footer>
+
+
+  </body>
+
+</html>

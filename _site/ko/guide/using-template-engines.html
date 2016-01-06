@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+  <head>
+    <title>Express와 함께 템플리트 엔진 사용</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/dropit.css">
+    <link rel="stylesheet" href="/css/prism.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+    <link rel="stylesheet" href="/css/ko.css">        
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script data-cfasync="false" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script data-cfasync="false" src="/js/app.js"></script>
+    <script data-cfasync="false" src="/js/retina.js"></script>
+    <script data-cfasync="false" src="/js/dropit.js"></script>
+    <script data-cfasync="false" src="/js/prism.js"></script>
+</head>
+
+
+  
+  <body class="non-en-doc">
+  
+
+    <section class="page content">
+
+      <header>
+  <div id="mobile-menu">
+      <div id="nav-button" class="fa fa-bars fa-2x button"></div>
+  </div>
+  <section id="logo"><a href="/" class="express">Express</a>
+  </section>
+  <div id="navbar">
+      <ul id="navmenu">
+          <li><a href="/ko/" id="home-menu">홈</a></li>
+          <li>
+              <ul id="getting-started-menu" class="menu">
+                  <li><a href="/ko/starter/installing.html">시작하기</a>
+                      <ul>
+                          <li>
+                            <a href="/ko/starter/installing.html">
+                              설치
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/ko/starter/hello-world.html">
+                              Hello world
+                            </a>
+                          </li>
+                          <li>
+                          <a href="/ko/starter/generator.html">
+                            Express 생성기
+                          </a>
+                          </li>
+                          <li>
+                            <a href="/ko/starter/basic-routing.html">
+                              기본 라우팅
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/ko/starter/static-files.html">
+                              정적 파일
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/ko/starter/faq.html">
+                              자주 묻는 질문(FAQ)
+                            </a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="guide-menu" class="menu">
+                  <li><a href="/ko/guide/routing.html" class="active">안내서</a>
+                      <ul>
+                          <li><a href="/ko/guide/routing.html">라우팅</a>
+                          </li>
+                          <li><a href="/ko/guide/writing-middleware.html">미들웨어 작성</a>
+                          </li>
+                          <li><a href="/ko/guide/using-middleware.html">미들웨어 사용</a>
+                          </li>
+                          <li><a href="/ko/guide/using-template-engines.html">템플리트 엔진 사용</a>
+                          </li>
+                          <li><a href="/ko/guide/error-handling.html">오류 처리</a>
+                          </li>
+                          <li><a href="/ko/guide/debugging.html">디버깅</a>
+                          </li>
+                          <li><a href="/ko/guide/behind-proxies.html">프록시 환경에서 Express 사용</a>
+                          </li>
+                          <li><a href="/ko/guide/migrating-4.html">Express 4로의 이전</a>
+                          </li>
+                          <li><a href="/ko/guide/migrating-5.html">Express 5로의 이전</a>
+                          </li>
+                          <li><a href="/ko/guide/database-integration.html">데이터베이스 통합</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="application-menu" class="menu">
+                  <li><a href="/ko/4x/api.html">API 참조</a>
+                      <ul>
+                          <li><a href="/ko/4x/api.html">4.x</a>
+                          </li>
+                          <li><a href="/ko/3x/api.html">3.x(더 이상 사용되지 않음)</a>
+                          </li>
+                          <li><a href="/ko/2x/">2.x(더 이상 사용되지 않음)</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="advanced-topics-menu" class="menu">
+                  <li><a href="/ko/advanced/developing-template-engines.html">고급 주제</a>
+                      <ul>
+                          <li><a href="/ko/advanced/developing-template-engines.html">템플리트 엔진</a>
+                          </li>
+                          <li><a href="/ko/advanced/pm.html">프로세스 관리자 사용</a>
+                          </li>
+                          <li><a href="/ko/advanced/security-updates.html">보안 업데이트</a>
+                          </li>
+                          <li><a href="/ko/advanced/best-practice-security.html">보안 우수 사례</a>
+                          </li>
+                          <li><a href="/ko/advanced/best-practice-performance.html">성능 우수 사례</a>
+                          </li>
+
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="resources-menu" class="menu">
+                  <li><a href="/ko/resources/glossary.html">자원</a>
+                      <ul>
+                          <li><a href="/ko/resources/glossary.html">용어집</a>
+                          </li>
+                          <li><a href="/ko/resources/middleware.html">미들웨어</a>
+                          </li>
+                          <li><a href="/ko/resources/community.html">커뮤니티</a>
+                          </li>
+                          <li><a href="/ko/resources/books-blogs.html">서적 및 블로그</a>
+                          </li>
+                          <li><a href="/ko/resources/applications.html">애플리케이션</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+  </div><a href="http://strongloop.com/node-js/training/" title="StrongLoop의 Node 및 Express 교육" id="strongloop-header">StrongLoop의 Express 및 Node.js 교육</a>
+</header>
+
+
+      <div id="overlay"></div>
+
+      
+        <div id="i18n-notice-box" class="doc-box doc-warn">
+          <p>이 문서는 영문판 문서에 비해 더 오래된 버전일 수도 있습니다. 최신 업데이트를 확인하려면 <a href="/">영문판 문서</a>를 참조하십시오.
+</p>
+<p>This document might be outdated relative to the documentation in English. For the latest updates, please refer to the <a href="/">documentation in English</a>.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+
+        </div>
+      
+
+      <h1 id="express----">Express와 함께 템플리트 엔진을 사용</h1>
+
+<p>Express가 템플리트를 렌더링하려면 다음과 같은 애플리케이션 설정이 필요합니다.</p>
+
+<ul>
+  <li><code class="highlighter-rouge">views</code>, 템플리트가 있는 디렉토리. 예: <code class="highlighter-rouge">app.set('views', './views')</code></li>
+  <li><code class="highlighter-rouge">view engine</code>, 사용할 템플리트 엔진. 예: <code class="highlighter-rouge">app.set('view engine', 'jade')</code></li>
+</ul>
+
+<p>이후 그에 맞는 템플리트 엔진 npm 패키지를 다음과 같이 설치하십시오.</p>
+
+<pre>
+<code class="language-sh" translate="no">
+$ npm install jade --save
+</code>
+</pre>
+
+<div class="doc-box doc-notice">
+  <p>Express와 호환되는 템플리트 엔진(예: Jade)은 <code class="highlighter-rouge">__express(filePath, options, callback)</code>라는 이름의 함수를 내보내며, 이 함수는 <code class="highlighter-rouge">res.render()</code> 함수에 의해 호출되어 템플리트 코드를 렌더링합니다.</p>
+
+  <p>일부 템플리트 엔진은 이러한 방식을 따르지 않습니다. <a href="https://www.npmjs.org/package/consolidate">Consolidate.js</a> 라이브러리는 널리 이용되고 있는 모든 Node.js 템플리트 엔진을 맵핑함으로써 이러한 방식을 따르므로 Express 내에서 완벽하게 작동합니다.</p>
+</div>
+
+<p>보기 엔진을 설정한 후에는 앱에서 엔진을 지정하거나 템플리트 엔진 모듈을 로드할 필요가 없으며, Express는 아래에 표시된 것과 같이 내부적으로 모듈을 로드합니다(위의 예에 대한 코드).</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+app.set('view engine', 'jade');
+</code>
+</pre>
+
+<p>다음의 내용이 입력된 <code class="highlighter-rouge">index.jade</code>라는 이름의 Jade 템플리트를 <code class="highlighter-rouge">views</code> 디렉토리에 작성하십시오.</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+html
+  head
+    title!= title
+  body
+    h1!= message
+</code>
+</pre>
+
+<p>이후 <code class="highlighter-rouge">index.jade</code> 파일을 렌더링할 라우트를 작성하십시오. <code class="highlighter-rouge">view engine</code> 특성이 설정되어 있지 않은 경우에는 <code class="highlighter-rouge">view</code> 파일의 확장자를 지정해야 합니다. 해당 특성이 설정되어 있는 경우에는 확장자를 생략할 수 있습니다.</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+app.get('/', function (req, res) {
+  res.render('index', { title: 'Hey', message: 'Hello there!'});
+});
+</code>
+</pre>
+
+<p>홈 페이지에 대한 요청을 실행할 때, <code class="highlighter-rouge">index.jade</code> 파일은 HTML 형식으로 렌더링됩니다.</p>
+
+<p>Express에서 템플리트 엔진이 작동하는 방식에 대한 자세한 내용을 확인하려면 <a href="/ko/advanced/developing-template-engines.html">“Express용 템플리트 엔진 개발”</a>을 참조하십시오.</p>
+
+
+    </section>
+
+    <!-- NLS_CHARSET=UTF-8 -->
+<noscript>
+    <iframe src="//www.googletagmanager.com/ns.html?id=GTM-5XL76H" height="0" width="0" style="display: none; visibility: hidden;"></iframe>
+</noscript>
+<script>
+(function(w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({
+        'gtm.start': new Date().getTime(),
+        event: 'gtm.js'
+    });
+    var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != 'dataLayer' ? '&l=' + l : '';
+    j.async = true;
+    j.src =
+        '//www.googletagmanager.com/gtm.js?id=' + i + dl;
+    f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-5XL76H');
+</script>
+<a id="top" href="#"><img src="/images/arrow.png"></a>
+
+<footer>
+    <div id="footer-content">
+        <div id="github">
+            <iframe src="http://ghbtns.com/github-btn.html?user=strongloop&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+        </div>
+        <div id="sponsor"><a href="https://github.com/strongloop/express/">Express 프로젝트</a>는 <a href="http://strongloop.com/">StrongLoop</a>가 후원합니다. </div>
+        <div id="fork"><a href="https://github.com/strongloop/expressjs.com">GitHub에서 웹사이트의 포크를 작성하십시오</a>.
+        </div>
+        <div>Copyright &copy; StrongLoop, Inc., and other expressjs.com contributors.</div>
+    </div>
+</footer>
+
+
+  </body>
+
+</html>

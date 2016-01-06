@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+  <head>
+    <title>Express に関する FAQ</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/dropit.css">
+    <link rel="stylesheet" href="/css/prism.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+    <link rel="stylesheet" href="/css/ja.css">        
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script data-cfasync="false" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script data-cfasync="false" src="/js/app.js"></script>
+    <script data-cfasync="false" src="/js/retina.js"></script>
+    <script data-cfasync="false" src="/js/dropit.js"></script>
+    <script data-cfasync="false" src="/js/prism.js"></script>
+</head>
+
+
+  
+  <body class="non-en-doc">
+  
+
+    <section class="page content">
+
+      <header>
+  <div id="mobile-menu">
+      <div id="nav-button" class="fa fa-bars fa-2x button"></div>
+  </div>
+  <section id="logo"><a href="/" class="express">Express</a>
+  </section>
+  <div id="navbar">
+      <ul id="navmenu">
+          <li><a href="/ja/" id="home-menu">ホーム</a></li>
+          <li>
+              <ul id="getting-started-menu" class="menu">
+                  <li><a href="/ja/starter/installing.html" class="active">概説</a>
+                      <ul>
+                          <li>
+                            <a href="/ja/starter/installing.html">
+                              インストール
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/ja/starter/hello-world.html">
+                              Hello World
+                            </a>
+                          </li>
+                          <li>
+                          <a href="/ja/starter/generator.html">
+                            Express ジェネレーター
+                          </a>
+                          </li>
+                          <li>
+                            <a href="/ja/starter/basic-routing.html">
+                              基本的なルーティング
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/ja/starter/static-files.html">
+                              静的ファイル
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/ja/starter/faq.html">
+                              FAQ
+                            </a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="guide-menu" class="menu">
+                  <li><a href="/ja/guide/routing.html">ガイド</a>
+                      <ul>
+                          <li><a href="/ja/guide/routing.html">ルーティング</a>
+                          </li>
+                          <li><a href="/ja/guide/writing-middleware.html">ミドルウェアの作成</a>
+                          </li>
+                          <li><a href="/ja/guide/using-middleware.html">ミドルウェアの使用</a>
+                          </li>
+                          <li><a href="/ja/guide/using-template-engines.html">テンプレート・エンジンの使用</a>
+                          </li>
+                          <li><a href="/ja/guide/error-handling.html">エラー処理</a>
+                          </li>
+                          <li><a href="/ja/guide/debugging.html">デバッグ</a>
+                          </li>
+                          <li><a href="/ja/guide/behind-proxies.html">プロキシーの背後の Express</a>
+                          </li>
+                          <li><a href="/ja/guide/migrating-4.html">Express 4 への移行</a>
+                          </li>
+                          <li><a href="/ja/guide/migrating-5.html">Express 5 への移行</a>
+                          </li>
+                          <li><a href="/ja/guide/database-integration.html">データベースの統合</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="application-menu" class="menu">
+                  <li><a href="/ja/4x/api.html">API リファレンス</a>
+                      <ul>
+                          <li><a href="/ja/4x/api.html">4.x</a>
+                          </li>
+                          <li><a href="/ja/3x/api.html">3.x (非推奨)</a>
+                          </li>
+                          <li><a href="/ja/2x/">2.x (非推奨)</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="advanced-topics-menu" class="menu">
+                  <li><a href="/ja/advanced/developing-template-engines.html">高度なトピック</a>
+                      <ul>
+                          <li><a href="/ja/advanced/developing-template-engines.html">テンプレート・エンジン</a>
+                          </li>
+                          <li><a href="/ja/advanced/pm.html">プロセス・マネージャーの使用</a>
+                          </li>
+                          <li><a href="/ja/advanced/security-updates.html">セキュリティー更新</a>
+                          </li>
+                          <li><a href="/ja/advanced/best-practice-security.html">セキュリティーに関するベスト・プラクティス</a>
+                          </li>
+                          <li><a href="/ja/advanced/best-practice-performance.html">パフォーマンスに関するベスト・プラクティス</a>
+                          </li>
+
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="resources-menu" class="menu">
+                  <li><a href="/ja/resources/glossary.html">リソース</a>
+                      <ul>
+                          <li><a href="/ja/resources/glossary.html">用語集</a>
+                          </li>
+                          <li><a href="/ja/resources/middleware.html">ミドルウェア</a>
+                          </li>
+                          <li><a href="/ja/resources/community.html">コミュニティー</a>
+                          </li>
+                          <li><a href="/ja/resources/books-blogs.html">資料とブログ</a>
+                          </li>
+                          <li><a href="/ja/resources/applications.html">アプリケーション</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+  </div><a href="http://strongloop.com/node-js/training/" title="StrongLoop が提供する Node と Express に関する研修" id="strongloop-header">StrongLoop が提供する Express と Node.js に関する研修</a>
+</header>
+
+
+      <div id="overlay"></div>
+
+      
+        <div id="i18n-notice-box" class="doc-box doc-warn">
+          <p>本書は、英語の資料と比較すると古くなっている可能性があります。最新の更新については、<a href="/">英語版の資料</a>を参照してください。
+</p>
+<p>This document might be outdated relative to the documentation in English. For the latest updates, please refer to the <a href="/">documentation in English</a>.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+
+        </div>
+      
+
+      <h1 id="faq">FAQ</h1>
+
+<h2 id="section">どのようにしてアプリケーションを構成するのですか?</h2>
+
+<p>この質問に対する決定的な答えはありません。ご使用のアプリケーションや関与するチームの規模によって答えは異なります。可能な限り柔軟であるために、Express には、構造に関する前提がありません。</p>
+
+<p>ルートやその他のアプリケーション固有のロジックは、必要な数だけのファイルや、任意のディレクトリー構造に存在できます。参考のために、以下の例を参照してください。</p>
+
+<ul>
+  <li><a href="https://github.com/strongloop/express/blob/4.13.1/examples/route-separation/index.js#L32-47">ルートのリスト</a></li>
+  <li><a href="https://github.com/strongloop/express/blob/4.13.1/examples/route-map/index.js#L52-L66">ルートのマップ</a></li>
+  <li><a href="https://github.com/strongloop/express/tree/master/examples/mvc">MVC スタイルのコントローラー</a></li>
+</ul>
+
+<p>また、これらのパターンを簡素化する、サード・パーティー製の Express 拡張版があります。</p>
+
+<ul>
+  <li><a href="https://github.com/expressjs/express-resource">Resourceful ルーティング</a></li>
+</ul>
+
+<h2 id="section-1">どのようにしてモデルを定義するのですか?</h2>
+
+<p>Express には、データベースの概念がありません。この概念はサード・パーティーの Node モジュールに任せられているため、ほとんどのデータベースとやりとりできます。</p>
+
+<p>モデルに関する Express ベースのフレームワークについては、<a href="http://loopback.io">LoopBack</a> を参照してください。</p>
+
+<h2 id="section-2">どのようにしてユーザーを認証するのですか?</h2>
+
+<p>認証は、Express が足を踏み入れていないもう 1 つの分野です。任意の認証スキームを使用できます。
+単純なユーザー名/パスワードのスキームについては、<a href="https://github.com/strongloop/express/tree/master/examples/auth">この例</a>を参照してください。</p>
+
+<h2 id="express-">Express はどのテンプレート・エンジンをサポートしているのですか?</h2>
+
+<p>Express は、<code class="highlighter-rouge">(パス、ロケール、コールバック)</code> シグニチャーに準拠するすべてのテンプレート・エンジンをサポートします。
+テンプレート・エンジンのインターフェースとキャッシングを正規化するには、<a href="https://github.com/visionmedia/consolidate.js">consolidate.js</a> プロジェクトでサポートを参照してください。リストされていないテンプレート・エンジンでも Express シグニチャーをサポートしている可能性があります。</p>
+
+<h2 id="section-3">どのようにして 404 応答に対応するのですか?</h2>
+
+<p>Express では、404 応答はエラーの結果ではありません。そのため、エラー・ハンドラー・ミドルウェアはそれらをキャプチャーしません。このように動作するのは、404 応答は単に追加の処理が存在しないことを示しているためです。つまり、Express は、すべてのミドルウェア関数とルートを実行して、そのいずれも応答しなかったことを検出したということです。404 応答に対応するには、スタックの最下部 (他のすべての関数の下) にミドルウェア関数を追加するだけですみます。</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+app.use(function(req, res, next) {
+  res.status(404).send('Sorry cant find that!');
+});
+</code>
+</pre>
+
+<h2 id="section-4">どのようにしてエラー・ハンドラーをセットアップするのですか?</h2>
+
+<p>エラー処理ミドルウェアの定義方法は、他のミドルウェアと同じですが、引数の数が 3 つではなく 4 つである点が例外です。具体的には、シグニチャー <code class="highlighter-rouge">(err、req、res、next)</code> です。</p>
+
+<pre>
+<code class="language-javascript" translate="no">
+app.use(function(err, req, res, next) {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});
+</code>
+</pre>
+
+<p>詳細については、<a href="/ja/guide/error-handling.html">エラー処理</a>を参照してください。</p>
+
+<h2 id="html-">どのようにしてプレーン HTML をレンダリングするのですか?</h2>
+
+<p>レンダリングしません。<code class="highlighter-rouge">res.render()</code> 関数で HTML を「レンダリング」する必要はありません。
+特定のファイルがある場合は、<code class="highlighter-rouge">res.sendFile()</code> 関数を使用します。
+ディレクトリーから多数の資産を提供する場合は、<code class="highlighter-rouge">express.static()</code> ミドルウェア関数を使用します。</p>
+
+
+    </section>
+
+    <!-- NLS_CHARSET=UTF-8 -->
+<noscript>
+    <iframe src="//www.googletagmanager.com/ns.html?id=GTM-5XL76H" height="0" width="0" style="display: none; visibility: hidden;"></iframe>
+</noscript>
+<script>
+(function(w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({
+        'gtm.start': new Date().getTime(),
+        event: 'gtm.js'
+    });
+    var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != 'dataLayer' ? '&l=' + l : '';
+    j.async = true;
+    j.src =
+        '//www.googletagmanager.com/gtm.js?id=' + i + dl;
+    f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-5XL76H');
+</script>
+<a id="top" href="#"><img src="/images/arrow.png"></a>
+
+<footer>
+    <div id="footer-content">
+        <div id="github">
+            <iframe src="http://ghbtns.com/github-btn.html?user=strongloop&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+        </div>
+        <div id="sponsor"><a href="https://github.com/strongloop/express/">Express プロジェクト</a>は <a href="http://strongloop.com/">StrongLoop</a> によって出資されています。</div>
+        <div id="fork"><a href="https://github.com/strongloop/expressjs.com">GitHub で Web サイトを fork します</a>。</div>
+        <div>Copyright &copy; StrongLoop, Inc.、およびその他の expressjs.com コントリビューター。</div>
+    </div>
+</footer>
+
+
+  </body>
+
+</html>

@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+  <head>
+    <title>Диспетчеры процессов для приложений Express</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/dropit.css">
+    <link rel="stylesheet" href="/css/prism.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+    <link rel="stylesheet" href="/css/ru.css">        
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script data-cfasync="false" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script data-cfasync="false" src="/js/app.js"></script>
+    <script data-cfasync="false" src="/js/retina.js"></script>
+    <script data-cfasync="false" src="/js/dropit.js"></script>
+    <script data-cfasync="false" src="/js/prism.js"></script>
+</head>
+
+
+  
+  <body class="non-en-doc">
+  
+
+    <section class="page content">
+
+      <header>
+  <div id="mobile-menu">
+      <div id="nav-button" class="fa fa-bars fa-2x button"></div>
+  </div>
+  <section id="logo"><a href="/" class="express">Express</a>
+  </section>
+  <div id="navbar">
+      <ul id="navmenu">
+          <li><a href="/ru/" id="home-menu">Начальная страница</a></li>
+          <li>
+              <ul id="getting-started-menu" class="menu">
+                  <li><a href="/ru/starter/installing.html">Начало работы</a>
+                      <ul>
+                          <li>
+                            <a href="/ru/starter/installing.html">
+                              Установка
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/ru/starter/hello-world.html">
+                              Hello world
+                            </a>
+                          </li>
+                          <li>
+                          <a href="/ru/starter/generator.html">
+                            Генератор приложений Express
+                          </a>
+                          </li>
+                          <li>
+                            <a href="/ru/starter/basic-routing.html">
+                              Основы маршрутизации
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/ru/starter/static-files.html">
+                              Статические файлы
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/ru/starter/faq.html">
+                              FAQ
+                            </a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="guide-menu" class="menu">
+                  <li><a href="/ru/guide/routing.html">Руководство</a>
+                      <ul>
+                          <li><a href="/ru/guide/routing.html">Маршрутизация</a>
+                          </li>
+                          <li><a href="/ru/guide/writing-middleware.html">Написание кода промежуточных обработчиков</a>
+                          </li>
+                          <li><a href="/ru/guide/using-middleware.html">Использование промежуточных обработчиков</a>
+                          </li>
+                          <li><a href="/ru/guide/using-template-engines.html">Использование шаблонизаторов</a>
+                          </li>
+                          <li><a href="/ru/guide/error-handling.html">Обработка ошибок</a>
+                          </li>
+                          <li><a href="/ru/guide/debugging.html">Отладка</a>
+                          </li>
+                          <li><a href="/ru/guide/behind-proxies.html">Express за прокси</a>
+                          </li>
+                          <li><a href="/ru/guide/migrating-4.html">Переход к Express 4</a>
+                          </li>
+                          <li><a href="/ru/guide/migrating-5.html">Переход к Express 5</a>
+                          </li>
+                          <li><a href="/ru/guide/database-integration.html">Интеграция с базами данных</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="application-menu" class="menu">
+                  <li><a href="/ru/4x/api.html">Справочник по API</a>
+                      <ul>
+                          <li><a href="/ru/4x/api.html">4.x</a>
+                          </li>
+                          <li><a href="/ru/3x/api.html">3.x (устарел)</a>
+                          </li>
+                          <li><a href="/ru/2x/">2.x (устарел)</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="advanced-topics-menu" class="menu">
+                  <li><a href="/ru/advanced/developing-template-engines.html" class="active">Расширенные возможности</a>
+                      <ul>
+                          <li><a href="/ru/advanced/developing-template-engines.html">Шаблонизаторы</a>
+                          </li>
+                          <li><a href="/ru/advanced/pm.html">Работа с диспетчерами процессов</a>
+                          </li>
+                          <li><a href="/ru/advanced/security-updates.html">Обновления системы безопасности</a>
+                          </li>
+                          <li><a href="/ru/advanced/best-practice-security.html">Лучшие практические методы в области защиты</a>
+                          </li>
+                          <li><a href="/ru/advanced/best-practice-performance.html">Лучшие практические методы улучшения производительности</a>
+                          </li>
+
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="resources-menu" class="menu">
+                  <li><a href="/ru/resources/glossary.html">Ресурсы</a>
+                      <ul>
+                          <li><a href="/ru/resources/glossary.html">Глоссарий</a>
+                          </li>
+                          <li><a href="/ru/resources/middleware.html">Промежуточный обработчик</a>
+                          </li>
+                          <li><a href="/ru/resources/community.html">Сообщество</a>
+                          </li>
+                          <li><a href="/ru/resources/books-blogs.html">Книги и блоги</a>
+                          </li>
+                          <li><a href="/ru/resources/applications.html">Приложения</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+  </div><a href="http://strongloop.com/node-js/training/" title="Обучение по Node и Express от StrongLoop" id="strongloop-header">Обучение по Express и Node.js от StrongLoop</a>
+</header>
+
+
+      <div id="overlay"></div>
+
+      
+        <div id="i18n-notice-box" class="doc-box doc-warn">
+          <p>Этот документ может быть устаревшим по отношению к документации на английском языке. Последние обновления содержатся в <a href="/">документации на английском языке</a>.
+</p>
+<p>This document might be outdated relative to the documentation in English. For the latest updates, please refer to the <a href="/">documentation in English</a>.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+
+        </div>
+      
+
+      <h1 id="express">Диспетчеры процессов для приложений Express</h1>
+
+<p>При запуске приложения Express для рабочей среды использование <em>диспетчера процессов</em> позволяет выполнять следующие задачи:</p>
+
+<ul>
+  <li>Автоматически перезапускать приложение в случае сбоя.</li>
+  <li>Получать аналитическую информацию о производительности среды выполнения и потреблении ресурсов.</li>
+  <li>Изменять параметры в динамическом режиме в целях повышения производительности.</li>
+  <li>Управлять кластеризацией.</li>
+</ul>
+
+<p>Диспетчер процессов можно сравнить с сервером приложений: это “контейнер” для приложений, обеспечивающий развертывание и высокую готовность и позволяющий управлять приложением в среде выполнения.</p>
+
+<p>Наиболее популярные диспетчеры процессов для Express и других приложений Node.js перечислены ниже:</p>
+
+<ul>
+  <li><a href="#sl">StrongLoop Process Manager</a></li>
+  <li><a href="#pm2">PM2</a></li>
+  <li><a href="#forever">Forever</a></li>
+</ul>
+
+<p>Использование любого из этих трех инструментов может быть исключительно полезным, тем не менее StrongLoop Process Manager является единственным инструментом, предоставляющим универсальное решение для среды выполнения и развертывания в течение всего жизненного цикла приложения Node.js и включающим в себя, в виде единого интерфейса, все средства для каждого этапа, как до перехода в рабочий режим, так и в рабочей среде.</p>
+
+<p>Ниже приводится краткий обзор каждого из этих инструментов.
+Подробное сравнение можно найти в разделе <a href="http://strong-pm.io/compare/">http://strong-pm.io/compare/</a>.</p>
+
+<h2 id="a-idslstrongloop-process-managera"><a id="sl">StrongLoop Process Manager</a></h2>
+
+<p>StrongLoop Process Manager (StrongLoop PM) - это рабочий диспетчер процессов для приложений Node.js. В StrongLoop PM предусмотрено встроенное распределение нагрузки, мониторинг, развертывание на нескольких хостах и графическая консоль.
+С помощью StrongLoop PM можно выполнять следующие задачи:</p>
+
+<ul>
+  <li>Компоновать, объединять в пакет и развертывать приложение Node.js в локальной или удаленной системе.</li>
+  <li>Просматривать профайлы CPU и моментальные снимки кучи в целях оптимизации производительности и диагностирования утечек памяти.</li>
+  <li>Поддерживать постоянную активность процессов и кластеров.</li>
+  <li>Просматривать показатели производительности приложения.</li>
+  <li>Без затруднений управлять развертываниями на нескольких хостах с интеграцией Nginx.</li>
+  <li>Объединять несколько диспетчеров StrongLoop PM в распределенную среду выполнения микрослужб, управляемую из Arc.</li>
+</ul>
+
+<p>Работать с StrongLoop PM можно посредством многофункционального интерфейса командной строки, называемого <code class="highlighter-rouge">slc</code>, или графического инструмента Arc. Arc имеет открытый исходный код и обеспечен экспертной поддержкой StrongLoop.</p>
+
+<p>Дополнительная информация содержится на странице <a href="http://strong-pm.io/">http://strong-pm.io/</a>.</p>
+
+<p>Полная версия документации:</p>
+
+<ul>
+  <li><a href="http://docs.strongloop.com/display/SLC">Управляющие приложения Node (Документация StrongLoop)</a></li>
+  <li><a href="http://docs.strongloop.com/display/SLC/Using+Process+Manager">Использование StrongLoop Process Manager</a>.</li>
+</ul>
+
+<h3 id="section">Установка</h3>
+<pre>
+<code class="language-sh" translate="no">
+$ [sudo] npm install -g strongloop
+</code>
+</pre>
+
+<h3 id="section-1">Основы использования</h3>
+<pre>
+<code class="language-sh" translate="no">
+$ cd my-app
+$ slc start
+</code>
+</pre>
+
+<p>Просмотр состояния диспетчера процессов и всех развернутых приложений:</p>
+
+<pre>
+<code class="language-sh" translate="no">
+$ slc ctl
+Service ID: 1
+Service Name: my-app
+Environment variables:
+  No environment variables defined
+Instances:
+    Version  Agent version  Cluster size
+     4.1.13      1.5.14           4
+Processes:
+        ID      PID   WID  Listening Ports  Tracking objects?  CPU profiling?
+    1.1.57692  57692   0
+    1.1.57693  57693   1     0.0.0.0:3001
+    1.1.57694  57694   2     0.0.0.0:3001
+    1.1.57695  57695   3     0.0.0.0:3001
+    1.1.57696  57696   4     0.0.0.0:3001
+</code>
+</pre>
+
+<p>Вывод списка всех приложений (служб), подлежащих управлению:</p>
+
+<pre>
+<code class="language-sh" translate="no">
+$ slc ctl ls
+Id          Name         Scale
+ 1          my-app       1
+</code>
+</pre>
+
+<p>Остановка приложения:</p>
+
+<pre>
+<code class="language-sh" translate="no">
+$ slc ctl stop my-app
+</code>
+</pre>
+
+<p>Перезапуск приложения:</p>
+
+<pre>
+<code class="language-sh" translate="no">
+$ slc ctl restart my-app
+</code>
+</pre>
+
+<p>Также можно выполнить “мягкий перезапуск”, при котором рабочим процессам выделяется определенное время на закрытие существующих соединений, после чего текущее приложение перезапускается:</p>
+
+<pre>
+<code class="language-sh" translate="no">
+$ slc ctl soft-restart my-app
+</code>
+</pre>
+
+<p>Удаление приложения из числа подлежащих управлению:</p>
+
+<pre>
+<code class="language-sh" translate="no">
+$ slc ctl remove my-app
+</code>
+</pre>
+
+<h2 id="a-idpm2pm2a"><a id="pm2">PM2</a></h2>
+
+<p>PM2 - это диспетчер процессов рабочей среды для приложений Node.js, в котором предусмотрен встроенный инструмент распределения нагрузки. PM2 позволяет всегда поддерживать приложения в рабочем состоянии и перезагружать их без простоев, а также обеспечивает выполнение общих задач системного администрирования.  PM2 также позволяет управлять ведением протоколов, мониторингом и кластеризацией приложений.</p>
+
+<p>Дополнительная информация содержится на странице <a href="https://github.com/Unitech/pm2">https://github.com/Unitech/pm2/</a>.</p>
+
+<h3 id="section-2">Установка</h3>
+
+<pre>
+<code class="language-sh" translate="no">
+$ [sudo] npm install pm2 -g
+</code>
+</pre>
+
+<h3 id="section-3">Основы использования</h3>
+
+<p>При запуске приложения с помощью команды <code class="highlighter-rouge">pm2</code> необходимо указать путь к приложению. Тем не менее, при остановке, перезапуске или удалении приложения можно указать только имя или ИД приложения.</p>
+
+<pre>
+<code class="language-sh" translate="no">
+$ pm2 start app.js
+[PM2] restartProcessId process id 0
+┌──────────┬────┬──────┬───────┬────────┬─────────┬────────┬─────────────┬──────────┐
+│ App name │ id │ mode │ pid   │ status │ restart │ uptime │ memory      │ watching │
+├──────────┼────┼──────┼───────┼────────┼─────────┼────────┼─────────────┼──────────┤
+│ my-app   │ 0  │ fork │ 64029 │ online │ 1       │ 0s     │ 17.816 MB   │ disabled │
+└──────────┴────┴──────┴───────┴────────┴─────────┴────────┴─────────────┴──────────┘
+ Use the `pm2 show &lt;id|name&gt;` command to get more details about an app.
+</code>
+</pre>
+
+<p>При запуске приложения с помощью команды <code class="highlighter-rouge">pm2</code> оно немедленно переводится в фоновый режим. Фоновым приложением можно управлять из командной строки с помощью различных команд <code class="highlighter-rouge">pm2</code>.</p>
+
+<p>После запуска приложения с помощью команды <code class="highlighter-rouge">pm2</code> оно регистрируется в списке процессов PM2 с указанием ИД. Затем можно управлять приложениями с тем же именем из различных каталогов в системе, используя только их ИД.</p>
+
+<p>Обратите внимание на то, что если запущено несколько приложений с одинаковым именем, команды <code class="highlighter-rouge">pm2</code> применяются ко всем таким приложениям. Поэтому для управления отдельными приложениями используйте не имена, а ИД.</p>
+
+<p>Список всех запущенных процессов:</p>
+
+<pre>
+<code class="language-sh" translate="no">
+$ pm2 list
+</code>
+</pre>
+
+<p>Остановка приложения:</p>
+
+<pre>
+<code class="language-sh" translate="no">
+$ pm2 stop 0
+</code>
+</pre>
+
+<p>Перезапуск приложения:</p>
+
+<pre>
+<code class="language-sh" translate="no">
+$ pm2 restart 0
+</code>
+</pre>
+
+<p>Просмотр подробной информации о приложении:</p>
+
+<pre>
+<code class="language-sh" translate="no">
+$ pm2 show 0
+</code>
+</pre>
+
+<p>Удаление приложения из реестра PM2:</p>
+
+<pre>
+<code class="language-sh" translate="no">
+$ pm2 delete 0
+</code>
+</pre>
+
+<h2 id="a-idforeverforevera"><a id="forever">Forever</a></h2>
+
+<p>Forever представляет собой простой инструмент интерфейса командной строки, обеспечивающий непрерывное (бесконечное) выполнение определенного сценария. Благодаря простому интерфейсу Forever является идеальным инструментом для выполнения не столь масштабных развертываний приложений и сценариев Node.js.</p>
+
+<p>Дополнительная информация содержится на странице <a href="https://github.com/foreverjs/forever">https://github.com/foreverjs/forever/</a>.</p>
+
+<h3 id="section-4">Установка</h3>
+
+<pre>
+<code class="language-sh" translate="no">
+$ [sudo] npm install forever -g
+</code>
+</pre>
+
+<h3 id="section-5">Основы использования</h3>
+
+<p>Для запуска сценария воспользуйтесь командой <code class="highlighter-rouge">forever start</code> и укажите путь к сценарию:</p>
+
+<pre>
+<code class="language-sh" translate="no">
+$ forever start script.js
+</code>
+</pre>
+
+<p>Эта команда запустит сценарий в режиме демона (в фоновом режиме).</p>
+
+<p>Для запуска сценария таким образом, чтобы он был соединен с терминалом, не указывайте <code class="highlighter-rouge">start</code>:</p>
+
+<pre>
+<code class="language-sh" translate="no">
+$ forever script.js
+</code>
+</pre>
+
+<p>Целесообразно регистрировать вывод инструмента Forever и сценария в протоколе, используя для этого опции ведения протоколов <code class="highlighter-rouge">-l</code>, <code class="highlighter-rouge">-o</code> и <code class="highlighter-rouge">-e</code>, как показано в примере ниже:</p>
+
+<pre>
+<code class="language-sh" translate="no">
+$ forever start -l forever.log -o out.log -e err.log script.js
+</code>
+</pre>
+
+<p>Для просмотра списка сценариев, запущенных с помощью Forever:</p>
+
+<pre>
+<code class="language-sh" translate="no">
+$ forever list
+</code>
+</pre>
+
+<p>Для остановки сценария, запущенного с помощью Forever, воспользуйтесь командой <code class="highlighter-rouge">forever stop</code> и укажите индекс процесса (согласно списку, выведенному с помощью команды <code class="highlighter-rouge">forever list</code>).</p>
+
+<pre>
+<code class="language-sh" translate="no">
+$ forever stop 1
+</code>
+</pre>
+
+<p>В качестве альтернативы, укажите путь к файлу:</p>
+
+<pre>
+<code class="language-sh" translate="no">
+$ forever stop script.js
+</code>
+</pre>
+
+<p>Для остановки всех сценариев, запущенных с помощью Forever:</p>
+
+<pre>
+<code class="language-sh" translate="no">
+$ forever stopall
+</code>
+</pre>
+
+<p>В Forever предусмотрено множество других опций, и, кроме того, данным инструментом предоставляется программный API.</p>
+
+
+    </section>
+
+    <!-- NLS_CHARSET=UTF-8 -->
+<noscript>
+    <iframe src="//www.googletagmanager.com/ns.html?id=GTM-5XL76H" height="0" width="0" style="display: none; visibility: hidden;"></iframe>
+</noscript>
+<script>
+(function(w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({
+        'gtm.start': new Date().getTime(),
+        event: 'gtm.js'
+    });
+    var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != 'dataLayer' ? '&l=' + l : '';
+    j.async = true;
+    j.src =
+        '//www.googletagmanager.com/gtm.js?id=' + i + dl;
+    f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-5XL76H');
+</script>
+<a id="top" href="#"><img src="/images/arrow.png"></a>
+
+<footer>
+    <div id="footer-content">
+        <div id="github">
+            <iframe src="http://ghbtns.com/github-btn.html?user=strongloop&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+        </div>
+        <div id="sponsor">Спонсором <a href="https://github.com/strongloop/express/">проекта Express</a> выступает компания <a href="http://strongloop.com/">StrongLoop</a>. </div>
+        <div id="fork"><a href="https://github.com/strongloop/expressjs.com">Создайте клон веб-сайта на GitHub</a>.
+        </div>
+        <div>Copyright &copy; StrongLoop, Inc. и других участников expressjs.com.</div>
+    </div>
+</footer>
+
+
+  </body>
+
+</html>

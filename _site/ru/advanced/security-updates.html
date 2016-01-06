@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+  <head>
+    <title>Обновления системы безопасности Express</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/dropit.css">
+    <link rel="stylesheet" href="/css/prism.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;amp;subset=latin,latin-ext">
+    <link rel="stylesheet" href="/css/ru.css">        
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script data-cfasync="false" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script data-cfasync="false" src="/js/app.js"></script>
+    <script data-cfasync="false" src="/js/retina.js"></script>
+    <script data-cfasync="false" src="/js/dropit.js"></script>
+    <script data-cfasync="false" src="/js/prism.js"></script>
+</head>
+
+
+  
+  <body class="non-en-doc">
+  
+
+    <section class="page content">
+
+      <header>
+  <div id="mobile-menu">
+      <div id="nav-button" class="fa fa-bars fa-2x button"></div>
+  </div>
+  <section id="logo"><a href="/" class="express">Express</a>
+  </section>
+  <div id="navbar">
+      <ul id="navmenu">
+          <li><a href="/ru/" id="home-menu">Начальная страница</a></li>
+          <li>
+              <ul id="getting-started-menu" class="menu">
+                  <li><a href="/ru/starter/installing.html">Начало работы</a>
+                      <ul>
+                          <li>
+                            <a href="/ru/starter/installing.html">
+                              Установка
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/ru/starter/hello-world.html">
+                              Hello world
+                            </a>
+                          </li>
+                          <li>
+                          <a href="/ru/starter/generator.html">
+                            Генератор приложений Express
+                          </a>
+                          </li>
+                          <li>
+                            <a href="/ru/starter/basic-routing.html">
+                              Основы маршрутизации
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/ru/starter/static-files.html">
+                              Статические файлы
+                            </a>
+                          </li>
+                          <li>
+                            <a href="/ru/starter/faq.html">
+                              FAQ
+                            </a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="guide-menu" class="menu">
+                  <li><a href="/ru/guide/routing.html">Руководство</a>
+                      <ul>
+                          <li><a href="/ru/guide/routing.html">Маршрутизация</a>
+                          </li>
+                          <li><a href="/ru/guide/writing-middleware.html">Написание кода промежуточных обработчиков</a>
+                          </li>
+                          <li><a href="/ru/guide/using-middleware.html">Использование промежуточных обработчиков</a>
+                          </li>
+                          <li><a href="/ru/guide/using-template-engines.html">Использование шаблонизаторов</a>
+                          </li>
+                          <li><a href="/ru/guide/error-handling.html">Обработка ошибок</a>
+                          </li>
+                          <li><a href="/ru/guide/debugging.html">Отладка</a>
+                          </li>
+                          <li><a href="/ru/guide/behind-proxies.html">Express за прокси</a>
+                          </li>
+                          <li><a href="/ru/guide/migrating-4.html">Переход к Express 4</a>
+                          </li>
+                          <li><a href="/ru/guide/migrating-5.html">Переход к Express 5</a>
+                          </li>
+                          <li><a href="/ru/guide/database-integration.html">Интеграция с базами данных</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="application-menu" class="menu">
+                  <li><a href="/ru/4x/api.html">Справочник по API</a>
+                      <ul>
+                          <li><a href="/ru/4x/api.html">4.x</a>
+                          </li>
+                          <li><a href="/ru/3x/api.html">3.x (устарел)</a>
+                          </li>
+                          <li><a href="/ru/2x/">2.x (устарел)</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="advanced-topics-menu" class="menu">
+                  <li><a href="/ru/advanced/developing-template-engines.html" class="active">Расширенные возможности</a>
+                      <ul>
+                          <li><a href="/ru/advanced/developing-template-engines.html">Шаблонизаторы</a>
+                          </li>
+                          <li><a href="/ru/advanced/pm.html">Работа с диспетчерами процессов</a>
+                          </li>
+                          <li><a href="/ru/advanced/security-updates.html">Обновления системы безопасности</a>
+                          </li>
+                          <li><a href="/ru/advanced/best-practice-security.html">Лучшие практические методы в области защиты</a>
+                          </li>
+                          <li><a href="/ru/advanced/best-practice-performance.html">Лучшие практические методы улучшения производительности</a>
+                          </li>
+
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+          <li>
+              <ul id="resources-menu" class="menu">
+                  <li><a href="/ru/resources/glossary.html">Ресурсы</a>
+                      <ul>
+                          <li><a href="/ru/resources/glossary.html">Глоссарий</a>
+                          </li>
+                          <li><a href="/ru/resources/middleware.html">Промежуточный обработчик</a>
+                          </li>
+                          <li><a href="/ru/resources/community.html">Сообщество</a>
+                          </li>
+                          <li><a href="/ru/resources/books-blogs.html">Книги и блоги</a>
+                          </li>
+                          <li><a href="/ru/resources/applications.html">Приложения</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+  </div><a href="http://strongloop.com/node-js/training/" title="Обучение по Node и Express от StrongLoop" id="strongloop-header">Обучение по Express и Node.js от StrongLoop</a>
+</header>
+
+
+      <div id="overlay"></div>
+
+      
+        <div id="i18n-notice-box" class="doc-box doc-warn">
+          <p>Этот документ может быть устаревшим по отношению к документации на английском языке. Последние обновления содержатся в <a href="/">документации на английском языке</a>.
+</p>
+<p>This document might be outdated relative to the documentation in English. For the latest updates, please refer to the <a href="/">documentation in English</a>.
+</p>
+<div id="close-i18n-notice-box" title="Close">✖</div>
+
+        </div>
+      
+
+      <h1 id="section">Обновления системы безопасности</h1>
+
+<div class="doc-box doc-notice">
+  <p>Уязвимости Node.js оказывают непосредственное влияние на Express. Поэтому необходимо <a href="http://blog.nodejs.org/vulnerability/">пристально отслеживать уязвимости Node.js</a> и обязательно использовать только последнюю, стабильную версию Node.js.</p>
+</div>
+
+<p>В приведенном ниже списке перечислены уязвимости Express, которые были устранены в указанном обновлении версии.</p>
+
+<h2 id="x">4.x</h2>
+
+<ul>
+  <li>4.11.1
+    <ul>
+      <li>Исправлена уязвимость раскрытия корневого пути в <code class="highlighter-rouge">express.static</code>, <code class="highlighter-rouge">res.sendfile</code> и <code class="highlighter-rouge">res.sendFile</code></li>
+    </ul>
+  </li>
+  <li>4.10.7
+    <ul>
+      <li>Исправлена уязвимость открытого перенаправления в <code class="highlighter-rouge">express.static</code> (<a href="https://nodesecurity.io/advisories/serve-static-open-redirect">advisory</a>, <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-1164">CVE-2015-1164</a>).</li>
+    </ul>
+  </li>
+  <li>4.8.8
+    <ul>
+      <li>Исправлены уязвимости обхода каталогов в <code class="highlighter-rouge">express.static</code> (<a href="http://nodesecurity.io/advisories/send-directory-traversal">advisory</a> , <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-6394">CVE-2014-6394</a>).</li>
+    </ul>
+  </li>
+  <li>4.8.4
+    <ul>
+      <li>В Node.js 0.10 возможна утечка <code class="highlighter-rouge">fd</code> в некоторых ситуациях, что влияет на <code class="highlighter-rouge">express.static</code> и <code class="highlighter-rouge">res.sendfile</code>. Утечка <code class="highlighter-rouge">fd</code> может возникнуть вследствие вредоносных запросов и в итоге привести к ошибкам <code class="highlighter-rouge">EMFILE</code> и недоступности сервера.</li>
+    </ul>
+  </li>
+  <li>4.8.0
+    <ul>
+      <li>Разреженные массивы с крайне высокими индексами в строке запроса могут привести к исчерпанию памяти процессом и сбою на сервере.</li>
+      <li>Объекты строки запроса с очень высокой степенью вложенности могут привести к блокировке процесса и временной недоступности сервера.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="x-1">3.x</h2>
+
+<ul>
+  <li>3.19.1
+    <ul>
+      <li>Исправлена уязвимость раскрытия корневого пути в <code class="highlighter-rouge">express.static</code>, <code class="highlighter-rouge">res.sendfile</code> и <code class="highlighter-rouge">res.sendFile</code></li>
+    </ul>
+  </li>
+  <li>3.19.0
+    <ul>
+      <li>Исправлена уязвимость открытого перенаправления в <code class="highlighter-rouge">express.static</code> (<a href="https://nodesecurity.io/advisories/serve-static-open-redirect">advisory</a>, <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-1164">CVE-2015-1164</a>).</li>
+    </ul>
+  </li>
+  <li>3.16.10
+    <ul>
+      <li>Исправлены уязвимости обхода каталогов в <code class="highlighter-rouge">express.static</code>.</li>
+    </ul>
+  </li>
+  <li>3.16.6
+    <ul>
+      <li>В Node.js 0.10 возможна утечка <code class="highlighter-rouge">fd</code> в некоторых ситуациях, что влияет на <code class="highlighter-rouge">express.static</code> и <code class="highlighter-rouge">res.sendfile</code>. Утечка <code class="highlighter-rouge">fd</code> может возникнуть вследствие вредоносных запросов и в итоге привести к ошибкам <code class="highlighter-rouge">EMFILE</code> и недоступности сервера.</li>
+    </ul>
+  </li>
+  <li>3.16.0
+    <ul>
+      <li>Разреженные массивы с крайне высокими индексами в строке запроса могут привести к исчерпанию памяти процессом и сбою на сервере.</li>
+      <li>Объекты строки запроса с очень высокой степенью вложенности могут привести к блокировке процесса и временной недоступности сервера.</li>
+    </ul>
+  </li>
+  <li>3.3.0
+    <ul>
+      <li>Код ответа 404, полученный вследствие попытки переопределения неподдерживаемого метода, был подвержен атакам межсайтового скриптинга.</li>
+    </ul>
+  </li>
+</ul>
+
+
+    </section>
+
+    <!-- NLS_CHARSET=UTF-8 -->
+<noscript>
+    <iframe src="//www.googletagmanager.com/ns.html?id=GTM-5XL76H" height="0" width="0" style="display: none; visibility: hidden;"></iframe>
+</noscript>
+<script>
+(function(w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({
+        'gtm.start': new Date().getTime(),
+        event: 'gtm.js'
+    });
+    var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != 'dataLayer' ? '&l=' + l : '';
+    j.async = true;
+    j.src =
+        '//www.googletagmanager.com/gtm.js?id=' + i + dl;
+    f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-5XL76H');
+</script>
+<a id="top" href="#"><img src="/images/arrow.png"></a>
+
+<footer>
+    <div id="footer-content">
+        <div id="github">
+            <iframe src="http://ghbtns.com/github-btn.html?user=strongloop&amp;repo=express&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
+        </div>
+        <div id="sponsor">Спонсором <a href="https://github.com/strongloop/express/">проекта Express</a> выступает компания <a href="http://strongloop.com/">StrongLoop</a>. </div>
+        <div id="fork"><a href="https://github.com/strongloop/expressjs.com">Создайте клон веб-сайта на GitHub</a>.
+        </div>
+        <div>Copyright &copy; StrongLoop, Inc. и других участников expressjs.com.</div>
+    </div>
+</footer>
+
+
+  </body>
+
+</html>
